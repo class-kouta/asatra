@@ -15,6 +15,14 @@ class CreateDescPostsTable extends Migration
     {
         Schema::create('desc_posts', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id');
+            $table->string('title');
+            $table->string('describe');
+            $table->string('explain');
+            $table->string('specify');
+            $table->string('choose_yes');
+            $table->string('choose_no');
+            $table->text('note');
             $table->timestamps();
         });
     }
