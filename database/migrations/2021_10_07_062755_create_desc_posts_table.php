@@ -15,7 +15,7 @@ class CreateDescPostsTable extends Migration
     {
         Schema::create('desc_posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->string('describe');
             $table->string('explain');
@@ -24,6 +24,10 @@ class CreateDescPostsTable extends Migration
             $table->string('choose_no');
             $table->text('note');
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
         });
     }
 

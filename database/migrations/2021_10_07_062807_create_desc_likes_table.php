@@ -15,9 +15,17 @@ class CreateDescLikesTable extends Migration
     {
         Schema::create('desc_likes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
-            $table->integer('post_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('post_id');
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign('post_id')
+                ->references('id')->on('desc_posts')
+                ->onDelete('cascade');
         });
     }
 
