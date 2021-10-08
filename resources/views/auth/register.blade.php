@@ -11,6 +11,7 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
+                        {{-- 名前の入力欄 --}}
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -25,6 +26,27 @@
                             </div>
                         </div>
 
+                        {{-- 性別の入力欄 --}}
+                        <div class="form-group row">
+                            <label for="sex" class="col-md-4 col-form-label text-md-right">Sex</label>
+
+                            <div class="col-md-6" style="padding-top: 8px">
+                                <input id="sex-1" type="radio" name="sex" value="1">
+                                <label for="sex-1">男</label>
+                                <input id="sex-2" type="radio" name="sex" value="2">
+                                <label for="sex-2">女</label>
+                                <input id="sex-9" type="radio" name="sex" value="9">
+                                <label for="sex-9">その他</label>
+
+                                @if ($errors->has('sex'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('sex') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        {{-- メールの入力欄 --}}
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -39,6 +61,7 @@
                             </div>
                         </div>
 
+                        {{-- パスワードの入力欄 --}}
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -53,6 +76,7 @@
                             </div>
                         </div>
 
+                        {{-- パスワード二回目の入力欄 --}}
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
