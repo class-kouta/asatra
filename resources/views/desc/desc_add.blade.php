@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="container">
-    <a href="{{ route('desc_add') }}">追加</a>
+    DESC法
 </div>
 @endsection

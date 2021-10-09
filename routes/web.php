@@ -19,3 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/mypage', 'MypageController@index')->name('mypage');
+Route::get('/desc/desc_add', 'DescPostController@index')->name('desc_add');
