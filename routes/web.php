@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/mypage', 'MypageController@index')->name('mypage');
+
 Route::get('/desc/desc_add', 'DescPostController@index')->name('desc_add');
+Route::post('/desc/desc_add_check', 'DescPostController@confirm')->name('desc_add_check');
+Route::post('', 'DescPostController@store')->name('store');
