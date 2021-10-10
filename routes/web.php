@@ -20,6 +20,6 @@ Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/mypage', 'MypageController@index')->name('mypage');
 
-Route::get('/desc/desc_add', 'DescPostController@index')->name('desc_add');
-Route::post('/desc/desc_add_check', 'DescPostController@confirm')->name('desc_add_check');
-Route::post('', 'DescPostController@store')->name('store');
+Route::get('/posts/create', 'PostController@create')->name('posts.create');
+Route::post('/posts/create_confirm', 'PostController@confirm')->name('posts.create_confirm');
+Route::post('/posts/store', 'PostController@store')->name('posts.store');

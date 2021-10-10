@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDescLikesTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,20 @@ class CreateDescLikesTable extends Migration
      */
     public function up()
     {
-        Schema::create('desc_likes', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('post_id');
+            $table->string('title');
+            $table->string('describe');
+            $table->string('explain');
+            $table->string('specify');
+            $table->string('choose_yes');
+            $table->string('choose_no');
+            $table->text('note');
             $table->timestamps();
 
             $table->foreign('user_id')
                 ->references('id')->on('users')
-                ->onDelete('cascade');
-
-            $table->foreign('post_id')
-                ->references('id')->on('desc_posts')
                 ->onDelete('cascade');
         });
     }
@@ -36,6 +38,6 @@ class CreateDescLikesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('desc_likes');
+        Schema::dropIfExists('posts');
     }
 }

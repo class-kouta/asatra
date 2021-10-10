@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>DESC法</h1>
-<form action="{{ route('desc_add_check') }}" method="post">
+<form action="{{ route('posts.create_confirm') }}" method="post">
         @csrf
         タイトル：例〜<br>
         <input type="text" name="title" ><br><br>

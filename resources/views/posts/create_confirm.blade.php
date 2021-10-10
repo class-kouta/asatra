@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>DESC法</h1>
-    <form action="{{ route('store') }}" method="post">
+    <form action="{{ route('posts.store') }}" method="post">
         @csrf
         タイトル：例〜<br>
         {{ $inputs['title'] }}<br><br>

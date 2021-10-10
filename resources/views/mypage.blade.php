@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="container">
-    <a href="{{ route('desc_add') }}">追加</a>
+    <a href="{{ route('posts.create') }}">追加</a>
 </div>
 @endsection
