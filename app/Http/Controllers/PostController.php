@@ -15,17 +15,32 @@ class PostController extends Controller
 
     public function confirm(Request $request)
     {
-        //バリデーションを実行（結果に問題があれば処理を中断してエラーを返す）
-        // $request->validate([
-        //     'email' => 'required|email',
-        //     'title' => 'required',
-        //     'body'  => 'required',
-        // ]);
+        $request->validate([
+            'title' => 'required|string|max:50',
+            'describe' => 'required|string|max:200',
+            'explain' => 'required|string|max:200',
+            'specify' => 'required|string|max:200',
+            'choose_yes' => 'required|string|max:200',
+            'choose_no' => 'required|string|max:200',
+            'note' => 'nullable|string|max:200',
+        ],[
+            'title.required' => '入力必須です',
+            'title.max' => '50文字以内で入力してください',
+            'describe.required' => '入力必須です',
+            'describe.max' => '200文字以内で入力してください',
+            'explain.required' => '入力必須です',
+            'explain.max' => '200文字以内で入力してください',
+            'specify.required' => '入力必須です',
+            'specify.max' => '200文字以内で入力してください',
+            'choose_yes.required' => '入力必須です',
+            'choose_yes' => '200文字以内で入力してください',
+            'choose_no.required' => '入力必須です',
+            'choose_no.max' => '200文字以内で入力してください',
+            'note.max' => '200文字以内で入力してください',
+        ]);
 
-        //フォームから受け取ったすべてのinputの値を取得
         $inputs = $request->all();
 
-        //入力内容確認ページのviewに変数を渡して表示
         return view('posts/create_confirm', [
             'inputs' => $inputs,
         ]);
