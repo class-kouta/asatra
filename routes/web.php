@@ -25,4 +25,5 @@ Route::group(['prefix' => '','middleware'=>'auth'],function(){
     Route::get('/posts/create', 'PostController@create')->name('posts.create');
     Route::post('/posts/create_confirm', 'PostController@confirm')->name('posts.create_confirm');
     Route::post('/posts/store', 'PostController@store')->name('posts.store');
+    Route::get('show/{id}','PostController@show')->name('posts.show');
 });
