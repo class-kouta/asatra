@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
+use App\Http\Requests\StorePost;
 
 class PostController extends Controller
 {
@@ -13,32 +14,8 @@ class PostController extends Controller
         return view('posts/create');
     }
 
-    public function confirm(Request $request)
+    public function createConfirm(StorePost $request)
     {
-        $request->validate([
-            'title' => 'required|string|max:50',
-            'describe' => 'required|string|max:200',
-            'explain' => 'required|string|max:200',
-            'specify' => 'required|string|max:200',
-            'choose_yes' => 'required|string|max:200',
-            'choose_no' => 'required|string|max:200',
-            'note' => 'nullable|string|max:200',
-        ],[
-            'title.required' => '入力必須です',
-            'title.max' => '50文字以内で入力してください',
-            'describe.required' => '入力必須です',
-            'describe.max' => '200文字以内で入力してください',
-            'explain.required' => '入力必須です',
-            'explain.max' => '200文字以内で入力してください',
-            'specify.required' => '入力必須です',
-            'specify.max' => '200文字以内で入力してください',
-            'choose_yes.required' => '入力必須です',
-            'choose_yes' => '200文字以内で入力してください',
-            'choose_no.required' => '入力必須です',
-            'choose_no.max' => '200文字以内で入力してください',
-            'note.max' => '200文字以内で入力してください',
-        ]);
-
         $inputs = $request->all();
 
         return view('posts/create_confirm', [
@@ -61,7 +38,7 @@ class PostController extends Controller
 
         $post->save();
 
-        return redirect('mypage');
+        return $this->showMyPosts();
     }
 
     public function show($id)
@@ -86,32 +63,8 @@ class PostController extends Controller
         return view('posts.edit', $data);
     }
 
-    public function edit_confirm(Request $request, $id)
+    public function editConfirm(StorePost $request, $id)
     {
-        $request->validate([
-            'title' => 'required|string|max:50',
-            'describe' => 'required|string|max:200',
-            'explain' => 'required|string|max:200',
-            'specify' => 'required|string|max:200',
-            'choose_yes' => 'required|string|max:200',
-            'choose_no' => 'required|string|max:200',
-            'note' => 'nullable|string|max:200',
-        ],[
-            'title.required' => '入力必須です',
-            'title.max' => '50文字以内で入力してください',
-            'describe.required' => '入力必須です',
-            'describe.max' => '200文字以内で入力してください',
-            'explain.required' => '入力必須です',
-            'explain.max' => '200文字以内で入力してください',
-            'specify.required' => '入力必須です',
-            'specify.max' => '200文字以内で入力してください',
-            'choose_yes.required' => '入力必須です',
-            'choose_yes' => '200文字以内で入力してください',
-            'choose_no.required' => '入力必須です',
-            'choose_no.max' => '200文字以内で入力してください',
-            'note.max' => '200文字以内で入力してください',
-        ]);
-
         $inputs = $request->all();
 
         return view('posts/edit_confirm', [
@@ -135,7 +88,7 @@ class PostController extends Controller
 
         $post->save();
 
-        return redirect('/mypage');
+        return $this->showMyPosts();
 
     }
 
@@ -144,7 +97,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->delete();
 
-        return redirect('mypage');
+        return $this->showMyPosts();
     }
 
 }

@@ -22,13 +22,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => '','middleware'=>'auth'],function(){
     Route::get('/mypage', 'MypageController@index')->name('mypage');
     Route::get('/posts/myposts', 'PostController@showMyPosts')->name('posts.myposts');
-
     Route::get('/posts/create', 'PostController@create')->name('posts.create');
-    Route::post('/posts/create_confirm', 'PostController@confirm')->name('posts.create_confirm');
+    Route::post('/posts/create_confirm', 'PostController@createConfirm')->name('posts.create_confirm');
     Route::post('/posts/store', 'PostController@store')->name('posts.store');
     Route::get('show/{id}','PostController@show')->name('posts.show');
     Route::get('/posts/edit/{id}','PostController@edit')->name('posts.edit');
-    Route::post('/posts/edit_confirm/{id}','PostController@edit_confirm')->name('posts.edit_confirm');
+    Route::post('/posts/edit_confirm/{id}','PostController@editConfirm')->name('posts.edit_confirm');
     Route::post('/posts/update/{id}','PostController@update')->name('posts.update');
     Route::post('/posts/destroy/{id}','PostController@destroy')->name('posts.destroy');
 });
