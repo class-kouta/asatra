@@ -29,12 +29,4 @@ class MypageController extends Controller
         $data = ['posts' => $posts];
         return view('mypage',$data);
     }
-
-    public function showAll()
-    {
-        $id = Auth::id();
-        $posts = Post::where('user_id',$id)->get();
-        $data = ['posts' => $posts];
-        return view('myposts',$data);
-    }
 }

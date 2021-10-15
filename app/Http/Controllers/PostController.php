@@ -71,6 +71,14 @@ class PostController extends Controller
         return view('posts.show', $data);
     }
 
+    public function showMyPosts()
+    {
+        $id = Auth::id();
+        $posts = Post::where('user_id',$id)->get();
+        $data = ['posts' => $posts];
+        return view('posts.myposts',$data);
+    }
+
     public function edit($id)
     {
         $post = Post::find($id);
@@ -138,4 +146,5 @@ class PostController extends Controller
 
         return redirect('mypage');
     }
+
 }

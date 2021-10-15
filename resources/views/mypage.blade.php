@@ -5,7 +5,7 @@
     <a href="{{ route('posts.create') }}">追加</a>
     <br><br>
 
-    <a href="{{ route('myposts') }}">自分の投稿を見る</a>
+    <a href="{{ route('posts.myposts') }}">自分の投稿を見る</a>
     <br><br>
 
     <h2>みんなの投稿</h2>
