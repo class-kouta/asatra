@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+    <a href="{{ route('posts.edit',['id' => $post->id]) }}">編集</a>
     <ul>
         <li><h4>{{ $post->title }}<h4></li>
         <li>{{ $post->describe }}</li>

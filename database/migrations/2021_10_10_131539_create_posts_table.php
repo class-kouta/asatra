@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('specify');
             $table->string('choose_yes');
             $table->string('choose_no');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
