@@ -130,4 +130,12 @@ class PostController extends Controller
         return redirect('/mypage');
 
     }
+
+    public function destroy($id)
+    {
+        $post = Post::find($id);
+        $post->delete();
+
+        return redirect('mypage');
+    }
 }

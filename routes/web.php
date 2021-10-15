@@ -30,4 +30,5 @@ Route::group(['prefix' => '','middleware'=>'auth'],function(){
     Route::get('/posts/edit/{id}','PostController@edit')->name('posts.edit');
     Route::post('/posts/edit_confirm/{id}','PostController@edit_confirm')->name('posts.edit_confirm');
     Route::post('/posts/update/{id}','PostController@update')->name('posts.update');
+    Route::post('/posts/destroy/{id}','PostController@destroy')->name('posts.destroy');
 });
