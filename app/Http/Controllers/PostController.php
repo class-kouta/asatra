@@ -44,23 +44,20 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        $data = ['post' => $post];
-        return view('posts.show', $data);
+        return view('posts.show', ['post' => $post]);
     }
 
     public function showMyPosts()
     {
         $id = Auth::id();
         $posts = Post::where('user_id',$id)->get();
-        $data = ['posts' => $posts];
-        return view('posts.myposts',$data);
+        return view('posts.myposts',['posts' => $posts]);
     }
 
     public function edit($id)
     {
         $post = Post::find($id);
-        $data = ['post' => $post];
-        return view('posts.edit', $data);
+        return view('posts.edit', ['post' => $post]);
     }
 
     public function editConfirm(StorePost $request, $id)
