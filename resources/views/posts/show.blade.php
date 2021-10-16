@@ -20,10 +20,7 @@
     <h4>Comments</h4>
     <ul>
         @foreach ($post->comments as $comment)
-            <li>
-                {{ $comment->comment }}
-            </li>
-
+            <li>{{ $comment->comment }}</li>
             <form method="post" action="{{ route('comments.destroy',['comment_id' => $comment->id , 'post_id' => $post->id] ) }}">
                 @csrf
                 <button>削除</button>
