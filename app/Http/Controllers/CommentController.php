@@ -22,8 +22,10 @@ class CommentController extends Controller
         $comment->comment = $request->comment;
         $comment->save();
 
+        $post = Post::find($id);
+
         return redirect()
-            ->route('posts.show', $id);
+            ->route('posts.show', ['id' => $id ,'post' => $post]);
     }
 
     public function destroy($post_id,$comment_id)
@@ -31,8 +33,10 @@ class CommentController extends Controller
         $comment = Comment::find($comment_id);
         $comment->delete();
 
+        $post = Post::find($post_id);
+
         return redirect()
-            ->route('posts.show', $post_id);
+            ->route('posts.show', ['id' => $post_id ,'post' => $post]);
     }
 
 }
