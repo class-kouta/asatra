@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
+use App\Models\Nice;
 use App\Http\Requests\StorePost;
 
 class PostController extends Controller
@@ -41,10 +42,11 @@ class PostController extends Controller
         return $this->showMyPosts();
     }
 
-    public function show($id)
+    public function show($id, $post)
     {
         $post = Post::find($id);
-        return view('posts.show', ['post' => $post]);
+        $nice = Nice::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
+        return view('posts.show', ['post' => $post , 'nice' => $nice]);
     }
 
     public function showMyPosts()

@@ -26,7 +26,7 @@ Route::group(['prefix' => '','middleware'=>'auth'],function(){
     Route::get('/posts/create', 'PostController@create')->name('posts.create');
     Route::post('/posts/create_confirm', 'PostController@createConfirm')->name('posts.create_confirm');
     Route::post('/posts/store', 'PostController@store')->name('posts.store');
-    Route::get('show/{id}','PostController@show')->name('posts.show');
+    Route::get('show/{id}/{post}','PostController@show')->name('posts.show');
     Route::get('/posts/edit/{id}','PostController@edit')->name('posts.edit');
     Route::post('/posts/edit_confirm/{id}','PostController@editConfirm')->name('posts.edit_confirm');
     Route::post('/posts/update/{id}','PostController@update')->name('posts.update');
@@ -34,4 +34,7 @@ Route::group(['prefix' => '','middleware'=>'auth'],function(){
 
     Route::post('/posts/{id}/comments','CommentController@store')->name('comments.store');
     Route::post('/posts/{post_id}/comments/{comment_id}','CommentController@destroy')->name('comments.destroy');
+
+    Route::get('/posts/nice/{post}', 'NiceController@nice')->name('nice');
+    Route::get('/posts/unnice/{post}', 'NiceController@unnice')->name('unnice');
 });

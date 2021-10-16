@@ -17,6 +17,30 @@
         <li>{{ $post->note }}</li>
     </ul>
 
+<span>
+
+<!-- もし$niceがあれば＝ユーザーが「いいね」をしていたら -->
+@if($nice)
+<!-- 「いいね」取消用ボタンを表示 -->
+    <a href="{{ route('unnice', $post) }}" class="btn btn-success btn-sm">
+        いいね
+        <!-- 「いいね」の数を表示 -->
+        <span class="badge">
+            {{ $post->nices->count() }}
+        </span>
+    </a>
+@else
+<!-- まだユーザーが「いいね」をしていなければ、「いいね」ボタンを表示 -->
+    <a href="{{ route('nice', $post) }}" class="btn btn-secondary btn-sm">
+        いいね
+        <!-- 「いいね」の数を表示 -->
+        <span class="badge">
+            {{ $post->nices->count() }}
+        </span>
+    </a>
+@endif
+</span>
+
     <h4>Comments</h4>
     <ul>
         @foreach ($post->comments as $comment)
