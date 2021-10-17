@@ -2,14 +2,17 @@
 
 @section('content')
 <div class="container">
-    {{-- post編集 --}}
-    <a href="{{ route('posts.edit',$post) }}">編集</a>
 
-    {{-- post削除 --}}
-    <form method="post" action="{{ route('posts.destroy',$post) }}" id="delete_{{ $post->id }}">
-        @csrf
-        <a href="#" class="btn btn-danger" data-id="{{ $post->id }}" onclick="deletePost(this);">削除する</a>
-    </form>
+    @if (Auth::id() === $post->user_id)
+        {{-- post編集 --}}
+        <a href="{{ route('posts.edit',$post) }}">編集</a>
+
+        {{-- post削除 --}}
+        <form method="post" action="{{ route('posts.destroy',$post) }}" id="delete_{{ $post->id }}">
+            @csrf
+            <a href="#" class="btn btn-danger" data-id="{{ $post->id }}" onclick="deletePost(this);">削除する</a>
+        </form>
+    @endif
 
     {{-- post詳細 --}}
     <ul>
