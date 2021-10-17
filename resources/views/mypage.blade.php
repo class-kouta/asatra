@@ -10,12 +10,23 @@
 
     <h2>みんなの投稿</h2>
     @foreach ($posts as $post)
-    <ul>
-        <li><a href="{{ route('posts.show',$post) }}">{{ $post->title }}</a></li>
-        <li>{{ $post->describe }}</li>
-        <li>{{ $post->explain }}</li>
-        <li>{{ $post->specify }}</li>
-    </ul>
+        @if($post->user->sex === (string)1)
+            <div class="card border border-primary">
+        @elseif($post->user->sex === (string)2)
+            <div class="card border border-danger">
+        @else
+            <div class="card border border-light">
+        @endif
+                <div class="card-body">
+                    <h5>{{ $post->user->name }}</h5>
+                    <ul>
+                        <li><a href="{{ route('posts.show',$post) }}">{{ $post->title }}</a></li>
+                        <li>{{ $post->describe }}</li>
+                        <li>{{ $post->explain }}</li>
+                        <li>{{ $post->specify }}</li>
+                    </ul>
+                </div>
+            </div>
     @endforeach
 
 </div>
