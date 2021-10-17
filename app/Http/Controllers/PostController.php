@@ -42,9 +42,8 @@ class PostController extends Controller
         return $this->showMyPosts();
     }
 
-    public function show($id, $post)
+    public function show(Post $post)
     {
-        $post = Post::find($id);
         $nice = Nice::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
         return view('posts.show', ['post' => $post , 'nice' => $nice]);
     }

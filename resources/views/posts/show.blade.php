@@ -2,11 +2,16 @@
 
 @section('content')
 <div class="container">
+    {{-- post編集 --}}
     <a href="{{ route('posts.edit',['id' => $post->id]) }}">編集</a>
+
+    {{-- post削除 --}}
     <form method="post" action="{{ route('posts.destroy',['id' => $post->id ])}}" id="delete_{{ $post->id }}">
         @csrf
         <a href="#" class="btn btn-danger" data-id="{{ $post->id }}" onclick="deletePost(this);">削除する</a>
     </form>
+
+    {{-- post詳細 --}}
     <ul>
         <li><h4>{{ $post->title }}<h4></li>
         <li>{{ $post->describe }}</li>
@@ -19,6 +24,7 @@
 
 <span>
 
+{{-- いいね --}}
 <!-- もし$niceがあれば＝ユーザーが「いいね」をしていたら -->
 @if($nice)
 <!-- 「いいね」取消用ボタンを表示 -->
@@ -41,18 +47,22 @@
 @endif
 </span>
 
+    {{-- コメント一覧 --}}
     <h4>Comments</h4>
     <ul>
         @foreach ($post->comments as $comment)
             <li>{{ $comment->comment }}</li>
-            <form method="post" action="{{ route('comments.destroy',['comment_id' => $comment->id , 'post_id' => $post->id] ) }}">
+
+            {{-- コメント削除 --}}
+            <form method="post" action="{{ route('comments.destroy',['comment_id' => $comment->id , 'post' => $post] ) }}">
                 @csrf
                 <button>削除</button>
             </form>
         @endforeach
     </ul>
 
-    <form method="post" action="{{ route('comments.store' ,['id' => $post->id]) }}">
+    {{-- コメント追加 --}}
+    <form method="post" action="{{ route('comments.store' ,$post) }}">
         @csrf
         <input type="text" name="comment">
         <button>Add</button>

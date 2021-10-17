@@ -9,34 +9,29 @@ use App\Models\Comment;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, $id)
+    public function store(Post $post, Request $request)
     {
         $request->validate([
             'comment' => 'required',
         ]);
 
-        // dd($post);
         $comment = new Comment();
         $comment->user_id = Auth::id();
-        $comment->post_id = $id;
+        $comment->post_id = $post->id;
         $comment->comment = $request->comment;
         $comment->save();
 
-        $post = Post::find($id);
-
         return redirect()
-            ->route('posts.show', ['id' => $id ,'post' => $post]);
+            ->route('posts.show', $post);
     }
 
-    public function destroy($post_id,$comment_id)
+    public function destroy(Post $post,$comment_id)
     {
         $comment = Comment::find($comment_id);
         $comment->delete();
 
-        $post = Post::find($post_id);
-
         return redirect()
-            ->route('posts.show', ['id' => $post_id ,'post' => $post]);
+            ->route('posts.show', $post);
     }
 
 }
