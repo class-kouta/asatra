@@ -33,7 +33,7 @@ Route::group(['prefix' => '','middleware'=>'auth'],function(){
     Route::post('/posts/destroy/{post}','PostController@destroy')->name('posts.destroy');
 
     Route::post('/posts/{post}/comments','CommentController@store')->name('comments.store');
-    Route::post('/posts/{post}/comments/{comment_id}','CommentController@destroy')->name('comments.destroy');
+    Route::post('/posts/{post}/comments/{comment}','CommentController@destroy')->name('comments.destroy');
 
     Route::get('/posts/nice/{post}', 'NiceController@nice')->name('nice');
     Route::get('/posts/unnice/{post}', 'NiceController@unnice')->name('unnice');

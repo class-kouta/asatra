@@ -54,7 +54,7 @@
             <li>{{ $comment->comment }}</li>
 
             {{-- コメント削除 --}}
-            <form method="post" action="{{ route('comments.destroy',['comment_id' => $comment->id , 'post' => $post] ) }}">
+            <form method="post" action="{{ route('comments.destroy',['comment' => $comment, 'post' => $post] ) }}">
                 @csrf
                 <button>削除</button>
             </form>

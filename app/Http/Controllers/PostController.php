@@ -19,9 +19,7 @@ class PostController extends Controller
     {
         $inputs = $request->all();
 
-        return view('posts/create_confirm', [
-            'inputs' => $inputs,
-        ]);
+        return view('posts/create_confirm', ['inputs' => $inputs,]);
     }
 
     public function store(Request $request)
@@ -64,10 +62,7 @@ class PostController extends Controller
     {
         $inputs = $request->all();
 
-        return view('posts/edit_confirm', [
-            'inputs' => $inputs,
-            'post' => $post,
-        ]);
+        return view('posts/edit_confirm', ['inputs' => $inputs,'post' => $post,]);
     }
 
     public function update(Request $request, Post $post)
@@ -88,7 +83,6 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        // $post = Post::find($id);
         $post->delete();
 
         return $this->showMyPosts();
