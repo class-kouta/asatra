@@ -3,10 +3,10 @@
 @section('content')
 <div class="container">
     {{-- post編集 --}}
-    <a href="{{ route('posts.edit',['id' => $post->id]) }}">編集</a>
+    <a href="{{ route('posts.edit',$post) }}">編集</a>
 
     {{-- post削除 --}}
-    <form method="post" action="{{ route('posts.destroy',['id' => $post->id ])}}" id="delete_{{ $post->id }}">
+    <form method="post" action="{{ route('posts.destroy',$post) }}" id="delete_{{ $post->id }}">
         @csrf
         <a href="#" class="btn btn-danger" data-id="{{ $post->id }}" onclick="deletePost(this);">削除する</a>
     </form>

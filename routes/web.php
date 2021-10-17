@@ -27,10 +27,10 @@ Route::group(['prefix' => '','middleware'=>'auth'],function(){
     Route::post('/posts/create_confirm', 'PostController@createConfirm')->name('posts.create_confirm');
     Route::post('/posts/store', 'PostController@store')->name('posts.store');
     Route::get('show/{post}','PostController@show')->name('posts.show');
-    Route::get('/posts/edit/{id}','PostController@edit')->name('posts.edit');
-    Route::post('/posts/edit_confirm/{id}','PostController@editConfirm')->name('posts.edit_confirm');
-    Route::post('/posts/update/{id}','PostController@update')->name('posts.update');
-    Route::post('/posts/destroy/{id}','PostController@destroy')->name('posts.destroy');
+    Route::get('/posts/edit/{post}','PostController@edit')->name('posts.edit');
+    Route::post('/posts/edit_confirm/{post}','PostController@editConfirm')->name('posts.edit_confirm');
+    Route::post('/posts/update/{post}','PostController@update')->name('posts.update');
+    Route::post('/posts/destroy/{post}','PostController@destroy')->name('posts.destroy');
 
     Route::post('/posts/{post}/comments','CommentController@store')->name('comments.store');
     Route::post('/posts/{post}/comments/{comment_id}','CommentController@destroy')->name('comments.destroy');

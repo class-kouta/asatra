@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <form action="{{ route('posts.update',['id' => $post_id]) }}" method="post">
+    <form action="{{ route('posts.update',$post) }}" method="post">
         @csrf
         タイトル：例〜<br>
         {{ $inputs['title'] }}<br><br>

@@ -55,26 +55,23 @@ class PostController extends Controller
         return view('posts.myposts',['posts' => $posts]);
     }
 
-    public function edit($id)
+    public function edit(Post $post)
     {
-        $post = Post::find($id);
         return view('posts.edit', ['post' => $post]);
     }
 
-    public function editConfirm(StorePost $request, $id)
+    public function editConfirm(StorePost $request, Post $post)
     {
         $inputs = $request->all();
 
         return view('posts/edit_confirm', [
             'inputs' => $inputs,
-            'post_id' => $id,
+            'post' => $post,
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        $post = Post::find($id);
-
         $post->user_id = Auth::id();
         $post->title = $request->input('title');
         $post->describe = $request->input('describe');
@@ -87,12 +84,11 @@ class PostController extends Controller
         $post->save();
 
         return $this->showMyPosts();
-
     }
 
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        $post = Post::find($id);
+        // $post = Post::find($id);
         $post->delete();
 
         return $this->showMyPosts();
