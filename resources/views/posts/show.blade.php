@@ -3,16 +3,18 @@
 @section('content')
 <div class="container">
 
-    @if (Auth::id() === $post->user_id)
-        {{-- post編集 --}}
+    {{-- post編集 --}}
+    @can('edit',$post)
         <a href="{{ route('posts.edit',$post) }}">編集</a>
+    @endcan
 
-        {{-- post削除 --}}
+    {{-- post削除 --}}
+    @can('delete',$post)
         <form method="post" action="{{ route('posts.destroy',$post) }}" id="delete_{{ $post->id }}">
             @csrf
             <a href="#" class="btn btn-danger" data-id="{{ $post->id }}" onclick="deletePost(this);">削除する</a>
         </form>
-    @endif
+    @endcan
 
     {{-- post詳細 --}}
     <ul>
