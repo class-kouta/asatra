@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+    <a href="{{ route('profile.edit') }}">プロフィール編集</a>
+    <br><br>
+
     <a href="{{ route('posts.create') }}">追加</a>
     <br><br>
 

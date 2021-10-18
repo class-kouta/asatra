@@ -37,4 +37,7 @@ Route::group(['prefix' => '','middleware'=>'auth'],function(){
 
     Route::get('/posts/nice/{post}', 'NiceController@nice')->name('nice');
     Route::get('/posts/unnice/{post}', 'NiceController@unnice')->name('unnice');
+
+    Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
+    Route::post('/profile/update', 'ProfileController@update')->name('profile.update');
 });
