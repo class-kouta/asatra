@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <form action="{{ route('profile.update') }}" method="post">
+    <form action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data">
     @csrf
         ニックネーム<br>
         <input type="text" name="name" value="{{ Auth::user()->name }}"><br><br>
@@ -17,7 +17,17 @@
         <br><br>
 
         プロフィール画像<br>
-        <p>No Image</p>
+        @if(file_exists(public_path().'/storage/user_img/'. Auth::id().'.jpg'))
+            <img src="/storage/user_img/{{ Auth::id() }}.jpg"><br>
+        @elseif(file_exists(public_path().'/storage/user_img/'. Auth::id().'.jpeg'))
+            <img src="/storage/user_img/{{ Auth::id() }}.jpeg">
+        @elseif(file_exists(public_path().'/storage/user_img/'. Auth::id().'.png'))
+            <img src="/storage/user_img/{{ Auth::id() }}.png">
+        @elseif(file_exists(public_path().'/storage/user_img/'. Auth::id().'.gif'))
+            <img src="/storage/user_img/{{ Auth::id() }}.gif">
+        @endif
+
+        <input type="file" name="user_img">
         <br><br>
 
         <button type="submit" class="btn btn-primary">更新</button>
