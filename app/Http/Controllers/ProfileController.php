@@ -14,15 +14,10 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {
-        // $user_form = $request->all();
         $user = Auth::user();
-
-        // unset($user_form['_token']);
-
-        // $user->fill($user_form)->save();
-
         $user->name = $request->name;
         $user->sex = $request->sex;
+
         $user->save();
 
         if($request->user_img){
