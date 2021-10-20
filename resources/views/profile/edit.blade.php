@@ -25,8 +25,11 @@
             <img src="/storage/user_img/{{ Auth::id() }}.png">
         @elseif(file_exists(public_path().'/storage/user_img/'. Auth::id().'.gif'))
             <img src="/storage/user_img/{{ Auth::id() }}.gif">
+        @else
+            <img src="/storage/user_img/NoImage.png">
         @endif
 
+        <br>
         <input type="file" name="user_img">
         <br><br>
 

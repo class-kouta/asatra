@@ -21,6 +21,19 @@
             <div class="card border border-light">
         @endif
                 <div class="card-body">
+
+                @if(file_exists(public_path().'/storage/user_img/'.$post->user_id.'.jpg'))
+                    <img src="/storage/user_img/{{ $post->user_id }}.jpg"><br>
+                @elseif(file_exists(public_path().'/storage/user_img/'.$post->user_id.'.jpeg'))
+                    <img src="/storage/user_img/{{ $post->user_id }}.jpeg">
+                @elseif(file_exists(public_path().'/storage/user_img/'.$post->user_id.'.png'))
+                    <img src="/storage/user_img/{{ $post->user_id }}.png">
+                @elseif(file_exists(public_path().'/storage/user_img/'.$post->user_id.'.gif'))
+                    <img src="/storage/user_img/{{ $post->user_id }}.gif">
+                @else
+                    <img src="/storage/user_img/NoImage.png">
+                @endif
+
                     <h5>{{ $post->user->name }}</h5>
                     <ul>
                         <li><a href="{{ route('posts.show',$post) }}">{{ $post->title }}</a></li>
