@@ -12,7 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $posts = App\Models\Post::all();
+    $data = ['posts' => $posts];
+    return view('top',$data);
 });
 
 Auth::routes();
