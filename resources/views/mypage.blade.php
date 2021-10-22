@@ -11,6 +11,9 @@
     <a href="{{ route('posts.myposts') }}">自分の投稿を見る</a>
     <br><br>
 
+    <a href="{{ route('delete_confirm') }}">退会する</a>
+    <br><br>
+
     <h2>みんなの投稿</h2>
     @foreach ($posts as $post)
         @if($post->user->sex === (string)1)
