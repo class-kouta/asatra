@@ -37,7 +37,11 @@
                     <img src="/storage/user_img/NoImage.png">
                 @endif
 
+                @if($post->user->deleted_at === null)
                     <h5>{{ $post->user->name }}</h5>
+                @else
+                    <h5>{{ $post->user->name }}（退会したユーザー）</h5>
+                @endif
                     <ul>
                         <li><a href="{{ route('posts.show',$post) }}">{{ $post->title }}</a></li>
                         <li>{{ $post->describe }}</li>
