@@ -7,6 +7,9 @@
         ニックネーム<br>
         <input type="text" name="name" value="{{ Auth::user()->name }}"><br><br>
 
+        メールアドレス<br>
+        <input type="email" name="email" value="{{ Auth::user()->email }}"><br><br>
+
         性別<br>
         <input id="sex-1" type="radio" name="sex" value="1" {{ Auth::user()->sex === '1' ? 'checked' : '' }}>
         <label for="sex-1">男</label>
