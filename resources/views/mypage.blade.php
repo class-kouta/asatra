@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
 @section('content')
 <div class="container">
-    <a href="{{ route('profile.edit') }}">プロフィール編集</a>
+    {{-- <a href="{{ route('profile.edit') }}">プロフィール編集</a>
     <br><br>
 
     <a href="{{ route('posts.create') }}">追加</a>
@@ -12,7 +12,7 @@
     <br><br>
 
     <a href="{{ route('delete_confirm') }}">退会する</a>
-    <br><br>
+    <br><br> --}}
 
     <h2>みんなの投稿</h2>
     @foreach ($posts as $post)
