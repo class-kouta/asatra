@@ -39,6 +39,12 @@
                     <li>{{ $post->explain }}</li>
                     <li>{{ $post->specify }}</li>
                 </ul>
+                <div>
+                    いいね：{{ $post->nices->count() }}
+                </div>
+                <div>
+                    コメント：{{ $post->comments->count() }}
+                </div>
             </div>
         </div>
     @endforeach

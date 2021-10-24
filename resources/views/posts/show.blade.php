@@ -30,7 +30,7 @@
 <span>
 
 @guest
-    <span class="badge">
+    <span>
         いいね：{{ $post->nices->count() }}
     </span>
 @else
