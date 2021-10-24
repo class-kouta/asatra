@@ -11,11 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    $posts = App\Models\Post::all();
-    $data = ['posts' => $posts];
-    return view('top',$data);
-});
+// Route::get('/', function () {
+//     $posts = App\Models\Post::all();
+//     $data = ['posts' => $posts];
+//     return view('top',$data);
+// });
+Route::get('/', 'TopController@index');
 
 Auth::routes();
 
