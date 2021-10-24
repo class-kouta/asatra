@@ -75,6 +75,6 @@ class RegisterController extends Controller
 
     public function redirectPath()
     {
-        return 'mypage';
+        return $this->redirectTo;
     }
 }
