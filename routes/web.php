@@ -22,6 +22,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('{post}','PostController@showGuest')->name('posts.show_guest');
+
 Route::group(['prefix' => '','middleware'=>'auth'],function(){
     Route::get('/mypage', 'MypageController@index')->name('mypage');
 

@@ -46,6 +46,11 @@ class PostController extends Controller
         return view('posts.show', ['post' => $post , 'nice' => $nice]);
     }
 
+    public function showGuest(Post $post)
+    {
+        return view('posts.show', ['post' => $post]);
+    }
+
     public function showMyPosts()
     {
         $id = Auth::id();

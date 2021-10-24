@@ -29,10 +29,15 @@
 
 <span>
 
-{{-- いいね --}}
-<!-- もし$niceがあれば＝ユーザーが「いいね」をしていたら -->
-@if($nice)
-<!-- 「いいね」取消用ボタンを表示 -->
+@guest
+    <span class="badge">
+        いいね：{{ $post->nices->count() }}
+    </span>
+@else
+    {{-- いいね --}}
+    <!-- もし$niceがあれば＝ユーザーが「いいね」をしていたら -->
+    @if($nice)
+    <!-- 「いいね」取消用ボタンを表示 -->
     <a href="{{ route('unnice', $post) }}" class="btn btn-success btn-sm">
         いいね
         <!-- 「いいね」の数を表示 -->
@@ -40,8 +45,8 @@
             {{ $post->nices->count() }}
         </span>
     </a>
-@else
-<!-- まだユーザーが「いいね」をしていなければ、「いいね」ボタンを表示 -->
+    @else
+    <!-- まだユーザーが「いいね」をしていなければ、「いいね」ボタンを表示 -->
     <a href="{{ route('nice', $post) }}" class="btn btn-secondary btn-sm">
         いいね
         <!-- 「いいね」の数を表示 -->
@@ -49,7 +54,9 @@
             {{ $post->nices->count() }}
         </span>
     </a>
-@endif
+    @endif
+
+@endguest
 </span>
 
     {{-- コメント一覧 --}}
@@ -57,21 +64,24 @@
     <ul>
         @foreach ($post->comments as $comment)
             <li>{{ $comment->comment }}</li>
-
+            @auth
             {{-- コメント削除 --}}
             <form method="post" action="{{ route('comments.destroy',['comment' => $comment, 'post' => $post] ) }}">
                 @csrf
                 <button>削除</button>
             </form>
+            @endauth
         @endforeach
     </ul>
 
     {{-- コメント追加 --}}
+    @auth
     <form method="post" action="{{ route('comments.store' ,$post) }}">
         @csrf
         <input type="text" name="comment">
         <button>Add</button>
     </form>
+    @endAuth
 
 </div>
 
