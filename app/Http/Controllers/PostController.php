@@ -55,7 +55,7 @@ class PostController extends Controller
     {
         $id = Auth::id();
         $posts = Post::where('user_id',$id)->get();
-        return view('posts.myposts',['posts' => $posts]);
+        return view('profile.myposts',['posts' => $posts]);
     }
 
     public function edit(Post $post)

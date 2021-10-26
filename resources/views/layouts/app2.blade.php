@@ -35,7 +35,7 @@
             <br>
             <a href="{{ route('posts.create') }}">追加</a>
             <br>
-            <a href="{{ route('posts.myposts') }}">自分の投稿を見る</a>
+            <a href="{{ route('profile.myposts') }}">自分の投稿を見る</a>
             <br>
             <a href="{{ route('profile.withdraw_confirm') }}">退会する</a>
             <br>

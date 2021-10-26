@@ -33,7 +33,7 @@ class ProfileController extends Controller
             }
         }
 
-        return redirect('mypage');
+        return redirect('/');
     }
 
     public function withdrawConfirm()
