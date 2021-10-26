@@ -46,6 +46,6 @@ Route::group(['prefix' => '','middleware'=>'auth'],function(){
     Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
     Route::post('/profile/update', 'ProfileController@update')->name('profile.update');
 
-    Route::get('delete_confirm','UserController@delete_confirm')->name('delete_confirm');
-    Route::post('users/{id}','UserController@destroy')->name('users.destroy');
+    Route::get('/profile/withdraw_confirm','ProfileController@withdrawConfirm')->name('profile.withdraw_confirm');
+    Route::post('/profile/withdraw/{id}','ProfileController@withdraw')->name('profile.withdraw');
 });

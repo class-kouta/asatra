@@ -37,7 +37,7 @@
             <br>
             <a href="{{ route('posts.myposts') }}">自分の投稿を見る</a>
             <br>
-            <a href="{{ route('delete_confirm') }}">退会する</a>
+            <a href="{{ route('profile.withdraw_confirm') }}">退会する</a>
             <br>
 
             <div aria-labelledby="navbarDropdown">

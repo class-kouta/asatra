@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
   <div class="btn-group">
-      <form action="{{ route('users.destroy',Auth::user()->id ) }}" method="post">
+      <form action="{{ route('profile.withdraw',Auth::user()->id ) }}" method="post">
       @csrf
         <button type="submit" class="btn btn-primary">退会</button>
       </form>
