@@ -19,7 +19,7 @@ class PostController extends Controller
     {
         $inputs = $request->all();
 
-        return view('posts/create_confirm', ['inputs' => $inputs,]);
+        return view('posts/create_confirm',compact('inputs'));
     }
 
     public function store(Request $request)
@@ -43,33 +43,35 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $nice = Nice::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
-        return view('posts.show', ['post' => $post , 'nice' => $nice]);
+
+        return view('posts.show',compact('post','nice'));
     }
 
     public function showGuest(Post $post)
     {
-        return view('posts.show', ['post' => $post]);
+        return view('posts.show', compact('post'));
     }
 
     public function showMyPosts()
     {
         $id = Auth::id();
         $posts = Post::where('user_id',$id)->get();
-        return view('profile.myposts',['posts' => $posts]);
+
+        return view('profile.myposts',compact('posts'));
     }
 
     public function edit(Post $post)
     {
         $this->authorize('edit', $post);
 
-        return view('posts.edit', ['post' => $post]);
+        return view('posts.edit', compact('post'));
     }
 
     public function editConfirm(StorePost $request, Post $post)
     {
         $inputs = $request->all();
 
-        return view('posts/edit_confirm', ['inputs' => $inputs,'post' => $post,]);
+        return view('posts/edit_confirm', compact('inputs','post'));
     }
 
     public function update(Request $request, Post $post)
