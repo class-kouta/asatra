@@ -72,7 +72,11 @@
     @auth
     <form method="post" action="{{ route('comments.store' ,$post) }}">
         @csrf
-        <input type="text" name="comment">
+        <textarea name="comment" cols="30" rows="3">{{ old('comment') }}</textarea><br>
+        @error('comment')
+            <div class="error">{{ $message }}</div>
+        @enderror
+        <br>
         <button>Add</button>
     </form>
     @endAuth

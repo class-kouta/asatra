@@ -12,14 +12,14 @@ class PostController extends Controller
 {
     public function create()
     {
-        return view('posts/create');
+        return view('posts.create');
     }
 
     public function createConfirm(StorePost $request)
     {
         $inputs = $request->all();
 
-        return view('posts/create_confirm',compact('inputs'));
+        return view('posts.create_confirm',compact('inputs'));
     }
 
     public function store(Request $request)
@@ -71,7 +71,7 @@ class PostController extends Controller
     {
         $inputs = $request->all();
 
-        return view('posts/edit_confirm', compact('inputs','post'));
+        return view('posts.edit_confirm', compact('inputs','post'));
     }
 
     public function update(Request $request, Post $post)

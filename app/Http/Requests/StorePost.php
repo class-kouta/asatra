@@ -34,7 +34,8 @@ class StorePost extends FormRequest
         ];
     }
 
-    public function messages(){
+    public function messages()
+    {
         return [
             'title.required' => '入力必須です',
             'title.max' => '50文字以内で入力してください',
