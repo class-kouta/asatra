@@ -54,4 +54,28 @@ class User extends Authenticatable
     {
         return $this->hasMany(Nice::class);
     }
+
+    public function joinNicesPosts()
+    {
+        return $this->hasManyThrough(
+            'App\Models\Post',
+            'App\Models\Nice',
+            'user_id',
+            'id',
+            null,
+            'post_id',
+        );
+    }
+
+    public function joinCommentsPosts()
+    {
+        return $this->hasManyThrough(
+            'App\Models\Post',
+            'App\Models\Comment',
+            'user_id',
+            'id',
+            null,
+            'post_id',
+        );
+    }
 }

@@ -24,6 +24,8 @@ Route::get('{post}','PostController@showGuest')->name('posts.show_guest');
 
 Route::group(['prefix' => '','middleware'=>'auth'],function(){
     Route::get('/profile/myposts', 'PostController@showMyPosts')->name('profile.myposts');
+    Route::get('/profile/myniceposts', 'PostController@showMyNicePosts')->name('profile.myniceposts');
+    Route::get('/profile/mycommentposts', 'PostController@showMyCommentPosts')->name('profile.mycommentposts');
     Route::get('/posts/create', 'PostController@create')->name('posts.create');
     Route::post('/posts/create_confirm', 'PostController@createConfirm')->name('posts.create_confirm');
     Route::post('/posts/store', 'PostController@store')->name('posts.store');

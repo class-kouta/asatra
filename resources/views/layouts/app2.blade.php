@@ -37,6 +37,10 @@
             <br>
             <a href="{{ route('profile.myposts') }}">自分の投稿を見る</a>
             <br>
+            <a href="{{ route('profile.myniceposts') }}">いいねした投稿を見る</a>
+            <br>
+            <a href="{{ route('profile.mycommentposts') }}">コメントした投稿を見る</a>
+            <br>
             <a href="{{ route('profile.withdraw_confirm') }}">退会する</a>
             <br>
 

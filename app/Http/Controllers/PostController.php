@@ -60,6 +60,20 @@ class PostController extends Controller
         return view('profile.myposts',compact('posts'));
     }
 
+    public function showMyNicePosts()
+    {
+        $user = Auth::user();
+        $posts = $user->joinNicesPosts;
+        return view('profile.myniceposts',compact('posts'));
+    }
+
+    public function showMyCommentPosts()
+    {
+        $user = Auth::user();
+        $posts = $user->joinCommentsPosts;
+        return view('profile.myniceposts',compact('posts'));
+    }
+
     public function edit(Post $post)
     {
         $this->authorize('edit', $post);
