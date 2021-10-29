@@ -19,6 +19,13 @@
                 @else
                 <h5>{{ $post->user->name }}（退会したユーザー）</h5>
                 @endif
+
+                @if($post->user->age === 0)
+                <p>未設定</p>
+                @else
+                <p>{{ $post->user->age }} 代</p>
+                @endif
+
                 <ul>
                     @guest
                     <li><a href="{{ route('posts.show_guest',$post) }}">{{ $post->title }}</a></li>

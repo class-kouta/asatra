@@ -46,6 +46,22 @@
                             </div>
                         </div>
 
+                        {{-- 性別の入力欄 --}}
+                        <div class="form-group row">
+                            <label for="age" class="col-md-4 col-form-label text-md-right">Age</label>
+                            <div class="col-md-6" style="padding-top: 8px">
+                                <select name="age" class="form-select">
+                                    <option value="0">回答しない</option>
+                                    <option value="10">10代</option>
+                                    <option value="20">20代</option>
+                                    <option value="30">30代</option>
+                                    <option value="40">40代</option>
+                                    <option value="50">50代</option>
+                                    <option value="60">60代〜</option>
+                                </select>
+                            </div>
+                        </div>
+
                         {{-- メールの入力欄 --}}
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
