@@ -22,17 +22,6 @@ class ProfileController extends Controller
 
         $user->save();
 
-        if($request->user_img){
-            if($request->user_img->extension() == 'gif'
-            || $request->user_img->extension() == 'jpeg'
-            || $request->user_img->extension() == 'jpg'
-            || $request->user_img->extension() == 'png'){
-                $request
-                ->file('user_img')
-                ->storeAs('public/user_img',$user->id.'.'.$request->user_img->extension());
-            }
-        }
-
         return redirect('/');
     }
 

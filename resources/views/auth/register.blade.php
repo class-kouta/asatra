@@ -35,8 +35,8 @@
                                 <label for="sex-1">男</label>
                                 <input id="sex-2" type="radio" name="sex" value="2">
                                 <label for="sex-2">女</label>
-                                <input id="sex-0" type="radio" name="sex" value="9">
-                                <label for="sex-0">回答しない</label>
+                                <input id="sex-9" type="radio" name="sex" value="9">
+                                <label for="sex-9">回答しない</label>
 
                                 @if ($errors->has('sex'))
                                     <span class="invalid-feedback">
