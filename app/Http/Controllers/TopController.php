@@ -9,7 +9,7 @@ class TopController extends Controller
 {
     public function index()
     {
-        $posts = Post::paginate(10);
+        $posts = Post::latest()->paginate(10);
 
         return view('top',compact('posts'));
     }
