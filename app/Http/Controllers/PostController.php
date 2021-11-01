@@ -71,6 +71,18 @@ class PostController extends Controller
     {
         $user = Auth::user();
         $posts = $user->joinCommentsPosts;
+
+        function myArrayUnique($array) {
+            $uniqueArray = [];
+            foreach($array as $key => $value) {
+                if (!in_array($value, $uniqueArray)) {
+                    $uniqueArray[$key] = $value;
+                }
+            }
+            return $uniqueArray;
+        }
+        $posts = myArrayUnique($posts);
+
         return view('profile.myniceposts',compact('posts'));
     }
 
