@@ -2,6 +2,16 @@
 
 @section('content')
 <div class="container">
+
+    <form method="get" action="{{ route('top') }}">
+        <input type="text" name="search" class="form-control" aria-label="Text input with dropdown button" placeholder="キーワード検索" value="@if (isset($search)) {{ $search }} @endif">
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-outline-dark">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </form>
+
     <h2>みんなの投稿</h2>
     @foreach ($posts as $post)
         @if($post->user->sex === (string)1)

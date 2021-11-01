@@ -16,7 +16,7 @@
 //     $data = ['posts' => $posts];
 //     return view('top',$data);
 // });
-Route::get('/', 'TopController@index');
+Route::get('/', 'TopController@index')->name('top');
 
 Auth::routes();
 
