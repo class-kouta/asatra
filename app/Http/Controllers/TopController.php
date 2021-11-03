@@ -41,7 +41,6 @@ class TopController extends Controller
                     ->orWhere('note','Like','%'.$value.'%');
                 }
             });
-            // $posts = $query->paginate(10);
         }
 
         $posts = $query->paginate(10);

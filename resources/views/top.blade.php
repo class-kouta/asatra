@@ -74,5 +74,9 @@
 
     {{ $posts->links() }}
 
+    @if(empty($posts[0]))
+    検索に一致する投稿はございません。
+    @endif
+
 </div>
 @endsection
