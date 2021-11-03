@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Http\Requests\StoreProfile;
 
 class ProfileController extends Controller
 {
@@ -13,7 +14,7 @@ class ProfileController extends Controller
         return view('profile.edit');
     }
 
-    public function update(Request $request)
+    public function update(StoreProfile $request)
     {
         $user = Auth::user();
         $user->name = $request->name;
