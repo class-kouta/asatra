@@ -10,7 +10,7 @@ class TopController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = Post::latest()->paginate(10);
+        // $posts = Post::latest()->paginate(10);
 
         $search = $request->input('search');
         $categoryId = $request->input('categoryId');
@@ -43,7 +43,7 @@ class TopController extends Controller
             });
         }
 
-        $posts = $query->paginate(10);
+        $posts = $query->latest()->paginate(10);
 
         return view('top',compact('posts','search','categoryId','categories'));
     }
