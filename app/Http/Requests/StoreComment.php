@@ -28,10 +28,10 @@ class StoreComment extends FormRequest
         ];
     }
 
-    public function messege()
+    public function messages()
     {
         return [
-            'comment.required' => '入力必須です',
+            'comment.required' => 'コメントには本文が必要です',
             'comment.max' => '255文字以内で入力してください',
         ];
     }
