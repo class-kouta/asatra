@@ -69,7 +69,7 @@ class PostController extends Controller
     {
         $user = Auth::user();
         $posts = $user->joinNicesPosts;
-        return view('profile.myniceposts',compact('posts'));
+        return view('profile.myposts',compact('posts'));
     }
 
     public function showMyCommentPosts()
@@ -88,7 +88,7 @@ class PostController extends Controller
         }
         $posts = myArrayUnique($posts);
 
-        return view('profile.myniceposts',compact('posts'));
+        return view('profile.myposts',compact('posts'));
     }
 
     public function edit(Post $post)
