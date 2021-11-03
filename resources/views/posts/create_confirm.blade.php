@@ -29,6 +29,48 @@
         {{ $inputs['choose_no'] }}<br><br>
         <input name="choose_no" value="{{ $inputs['choose_no'] }}" type="hidden">
 
+        カテゴリー：<br>
+        {{-- {{$inputs['categoryId']}}<br><br> --}}
+        @if($inputs['categoryId'] == 1)
+        結婚
+        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+        @elseif($inputs['categoryId'] == 2)
+        育児・家事
+        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+        @elseif($inputs['categoryId'] == 3)
+        お金
+        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+        @elseif($inputs['categoryId'] == 4)
+        人間関係
+        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+        @elseif($inputs['categoryId'] == 5)
+        性生活
+        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+        @elseif($inputs['categoryId'] == 6)
+        コミュニケーション
+        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+        @elseif($inputs['categoryId'] == 7)
+        習慣
+        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+        @elseif($inputs['categoryId'] == 8)
+        仕事
+        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+        @elseif($inputs['categoryId'] == 9)
+        健康
+        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+        @elseif($inputs['categoryId'] == 10)
+        モラハラ
+        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+        @elseif($inputs['categoryId'] == 11)
+        その他
+        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+        @else
+        未設定
+        <input name="categoryId" value="" type="hidden">
+        @endif
+        <br><br>
+
+
         その他メモ<br>
         {{ $inputs['note'] }}<br><br>
         <input name="note" value="{{ $inputs['note'] }}" type="hidden">

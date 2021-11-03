@@ -18,6 +18,7 @@
 
     {{-- post詳細 --}}
     <ul>
+        <li>{{ $post->category->category_name }}</li>
         <li><h4>{{ $post->title }}<h4></li>
         <li>{{ $post->describe }}</li>
         <li>{{ $post->explain }}</li>

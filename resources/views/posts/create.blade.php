@@ -47,6 +47,17 @@
         @enderror
         <br>
 
+        カテゴリ<br>
+        <select name="categoryId" class="form-control">
+            <option value="">未選択</option>
+            @foreach($categories as $id => $category_name)
+            <option value="{{ $id }}">
+                {{ $category_name }}
+            </option>
+            @endforeach
+        </select>
+        <br>
+
         その他メモ<br>
         <textarea name="note" cols="30" rows="3">{{ old('note') }}</textarea><br>
         @error('note')

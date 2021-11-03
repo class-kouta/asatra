@@ -5,7 +5,7 @@
 
     <form method="get" action="{{ route('top') }}">
         {{-- カテゴリ検索 --}}
-        <select name="categoryId" class="form-control" value="{{ $categoryId }}">
+        <select name="categoryId" class="form-control">
             <option value="">未選択</option>
             @foreach($categories as $id => $category_name)
             <option value="{{ $id }}">

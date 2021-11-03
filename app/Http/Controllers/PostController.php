@@ -6,13 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Nice;
+use App\Models\Category;
 use App\Http\Requests\StorePost;
 
 class PostController extends Controller
 {
     public function create()
     {
-        return view('posts.create');
+        $category = new Category;
+        $categories = $category->getLists();
+
+        return view('posts.create',compact('categories'));
     }
 
     public function createConfirm(StorePost $request)
@@ -27,6 +31,7 @@ class PostController extends Controller
         $post = new Post;
 
         $post->user_id = Auth::id();
+        $post->category_id = $request->input('categoryId');
         $post->title = $request->input('title');
         $post->describe = $request->input('describe');
         $post->explain = $request->input('explain');
@@ -90,7 +95,10 @@ class PostController extends Controller
     {
         $this->authorize('edit', $post);
 
-        return view('posts.edit', compact('post'));
+        $category = new Category;
+        $categories = $category->getLists();
+
+        return view('posts.edit', compact('post','categories'));
     }
 
     public function editConfirm(StorePost $request, Post $post)
@@ -105,6 +113,7 @@ class PostController extends Controller
         $this->authorize('update', $post);
 
         $post->user_id = Auth::id();
+        $post->category_id = $request->input('categoryId');
         $post->title = $request->input('title');
         $post->describe = $request->input('describe');
         $post->explain = $request->input('explain');
