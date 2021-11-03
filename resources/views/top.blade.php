@@ -4,6 +4,16 @@
 <div class="container">
 
     <form method="get" action="{{ route('top') }}">
+        {{-- カテゴリ検索 --}}
+        <select name="categoryId" class="form-control" value="{{ $categoryId }}">
+            <option value="">未選択</option>
+            @foreach($categories as $id => $category_name)
+            <option value="{{ $id }}">
+                {{ $category_name }}
+            </option>
+            @endforeach
+        </select>
+        {{-- キーワード検索 --}}
         <input type="text" name="search" class="form-control" aria-label="Text input with dropdown button" placeholder="キーワード検索" value="@if (isset($search)) {{ $search }} @endif">
         <div class="input-group-append">
             <button type="submit" class="btn btn-outline-dark">
@@ -35,6 +45,8 @@
                 @else
                 <p>{{ $post->user->age }} 代</p>
                 @endif
+
+                <p>カテゴリ：{{ $post->category->category_name }}</p>
 
                 <ul>
                     @guest
