@@ -18,7 +18,11 @@
 
     {{-- post詳細 --}}
     <ul>
+        @if(!isset($post->category->category_name))
+        <li>未設定</li>
+        @else
         <li>{{ $post->category->category_name }}</li>
+        @endif
         <li><h4>{{ $post->title }}<h4></li>
         <li>{{ $post->describe }}</li>
         <li>{{ $post->explain }}</li>

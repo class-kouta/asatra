@@ -46,7 +46,11 @@
                 <p>{{ $post->user->age }} 代</p>
                 @endif
 
+                @if(!isset($post->category->category_name))
+                <p>カテゴリ：未設定</p>
+                @else
                 <p>カテゴリ：{{ $post->category->category_name }}</p>
+                @endif
 
                 <ul>
                     @guest
