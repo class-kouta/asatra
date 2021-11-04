@@ -60,7 +60,7 @@ class PostController extends Controller
     public function showMyPosts()
     {
         $id = Auth::id();
-        $posts = Post::where('user_id',$id)->get();
+        $posts = Post::where('user_id',$id)->latest()->get();
 
         return view('profile.myposts',compact('posts'));
     }
@@ -68,14 +68,14 @@ class PostController extends Controller
     public function showMyNicePosts()
     {
         $user = Auth::user();
-        $posts = $user->joinNicesPosts;
+        $posts = $user->joinNicesPosts()->latest()->get();
         return view('profile.myposts',compact('posts'));
     }
 
     public function showMyCommentPosts()
     {
         $user = Auth::user();
-        $posts = $user->joinCommentsPosts;
+        $posts = $user->joinCommentsPosts()->latest()->get();
 
         function myArrayUnique($array) {
             $uniqueArray = [];
