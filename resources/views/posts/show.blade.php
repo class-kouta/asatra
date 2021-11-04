@@ -62,13 +62,16 @@
     <h4>Comments</h4>
     <ul>
         @foreach ($post->comments as $comment)
-            <li>{{ $comment->comment }}</li>
+            <img src="/storage/user_img/{{ $comment->user->sex }}.jpeg">
+            <p>{{ $comment->user->name }}</p>
+            <p>{{ $comment->comment }}</p>
             @if( $post->user_id === Auth::id() || $comment->user_id === Auth::id() )
             {{-- コメント削除 --}}
             <form method="post" action="{{ route('comments.destroy',['comment' => $comment, 'post' => $post] ) }}">
                 @csrf
                 <button>削除</button>
             </form>
+            <br>
             @endif
         @endforeach
     </ul>
