@@ -8,7 +8,7 @@
         <select name="categoryId" class="form-control">
             <option value="">未選択</option>
             @foreach($categories as $id => $category_name)
-            <option value="{{ $id }}">
+            <option value="{{ $id }}" @if($categoryId === "$id") selected @endif>
                 {{ $category_name }}
             </option>
             @endforeach
