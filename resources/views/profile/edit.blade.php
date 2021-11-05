@@ -19,16 +19,16 @@
         <br>
 
         性別<br>
-        <input id="sex-1" type="radio" name="sex" value="1" {{ Auth::user()->sex === '1' ? 'checked' : '' }}>
-        <label for="sex-1">男</label>
-        <input id="sex-2" type="radio" name="sex" value="2" {{ Auth::user()->sex === '2' ? 'checked' : '' }}>
-        <label for="sex-2">女</label>
-        <input id="sex-0" type="radio" name="sex" value="9" {{ Auth::user()->sex === '0' ? 'checked' : '' }}>
-        <label for="sex-0">回答しない</label>
+        <select name="sex" class="form-select">
+            <option value="9" {{ Auth::user()->sex === '9' ? 'selected' : '' }}>回答しない</option>
+            <option value="1" {{ Auth::user()->sex === '1' ? 'selected' : '' }}>男性</option>
+            <option value="2" {{ Auth::user()->sex === '2' ? 'selected' : '' }}>女性</option>
+        </select>
         <br>
         @error('sex')
         <div class="error">{{ $message }}</div>
         @enderror
+        <br>
 
         年代<br>
         <select name="age" class="form-select">

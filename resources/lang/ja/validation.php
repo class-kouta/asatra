@@ -119,6 +119,7 @@ return [
     'attributes' => [
         'name' => '名前',
         'password' => 'パスワード',
+        'sex' => '性別',
     ],
 
 ];
