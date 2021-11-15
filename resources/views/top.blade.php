@@ -2,81 +2,129 @@
 
 @section('content')
 <div class="container">
+    <div class="row">
+        <div class="col-8" id="content">
 
-    <form method="get" action="{{ route('top') }}">
-        {{-- カテゴリ検索 --}}
-        <select name="categoryId" class="form-control">
-            <option value="">未選択</option>
-            @foreach($categories as $id => $category_name)
-            <option value="{{ $id }}" @if($categoryId === "$id") selected @endif>
-                {{ $category_name }}
-            </option>
-            @endforeach
-        </select>
-        {{-- キーワード検索 --}}
-        <input type="text" name="search" class="form-control" aria-label="Text input with dropdown button" placeholder="キーワード検索" value="@if (isset($search)) {{ $search }} @endif">
-        <div class="input-group-append">
-            <button type="submit" class="btn btn-outline-dark">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
-    </form>
-
-    <h2>みんなの投稿</h2>
-    @foreach ($posts as $post)
-        @if($post->user->sex === (string)1)
-        <div class="card border border-primary">
-        @elseif($post->user->sex === (string)2)
-        <div class="card border border-danger">
-        @else
-        <div class="card border border-light">
-        @endif
-            <div class="card-body">
-                <img src="/storage/user_img/{{ $post->user->sex }}.jpeg">
-
-                @if($post->user->deleted_at === null)
-                <h5>{{ $post->user->name }}</h5>
-                @else
-                <h5>{{ $post->user->name }}（退会したユーザー）</h5>
-                @endif
-
-                @if($post->user->age === 0)
-                <p>未設定</p>
-                @else
-                <p>{{ $post->user->age }} 代</p>
-                @endif
-
-                @if(!isset($post->category->category_name))
-                <p>カテゴリ：未設定</p>
-                @else
-                <p>カテゴリ：{{ $post->category->category_name }}</p>
-                @endif
-
-                <ul>
-                    @guest
-                    <li><a href="{{ route('posts.show_guest',$post) }}">{{ $post->title }}</a></li>
-                    @else
-                    <li><a href="{{ route('posts.show',$post) }}">{{ $post->title }}</a></li>
-                    @endguest
-                    <li>{{ $post->describe }}</li>
-                    <li>{{ $post->explain }}</li>
-                    <li>{{ $post->specify }}</li>
-                </ul>
-                <div>
-                    いいね：{{ $post->nices->count() }}
+            <form method="get" action="{{ route('top') }}">
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <select name="categoryId" class="form-control">
+                            <option value="">未選択</option>
+                            @foreach($categories as $id => $category_name)
+                                <option value="{{ $id }}" @if($categoryId === "$id") selected @endif>
+                                    {{ $category_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{-- <input type="text" class="form-control" id=""> --}}
+                        <input type="text" name="search" class="form-control" placeholder="キーワード検索" value="@if (isset($search)) {{ $search }} @endif">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary">検索</button>
+                    </div>
                 </div>
+            </form>
+
+            @foreach ($posts as $post)
+                @if($post->user->sex === (string)1)
+                    <div class="d-flex align-items-center mt-5 border-bottom border-primary">
+                @elseif($post->user->sex === (string)2)
+                    <div class="d-flex align-items-center mt-5 border-bottom border-danger">
+                @else
+                    <div class="d-flex align-items-center mt-5 border-bottom border-dark">
+                @endif
+
+                    @guest
+                        <h5 class="ml-3 text-truncate"><a href="{{ route('posts.show_guest',$post) }}" class="text-reset">{{ $post->title }}</a></h5>
+                    @else
+                        <h5 class="ml-3 text-truncate"><a href="{{ route('posts.show',$post) }}" class="text-reset">{{ $post->title }}</a></h5>
+                    @endguest
+
+                    @if(!isset($post->category->category_name))
+                        <h4 class="ml-3"><span class="badge badge-secondary badge-pill font-weight-light">カテゴリ未設定</span></h4>
+                    @else
+                        <h4 class="ml-3"><span class="badge badge-info badge-pill font-weight-light text-light">{{ $post->category->category_name }}</span></h4>
+                    @endif
+
+                </div>
+
                 <div>
-                    コメント：{{ $post->comments->count() }}
+                    <ul class="ml-5 mb-2 p-0 w-75">
+                        <li class="list-unstyled text-truncate mt-2">D : {{ $post->describe }}</li>
+                        <li class="list-unstyled text-truncate mt-2">E : {{ $post->explain }}</li>
+                        <li class="list-unstyled text-truncate mt-2">S : {{ $post->specify }}</li>
+                        @guest
+                            <li class="list-unstyled text-truncate mt-2"><a href="{{ route('posts.show_guest',$post) }}">...続きを読む</a></li>
+                        @else
+                            <li class="list-unstyled text-truncate mt-2"><a href="{{ route('posts.show',$post) }}">...続きを読む</a></li>
+                        @endguest
+                    </ul>
+
+                    <div class="d-flex">
+                        <div class="ml-3">
+                            いいね：{{ $post->nices->count() }}
+                        </div>
+                        <div class="ml-3">
+                            コメント：{{ $post->comments->count() }}
+                        </div>
+                    </div>
+                </div>
+
+            @endforeach
+
+            <div class="my-5">{{ $posts->links() }}</div>
+
+            @if(empty($posts[0]))
+                検索に一致する投稿はございません。
+            @endif
+        </div>
+
+        @auth
+            <div class="card p-4 h-25 " id="sidebar">
+                <div class="d-flex align-items-center mb-4">
+                    <img src="/storage/user_img/{{ Auth::user()->sex }}.jpeg" class="rounded-circle">
+                    <div class="ml-3">
+                        <div class="h4">{{ Auth::user()->name }}</div>
+                        <div class="d-flex">
+                            <div>{{ Auth::user()->age }} 代</div>
+                            <div class="ml-4"><a href="{{ route('profile.edit') }}">ユーザ情報の変更</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ml-2">
+                    <div class="mb-3">
+                        自分の投稿： <a class="" href="{{ route('profile.myposts') }}">{{ Auth::user()->post->count() }}</a> 件
+                    </div>
+                    <div class="mb-3">
+                        いいねした投稿： <a class="" href="{{ route('profile.myniceposts') }}">{{ Auth::user()->joinNicesPosts()->count() }}</a> 件
+                    </div>
+                    <div class="mb-4">
+                        コメントした回数： <a class="" href="{{ route('profile.mycommentposts') }}">{{ Auth::user()->joinCommentsPosts()->count() }}</a> 回
+                    </div>
+                    <a class="btn btn-primary" href="{{ route('posts.create') }}">投稿する</a>
                 </div>
             </div>
+        @endauth
+    </div>
+
+    <div class="bg-primary" id="footer">
+        <ul class="nav justify-content-center py-4">
+            <li class="nav-item">
+                <u><a class="nav-link text-light h5" href="#">製作者について</a></u>
+            </li>
+            <li class="nav-item">
+                <u><a class="nav-link text-light h5" href="#">FAQ</a></u>
+            </li>
+            <li class="nav-item">
+                <u><a class="nav-link text-light h5" href="#">お問い合わせ</a></u>
+            </li>
+        </ul>
+        <div id="copy">
+            <p class="text-center pb-5">&copy; 2021 Kouta Sasaki</p>
         </div>
-    @endforeach
-
-    {{ $posts->links() }}
-
-    @if(empty($posts[0]))
-    検索に一致する投稿はございません。
-    @endif
+    </div>
 
 </div>
 @endsection
