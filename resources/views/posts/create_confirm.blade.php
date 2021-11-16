@@ -2,81 +2,141 @@
 
 @section('content')
 <div class="container">
-    <h1>DESC法</h1>
+    <div class="row">
+        <div class="col-8">
+
+            <div class="text-secondary border-bottom pl-3 pb-1 mb-4 h4">
+                入力内容の確認
+            </div>
+
     <form action="{{ route('posts.store') }}" method="post">
         @csrf
-        タイトル：例〜<br>
-        {{ $inputs['title'] }}<br><br>
-        <input name="title" value="{{ $inputs['title'] }}" type="hidden">
+            <div class="mx-4">
 
-        D 葛藤や問題：例〜<br>
-        {{ $inputs['describe'] }}<br><br>
-        <input name="describe" value="{{ $inputs['describe'] }}" type="hidden">
+                <div class="mb-3">
+                    <div class="mb-2 text-secondary border-bottom">
+                        タイトル
+                    </div>
+                    <div class="ml-3">
+                        {{ $inputs['title'] }}
+                    </div>
+                    <input name="title" value="{{ $inputs['title'] }}" type="hidden">
+                </div>
 
-        E 主観的な気持ち：例〜<br>
-        {{ $inputs['explain'] }}<br><br>
-        <input name="explain" value="{{ $inputs['explain'] }}" type="hidden">
+                <div class="mb-3">
+                    <div class="mb-2 text-secondary border-bottom">
+                        カテゴリ
+                    </div>
+                    <div class="ml-3">
+                        @if($inputs['categoryId'] == 1)
+                        結婚
+                        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+                        @elseif($inputs['categoryId'] == 2)
+                        育児・家事
+                        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+                        @elseif($inputs['categoryId'] == 3)
+                        お金
+                        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+                        @elseif($inputs['categoryId'] == 4)
+                        人間関係
+                        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+                        @elseif($inputs['categoryId'] == 5)
+                        性生活
+                        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+                        @elseif($inputs['categoryId'] == 6)
+                        コミュニケーション
+                        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+                        @elseif($inputs['categoryId'] == 7)
+                        習慣
+                        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+                        @elseif($inputs['categoryId'] == 8)
+                        仕事
+                        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+                        @elseif($inputs['categoryId'] == 9)
+                        健康
+                        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+                        @elseif($inputs['categoryId'] == 10)
+                        モラハラ
+                        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+                        @elseif($inputs['categoryId'] == 11)
+                        その他
+                        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
+                        @else
+                        未設定
+                        <input name="categoryId" value="" type="hidden">
+                        @endif
+                    </div>
+                </div>
 
-        S 具体的な提案：例〜<br>
-        {{ $inputs['specify'] }}<br><br>
-        <input name="specify" value="{{ $inputs['specify'] }}" type="hidden">
+                <div class="mb-3">
+                    <div class="mb-2 text-secondary border-bottom">
+                        Describe ... 問題や葛藤を描写
+                    </div>
+                    <div class="ml-3">
+                        {{ $inputs['describe'] }}
+                    </div>
+                    <input name="describe" value="{{ $inputs['describe'] }}" type="hidden">
+                </div>
 
-        C 選択（イエスの場合）：例〜<br>
-        {{ $inputs['choose_yes'] }}<br><br>
-        <input name="choose_yes" value="{{ $inputs['choose_yes'] }}" type="hidden">
+                <div class="mb-3">
+                    <div class="mb-2 text-secondary border-bottom">
+                        Explain ... 自分の気持ちを説明
+                    </div>
+                    <div class="ml-3">
+                        {{ $inputs['explain'] }}
+                    </div>
+                    <input name="explain" value="{{ $inputs['explain'] }}" type="hidden">
+                </div>
 
-        C 選択（ノーの場合）：例〜<br>
-        {{ $inputs['choose_no'] }}<br><br>
-        <input name="choose_no" value="{{ $inputs['choose_no'] }}" type="hidden">
+                <div class="mb-3">
+                    <div class="mb-2 text-secondary border-bottom">
+                        Specify ... 具体的な提案
+                    </div>
+                    <div class="ml-3">
+                        {{ $inputs['specify'] }}
+                    </div>
+                    <input name="specify" value="{{ $inputs['specify'] }}" type="hidden">
+                </div>
 
-        カテゴリー：<br>
-        {{-- {{$inputs['categoryId']}}<br><br> --}}
-        @if($inputs['categoryId'] == 1)
-        結婚
-        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
-        @elseif($inputs['categoryId'] == 2)
-        育児・家事
-        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
-        @elseif($inputs['categoryId'] == 3)
-        お金
-        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
-        @elseif($inputs['categoryId'] == 4)
-        人間関係
-        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
-        @elseif($inputs['categoryId'] == 5)
-        性生活
-        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
-        @elseif($inputs['categoryId'] == 6)
-        コミュニケーション
-        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
-        @elseif($inputs['categoryId'] == 7)
-        習慣
-        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
-        @elseif($inputs['categoryId'] == 8)
-        仕事
-        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
-        @elseif($inputs['categoryId'] == 9)
-        健康
-        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
-        @elseif($inputs['categoryId'] == 10)
-        モラハラ
-        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
-        @elseif($inputs['categoryId'] == 11)
-        その他
-        <input name="categoryId" value="{{ $inputs['categoryId'] }}" type="hidden">
-        @else
-        未設定
-        <input name="categoryId" value="" type="hidden">
-        @endif
-        <br><br>
+                <div class="mb-3">
+                    <div class="mb-2 text-secondary border-bottom">
+                        Choose ... イエスに対する回答
+                    </div>
+                    <div class="ml-3">
+                        {{ $inputs['choose_yes'] }}
+                    </div>
+                    <input name="choose_yes" value="{{ $inputs['choose_yes'] }}" type="hidden">
+                </div>
 
+                <div class="mb-3">
+                    <div class="mb-2 text-secondary border-bottom">
+                        Choose ... ノーに対する回答
+                    </div>
+                    <div class="ml-3">
+                        {{ $inputs['choose_no'] }}
+                    </div>
+                    <input name="choose_no" value="{{ $inputs['choose_no'] }}" type="hidden">
+                </div>
 
-        その他メモ<br>
-        {{ $inputs['note'] }}<br><br>
-        <input name="note" value="{{ $inputs['note'] }}" type="hidden">
+                <div class="mb-4">
+                    <div class="mb-2 text-secondary border-bottom">
+                        Note ... その他メモ
+                    </div>
+                    <div class="ml-3">
+                        @if(empty($inputs['note']))
+                        未記入
+                        @else
+                        {{ $inputs['note'] }}
+                        @endif
+                    </div>
+                    <input name="note" value="{{ $inputs['note'] }}" type="hidden">
+                </div>
 
-        <button type="submit" class="btn btn-primary">追加</button>
+                <button type="submit" class="btn btn-primary mb-4">投稿する</button>
+            </div>
 
     </form>
+        </div>
+    </div>
 </div>
 @endsection

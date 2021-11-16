@@ -59,41 +59,41 @@
                 <ul>
                     <li class="list-unstyled">
                         <div class="mb-4">
-                            <div class="mb-2 text-secondary border-bottom">Describe  問題や葛藤を描写</div>
-                            <div class="h5 ml-3">{{ $post->describe }}</div>
+                            <div class="mb-2 text-secondary border-bottom">Describe ... 問題や葛藤を描写</div>
+                            <div class="ml-3">{{ $post->describe }}</div>
                         </div>
                     </li>
                     <li class="list-unstyled">
                         <div class="mb-4">
-                            <div class="mb-2 text-secondary border-bottom">Explain 自分の気持ちを説明</div>
-                            <div class="h5 ml-3">{{ $post->explain }}</div>
+                            <div class="mb-2 text-secondary border-bottom">Explain ... 自分の気持ちを説明</div>
+                            <div class="ml-3">{{ $post->explain }}</div>
                         </div>
                     </li>
                     <li class="list-unstyled">
                         <div class="mb-4">
-                            <div class="mb-2 text-secondary border-bottom">Specify 具体的な提案</div>
-                            <div class="h5 ml-3">{{ $post->specify }}</div>
+                            <div class="mb-2 text-secondary border-bottom">Specify ... 具体的な提案</div>
+                            <div class="ml-3">{{ $post->specify }}</div>
                         </div>
                     </li>
                     <li class="list-unstyled">
                         <div class="mb-4">
-                            <div class="mb-2 text-secondary border-bottom">Choose イエスに対する回答</div>
-                            <div class="h5 ml-3">{{ $post->choose_yes }}</div>
+                            <div class="mb-2 text-secondary border-bottom">Choose ... イエスに対する回答</div>
+                            <div class="ml-3">{{ $post->choose_yes }}</div>
                         </div>
                     </li>
                     <li class="list-unstyled">
                         <div class="mb-4">
-                            <div class="mb-2 text-secondary border-bottom">Choose ノーに対する回答</div>
-                            <div class="h5 ml-3">{{ $post->choose_no }}</div>
+                            <div class="mb-2 text-secondary border-bottom">Choose ... ノーに対する回答</div>
+                            <div class="ml-3">{{ $post->choose_no }}</div>
                         </div>
                     </li>
                     <li class="list-unstyled">
                         <div class="mb-4">
-                            <div class="mb-2 text-secondary border-bottom">Note その他メモ</div>
+                            <div class="mb-2 text-secondary border-bottom">Note ... その他メモ</div>
                             @if(empty($post->note))
                                 <div class="ml-3 text-secondary">未設定</div>
                             @else
-                                <div class="h5 ml-3">{{ $post->note }}</div>
+                                <div class="ml-3">{{ $post->note }}</div>
                             @endif
                         </div>
                     </li>
