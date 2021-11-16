@@ -61,15 +61,18 @@ class PostController extends Controller
     {
         $id = Auth::id();
         $posts = Post::where('user_id',$id)->latest()->get();
+        $pageTitle = '自分の投稿';
 
-        return view('profile.myposts',compact('posts'));
+        return view('profile.myposts',compact('posts','pageTitle'));
     }
 
     public function showMyNicePosts()
     {
         $user = Auth::user();
         $posts = $user->joinNicesPosts()->latest()->get();
-        return view('profile.myposts',compact('posts'));
+        $pageTitle = 'いいねした投稿';
+
+        return view('profile.myposts',compact('posts','pageTitle'));
     }
 
     public function showMyCommentPosts()
@@ -87,8 +90,9 @@ class PostController extends Controller
             return $uniqueArray;
         }
         $posts = myArrayUnique($posts);
+        $pageTitle = 'コメントした投稿';
 
-        return view('profile.myposts',compact('posts'));
+        return view('profile.myposts',compact('posts','pageTitle'));
     }
 
     public function edit(Post $post)
