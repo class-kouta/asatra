@@ -88,7 +88,11 @@
                     <div class="ml-3">
                         <div class="h4">{{ Auth::user()->name }}</div>
                         <div class="d-flex">
-                            <div>{{ Auth::user()->age }} 代</div>
+                            <div>
+                                @if(Auth::user()->age !== 0)
+                                    {{ Auth::user()->age }} 代
+                                @endif
+                            </div>
                             <div class="ml-4"><a href="{{ route('profile.edit') }}">ユーザ情報の変更</a></div>
                         </div>
                     </div>
@@ -115,7 +119,7 @@
                 <u><a class="nav-link text-light h5" href="#">製作者について</a></u>
             </li>
             <li class="nav-item">
-                <u><a class="nav-link text-light h5" href="#">FAQ</a></u>
+                <u><a class="nav-link text-light h5" href="{{ route('footer.faq') }}">FAQ</a></u>
             </li>
             <li class="nav-item">
                 <u><a class="nav-link text-light h5" href="#">お問い合わせ</a></u>
