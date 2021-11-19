@@ -44,10 +44,10 @@
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseDescribe" aria-expanded="false" aria-controls="collapseDescribe">
                                 コツを見る
                             </button>
-                            @error('describe')
-                                <div class="text-danger ml-3">{{ $message }}</div>
-                            @enderror
                         </div>
+                        @error('describe')
+                            <div class="text-danger mb-2">{{ $message }}</div>
+                        @enderror
                         <textarea name="describe" class="form-control mb-2" rows="3">{{ old('describe') }}</textarea>
                         <div class="collapse" id="collapseDescribe">
                             <div class="">
@@ -64,10 +64,10 @@
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExplain" aria-expanded="false" aria-controls="collapseExplain">
                                 コツを見る
                             </button>
-                            @error('explain')
-                                <div class="text-danger ml-3">{{ $message }}</div>
-                            @enderror
                         </div>
+                        @error('explain')
+                            <div class="text-danger  mb-2">{{ $message }}</div>
+                        @enderror
                         <textarea name="explain" class="form-control mb-2" rows="3">{{ old('explain') }}</textarea>
                         {{-- <p>
                         </p> --}}
@@ -86,10 +86,10 @@
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSpecify" aria-expanded="false" aria-controls="collapseSpecify">
                                 コツを見る
                             </button>
-                            @error('specify')
-                                <div class="text-danger ml-3">{{ $message }}</div>
-                            @enderror
                         </div>
+                        @error('specify')
+                            <div class="text-danger  mb-2">{{ $message }}</div>
+                        @enderror
                         <textarea name="specify" class="form-control mb-2" rows="3">{{ old('specify') }}</textarea>
                         {{-- <p> --}}
                         {{-- </p> --}}
