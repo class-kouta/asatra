@@ -16,6 +16,7 @@
                         <div class="form-group col-8 mb-0">
                             <div class="d-flex">
                                 <div class="text-secondary">タイトル</div>
+                                <div class="">［必須］</div>
                                 @error('title')
                                     <div class="text-danger ml-3">{{ $message }}</div>
                                 @enderror
@@ -39,6 +40,7 @@
                     <div class="form-group mb-4 px-4">
                         <div class="d-flex align-items-center">
                             <div class="text-secondary">Describe ... 問題や葛藤を描写</div>
+                            <div class="">［必須］</div>
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseDescribe" aria-expanded="false" aria-controls="collapseDescribe">
                                 コツを見る
                             </button>
@@ -58,6 +60,7 @@
                     <div class="form-group mb-4 px-4">
                         <div class="d-flex align-items-center">
                             <div class="text-secondary">Explain ... 自分の気持ちを説明</div>
+                            <div class="">［必須］</div>
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExplain" aria-expanded="false" aria-controls="collapseExplain">
                                 コツを見る
                             </button>
@@ -79,6 +82,7 @@
                     <div class="form-group mb-4 px-4">
                         <div class="d-flex align-items-center">
                             <div class="text-secondary">Specify ... 具体的な提案</div>
+                            <div class="">［必須］</div>
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSpecify" aria-expanded="false" aria-controls="collapseSpecify">
                                 コツを見る
                             </button>

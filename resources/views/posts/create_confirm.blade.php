@@ -103,7 +103,11 @@
                         Choose ... イエスに対する回答
                     </div>
                     <div class="ml-3">
-                        {!! nl2br(e($inputs['choose_yes'])) !!}
+                        @if(empty($inputs['choose_yes']))
+                            未設定
+                        @else
+                            {!! nl2br(e($inputs['choose_yes'])) !!}
+                        @endif
                     </div>
                     <input name="choose_yes" value="{{ $inputs['choose_yes'] }}" type="hidden">
                 </div>
@@ -113,7 +117,11 @@
                         Choose ... ノーに対する回答
                     </div>
                     <div class="ml-3">
-                        {!! nl2br(e($inputs['choose_no'])) !!}
+                        @if(empty($inputs['choose_no']))
+                            未設定
+                        @else
+                            {!! nl2br(e($inputs['choose_no'])) !!}
+                        @endif
                     </div>
                     <input name="choose_no" value="{{ $inputs['choose_no'] }}" type="hidden">
                 </div>
@@ -124,7 +132,7 @@
                     </div>
                     <div class="ml-3">
                         @if(empty($inputs['note']))
-                            未記入
+                            未設定
                         @else
                             {!! nl2br(e($inputs['note'])) !!}
                         @endif
