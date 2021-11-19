@@ -73,7 +73,7 @@
                         Describe ... 問題や葛藤を描写
                     </div>
                     <div class="ml-3">
-                        {{ $inputs['describe'] }}
+                        {!! nl2br(e($inputs['describe'])) !!}
                     </div>
                     <input name="describe" value="{{ $inputs['describe'] }}" type="hidden">
                 </div>
@@ -83,7 +83,7 @@
                         Explain ... 自分の気持ちを説明
                     </div>
                     <div class="ml-3">
-                        {{ $inputs['explain'] }}
+                        {!! nl2br(e($inputs['explain'])) !!}
                     </div>
                     <input name="explain" value="{{ $inputs['explain'] }}" type="hidden">
                 </div>
@@ -93,7 +93,7 @@
                         Specify ... 具体的な提案
                     </div>
                     <div class="ml-3">
-                        {{ $inputs['specify'] }}
+                        {!! nl2br(e($inputs['specify'])) !!}
                     </div>
                     <input name="specify" value="{{ $inputs['specify'] }}" type="hidden">
                 </div>
@@ -103,7 +103,7 @@
                         Choose ... イエスに対する回答
                     </div>
                     <div class="ml-3">
-                        {{ $inputs['choose_yes'] }}
+                        {!! nl2br(e($inputs['choose_yes'])) !!}
                     </div>
                     <input name="choose_yes" value="{{ $inputs['choose_yes'] }}" type="hidden">
                 </div>
@@ -113,26 +113,33 @@
                         Choose ... ノーに対する回答
                     </div>
                     <div class="ml-3">
-                        {{ $inputs['choose_no'] }}
+                        {!! nl2br(e($inputs['choose_no'])) !!}
                     </div>
                     <input name="choose_no" value="{{ $inputs['choose_no'] }}" type="hidden">
                 </div>
 
-                <div class="mb-4">
+                <div class="mb-5">
                     <div class="mb-2 text-secondary border-bottom">
                         Note ... その他メモ
                     </div>
                     <div class="ml-3">
                         @if(empty($inputs['note']))
-                        未記入
+                            未記入
                         @else
-                        {{ $inputs['note'] }}
+                            {!! nl2br(e($inputs['note'])) !!}
                         @endif
                     </div>
                     <input name="note" value="{{ $inputs['note'] }}" type="hidden">
                 </div>
 
-                <button type="submit" class="btn btn-primary mb-4">投稿する</button>
+                <div class="mb-4">
+                    以上の内容で投稿します（投稿後に編集可能です）
+                </div>
+
+                <div class="d-flex align-items-center mb-4">
+                    <button type="submit" class="btn btn-primary">投稿する</button>
+                    <button type="button" onClick="history.back()" class="btn btn-link ml-3">入力画面に戻る</button>
+                </div>
             </div>
 
     </form>

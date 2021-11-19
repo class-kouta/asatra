@@ -5,7 +5,6 @@
     <div class="row">
         <div class="col-8">
             {{-- アイコン・名前・年代・編集・削除 --}}
-            {{-- <div class="d-flex"> --}}
                 <div class="d-flex align-items-center mb-4">
                     <img src="/storage/user_img/{{ $post->user->sex }}.jpeg" class="rounded-circle">
                     <div class="ml-2">
@@ -21,9 +20,6 @@
                         @endif
                     </div>
                 </div>
-
-
-            {{-- </div> --}}
 
             {{-- 投稿内容 --}}
             <div>
@@ -44,13 +40,13 @@
                     </div>
                     <div class="ml-5">
                         @can('edit',$post)
-                            <a href="{{ route('posts.edit',$post) }}">編集</a>
+                            <a href="{{ route('posts.edit',$post) }}" class="text-secondary">編集</a>
                         @endcan
 
                         @can('delete',$post)
                             <form method="post" action="{{ route('posts.destroy',$post) }}" id="delete_{{ $post->id }}">
                                 @csrf
-                                <a href="#" data-id="{{ $post->id }}" onclick="deletePost(this);">削除</a>
+                                <a href="#" data-id="{{ $post->id }}" onclick="deletePost(this);" class="text-secondary">削除</a>
                             </form>
                         @endcan
                     </div>
@@ -60,31 +56,31 @@
                     <li class="list-unstyled">
                         <div class="mb-4">
                             <div class="mb-2 text-secondary border-bottom">Describe ... 問題や葛藤を描写</div>
-                            <div class="ml-3">{{ $post->describe }}</div>
+                            <div class="ml-3">{!! nl2br(e($post->describe)) !!}</div>
                         </div>
                     </li>
                     <li class="list-unstyled">
                         <div class="mb-4">
                             <div class="mb-2 text-secondary border-bottom">Explain ... 自分の気持ちを説明</div>
-                            <div class="ml-3">{{ $post->explain }}</div>
+                            <div class="ml-3">{!! nl2br(e($post->explain)) !!}</div>
                         </div>
                     </li>
                     <li class="list-unstyled">
                         <div class="mb-4">
                             <div class="mb-2 text-secondary border-bottom">Specify ... 具体的な提案</div>
-                            <div class="ml-3">{{ $post->specify }}</div>
+                            <div class="ml-3">{!! nl2br(e($post->specify)) !!}</div>
                         </div>
                     </li>
                     <li class="list-unstyled">
                         <div class="mb-4">
                             <div class="mb-2 text-secondary border-bottom">Choose ... イエスに対する回答</div>
-                            <div class="ml-3">{{ $post->choose_yes }}</div>
+                            <div class="ml-3">{!! nl2br(e($post->choose_yes)) !!}</div>
                         </div>
                     </li>
                     <li class="list-unstyled">
                         <div class="mb-4">
                             <div class="mb-2 text-secondary border-bottom">Choose ... ノーに対する回答</div>
-                            <div class="ml-3">{{ $post->choose_no }}</div>
+                            <div class="ml-3">{!! nl2br(e($post->choose_no)) !!}</div>
                         </div>
                     </li>
                     <li class="list-unstyled">
@@ -93,13 +89,13 @@
                             @if(empty($post->note))
                                 <div class="ml-3 text-secondary">未設定</div>
                             @else
+                                <div class="ml-3">{!! nl2br(e($post->note)) !!}</div>
                                 <div class="ml-3">{{ $post->note }}</div>
                             @endif
                         </div>
                     </li>
                 </ul>
             </div>
-
 
             {{-- いいね --}}
             <div class="mb-5 float-right">
@@ -133,7 +129,7 @@
                         <div class="form-group mb-1">
                             <textarea name="comment" class="form-control" rows="3">{{ old('comment') }}</textarea>
                         </div>
-                        <div class="d-flex align-items-center mb-5">
+                        <div class="d-flex align-items-center mb-4">
                             <button class="btn btn-outline-secondary">コメント</button>
                             @error('comment')
                                 <div class="text-danger ml-3">{{ $message }}</div>
@@ -143,32 +139,33 @@
                 @endAuth
 
             {{-- コメント一覧 --}}
-            {{-- <ul> --}}
-                @foreach ($post->comments as $comment)
-                    <div class="d-flex mb-5">
-                        <div>
-                            <img src="/storage/user_img/{{ $comment->user->sex }}.jpeg" class="rounded-circle">
+            @if(!isset($post->comments[0]))
+                <div class="ml-3 mb-4">まだ投稿がありません</div>
+            @endif
+            @foreach ($post->comments as $comment)
+                <div class="d-flex mb-4">
+                    <div>
+                        <img src="/storage/user_img/{{ $comment->user->sex }}.jpeg" class="rounded-circle">
+                    </div>
+                    <div>
+                        <div class="d-flex align-items-center ml-2 mb-2">
+                            <div>{{ $comment->user->name }}</div>
+                            <div>
+                                @if( $post->user_id === Auth::id() || $comment->user_id === Auth::id() )
+                                {{-- コメント削除 --}}
+                                    <form method="post" action="{{ route('comments.destroy',['comment' => $comment, 'post' => $post] ) }}">
+                                    @csrf
+                                        <button type="submit" class="btn btn-outline-dark btn-sm ml-3">削除</button>
+                                    </form>
+                                @endif
+                            </div>
                         </div>
-                        <div>
-                            <div class="d-flex align-items-center ml-2 mb-2">
-                                <div>{{ $comment->user->name }}</div>
-                                <div>
-                                    @if( $post->user_id === Auth::id() || $comment->user_id === Auth::id() )
-                                    {{-- コメント削除 --}}
-                                        <form method="post" action="{{ route('comments.destroy',['comment' => $comment, 'post' => $post] ) }}">
-                                        @csrf
-                                            <button type="submit" class="btn btn-outline-dark btn-sm ml-3">削除</button>
-                                        </form>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="ml-2">
-                                {{ $comment->comment }}
-                            </div>
+                        <div class="ml-2">
+                            {!! nl2br(e($comment->comment)) !!}
                         </div>
                     </div>
-                @endforeach
-            {{-- </ul> --}}
+                </div>
+            @endforeach
 
         </div>
     </div>
