@@ -52,7 +52,9 @@
 
 
                 @if(!isset($posts[0]))
-                    まだ投稿がありません
+                <div class="ml-4">
+                    まだ投稿がありません。
+                </div>
                 @endif
 
         </div>

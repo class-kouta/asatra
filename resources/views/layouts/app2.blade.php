@@ -30,13 +30,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">アサーションって何？ <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('nopage') }}">アサーションって何？ <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">アサトレの使い方</a>
+                        <a class="nav-link" href="{{ route('nopage') }}">アサトレの使い方</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">おすすめの書籍</a>
+                        <a class="nav-link" href="{{ route('nopage') }}">おすすめの書籍</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('top') }}">みんなの投稿</a>

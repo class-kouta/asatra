@@ -18,6 +18,10 @@
 // });
 Route::get('/', 'TopController@index')->name('top');
 
+Route::get('nopage',function(){
+    return view('nopage');
+})->name('nopage');
+
 Auth::routes();
 
 Route::get('{post}','PostController@showGuest')->name('posts.show_guest');
