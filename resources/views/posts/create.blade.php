@@ -91,8 +91,6 @@
                             <div class="text-danger  mb-2">{{ $message }}</div>
                         @enderror
                         <textarea name="specify" class="form-control mb-2" rows="3">{{ old('specify') }}</textarea>
-                        {{-- <p> --}}
-                        {{-- </p> --}}
                         <div class="collapse" id="collapseSpecify">
                             <div class="">
                                 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
@@ -112,8 +110,6 @@
                             @enderror
                         </div>
                         <textarea name="choose_yes" class="form-control mb-2" rows="2">{{ old('choose_yes') }}</textarea>
-                        {{-- <p> --}}
-                        {{-- </p> --}}
                         <div class="collapse" id="collapseChooseYes">
                             <div class="">
                                 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
@@ -133,8 +129,6 @@
                             @enderror
                         </div>
                         <textarea name="choose_no" class="form-control mb-2" rows="2">{{ old('choose_no') }}</textarea>
-                        {{-- <p> --}}
-                        {{-- </p> --}}
                         <div class="collapse" id="collapseChooseNo">
                             <div class="">
                                 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
