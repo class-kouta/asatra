@@ -107,8 +107,11 @@
             {{-- いいね --}}
             <div class="mb-5 float-right">
                 @guest
+                    <a href="{{ route('login') }}" class="btn btn-outline-danger btn-sm">
+                        いいね
+                    </a>
                     <span>
-                        いいね：{{ $post->nices->count() }}
+                        {{ $post->nices->count() }}
                     </span>
                 @else
                     @if($nice)
@@ -130,7 +133,15 @@
             </div>
 
             {{-- コメント追加 --}}
-            @auth
+            @guest
+                <div class="form-group mb-1">
+                    <textarea name="comment" class="form-control" rows="3"></textarea>
+                </div>
+                <a href="{{ route('login') }}" class="btn btn-outline-secondary mb-4">
+                    ログインしてコメント
+                </a>
+
+            @else
                 <form class="" method="post" action="{{ route('comments.store' ,$post) }}">
                     @csrf
                         <div class="form-group mb-1">
@@ -143,11 +154,11 @@
                             @enderror
                         </div>
                     </form>
-                @endAuth
+                @endguest
 
             {{-- コメント一覧 --}}
             @if(!isset($post->comments[0]))
-                <div class="ml-3 mb-4">まだ投稿がありません</div>
+                <div class="ml-3 mb-4">まだコメントはありません。</div>
             @endif
             @foreach ($post->comments as $comment)
                 <div class="d-flex mb-4">
