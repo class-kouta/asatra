@@ -82,37 +82,44 @@
         </div>
 
         @auth
-            <div class="card p-4 h-25 " id="sidebar">
-                <div class="d-flex align-items-center mb-4">
-                    <img src="/storage/user_img/{{ Auth::user()->sex }}.jpeg" class="rounded-circle">
-                    <div class="ml-3">
-                        <div class="h4">{{ Auth::user()->name }}</div>
-                        <div class="d-flex">
-                            <div>
-                                @if(Auth::user()->age !== 0)
-                                    {{ Auth::user()->age }} 代
-                                @endif
+            <div class="col-3 mx-auto">
+                <div class="card p-3 d-md-none d-lg-block" id="sidebar">
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="/storage/user_img/{{ Auth::user()->sex }}.jpeg" class="rounded-circle">
+                        <div class="ml-3">
+                            <div class="h4">{{ Auth::user()->name }}</div>
+                            <div class="">
+                                <div>
+                                    @if(Auth::user()->age === 0)
+                                        年代未設定
+                                    @else
+                                        {{ Auth::user()->age }} 代
+                                    @endif
+                                </div>
                             </div>
-                            <div class="ml-4"><a href="{{ route('profile.edit') }}">ユーザ情報の変更</a></div>
                         </div>
                     </div>
-                </div>
-                <div class="ml-2">
-                    <div class="mb-3">
-                        自分の投稿： <a class="" href="{{ route('profile.myposts') }}">{{ Auth::user()->post->count() }}</a> 件
+
+                    <div class="ml-2">
+                        <div class="mb-3">
+                            自分の投稿： <a class="" href="{{ route('profile.myposts') }}">{{ Auth::user()->post->count() }}</a> 件
+                        </div>
+                        <div class="mb-3">
+                            いいねした投稿： <a class="" href="{{ route('profile.myniceposts') }}">{{ Auth::user()->joinNicesPosts()->count() }}</a> 件
+                        </div>
+                        <div class="mb-4">
+                            コメントした回数： <a class="" href="{{ route('profile.mycommentposts') }}">{{ Auth::user()->joinCommentsPosts()->count() }}</a> 回
+                        </div>
+                        <a class="btn btn-primary mb-4" href="{{ route('posts.create') }}">投稿する</a>
                     </div>
-                    <div class="mb-3">
-                        いいねした投稿： <a class="" href="{{ route('profile.myniceposts') }}">{{ Auth::user()->joinNicesPosts()->count() }}</a> 件
-                    </div>
-                    <div class="mb-4">
-                        コメントした回数： <a class="" href="{{ route('profile.mycommentposts') }}">{{ Auth::user()->joinCommentsPosts()->count() }}</a> 回
-                    </div>
-                    <a class="btn btn-primary" href="{{ route('posts.create') }}">投稿する</a>
+
+                    <div class="ml-2"><a href="{{ route('profile.edit') }}">ユーザ情報の変更</a></div>
                 </div>
             </div>
         @endauth
     </div>
 
+    <div class="my-5 py-5"></div>
     <div class="bg-primary" id="footer">
         <ul class="nav justify-content-center py-4">
             <li class="nav-item">

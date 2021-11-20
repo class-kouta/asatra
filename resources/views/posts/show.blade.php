@@ -14,7 +14,7 @@
                         <div class="h5 ml-2">{{ $post->user->name }}（退会したユーザー）</div>
                     @endif
                         @if($post->user->age === 0)
-                        <div class="ml-2">未設定</div>
+                        <div class="ml-2">年代未設定</div>
                         @else
                         <div class="ml-2">{{ $post->user->age }} 代</div>
                         @endif
