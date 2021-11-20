@@ -81,7 +81,29 @@
             @endif
         </div>
 
-        @auth
+        @guest
+            <div class="col-3 mx-auto">
+                <div class="card p-3 d-md-none d-lg-block" id="sidebar">
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="/storage/user_img/9.jpeg" class="rounded-circle">
+                            <div class="h4 ml-3">ゲスト</div>
+                    </div>
+
+                    <div class="ml-2">
+                        <div class="mb-3">
+                            自分の投稿： - 件
+                        </div>
+                        <div class="mb-3">
+                            いいねした投稿： - 件
+                        </div>
+                        <div class="mb-4">
+                            コメントした回数： - 回
+                        </div>
+                        <a class="btn btn-primary mb-4" href="{{ route('login') }}">ログインして投稿</a>
+                    </div>
+                </div>
+            </div>
+        @else
             <div class="col-3 mx-auto">
                 <div class="card p-3 d-md-none d-lg-block" id="sidebar">
                     <div class="d-flex align-items-center mb-4">
@@ -116,7 +138,7 @@
                     <div class="ml-2"><a href="{{ route('profile.edit') }}">ユーザ情報の変更</a></div>
                 </div>
             </div>
-        @endauth
+        @endguest
     </div>
 
     <div class="my-5 py-5"></div>
