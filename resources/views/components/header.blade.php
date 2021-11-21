@@ -16,6 +16,9 @@
                 <a class="nav-link" href="{{ route('nopage') }}">おすすめの書籍</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{ route('nopage') }}">ブログ</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('top') }}">みんなの投稿</a>
             </li>
             @guest
@@ -36,15 +39,17 @@
                         <a class="dropdown-item" href="{{ route('profile.myposts') }}">自分の投稿</a>
                         <a class="dropdown-item" href="{{ route('profile.myniceposts') }}">いいねした投稿</a>
                         <a class="dropdown-item" href="{{ route('profile.mycommentposts') }}">コメントした投稿</a>
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                            ログアウト
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
                     </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                    ログアウト
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
             @endguest
         </ul>

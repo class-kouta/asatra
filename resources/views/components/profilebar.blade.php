@@ -47,12 +47,14 @@
                     いいねした投稿： <a class="" href="{{ route('profile.myniceposts') }}">{{ Auth::user()->joinNicesPosts()->count() }}</a> 件
                 </div>
                 <div class="mb-4">
-                    コメントした回数： <a class="" href="{{ route('profile.mycommentposts') }}">{{ Auth::user()->joinCommentsPosts()->count() }}</a> 回
+                    書いたコメント： <a class="" href="{{ route('profile.mycommentposts') }}">{{ Auth::user()->joinCommentsPosts()->count() }}</a> 回
                 </div>
                 <a class="btn btn-primary mb-4" href="{{ route('posts.create') }}">投稿する</a>
             </div>
 
-            <div class="ml-2"><a href="{{ route('profile.edit') }}">ユーザ情報の変更</a></div>
+            <div class="ml-2">
+                <a href="{{ route('profile.edit') }}">ユーザ情報の変更</a>
+            </div>
         </div>
     </div>
 @endguest
