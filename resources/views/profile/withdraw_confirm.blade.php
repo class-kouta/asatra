@@ -16,9 +16,10 @@
                     <li class="ml-5">投稿を削除する場合は、退会前にご自身で投稿を削除願います。</li>
                 </ul>
                 <div class="btn-group d-flex align-items-center ml-5">
-                    <form action="{{ route('profile.withdraw',Auth::user()->id ) }}" method="post">
-                    @csrf
-                        <button type="submit" class="btn btn-secondary">退会する</button>
+
+                    <form method="post" action="{{ route('profile.withdraw',Auth::user()->id) }}" id="delete_{{ Auth::user()->id }}">
+                        @csrf
+                        <a href="#" data-id="{{ Auth::user()->id }}" onclick="deleteUser(this);" class="btn btn-secondary">退会する</a>
                     </form>
                     <div class="ml-3">
                         <a href="/">トップに戻る</a>
@@ -32,4 +33,16 @@
 
     </div>
 </div>
+
+<script>
+
+    function deleteUser(e) {
+        'use strict';
+        if (confirm('本当に退会しますか?')) {
+        document.getElementById('delete_' + e.dataset.id).submit();
+        }
+    }
+
+</script>
+
 @endsection

@@ -196,18 +196,13 @@
 
 <script>
 
-    /************************************
-    削除ボタンを押してすぐにレコードが削除
-    されるのも問題なので、一旦javascriptで
-    確認メッセージを流します。
-    *************************************/
-
     function deletePost(e) {
         'use strict';
         if (confirm('本当に削除していいですか?')) {
         document.getElementById('delete_' + e.dataset.id).submit();
         }
     }
+
 </script>
 
 @endsection

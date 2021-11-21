@@ -14,7 +14,7 @@
                     いいねした投稿： - 件
                 </div>
                 <div class="mb-4">
-                    コメントした回数： - 回
+                    書いたコメント： - 件
                 </div>
                 <a class="btn btn-primary mb-4" href="{{ route('login') }}">ログインして投稿</a>
             </div>
@@ -47,7 +47,7 @@
                     いいねした投稿： <a class="" href="{{ route('profile.myniceposts') }}">{{ Auth::user()->joinNicesPosts()->count() }}</a> 件
                 </div>
                 <div class="mb-4">
-                    書いたコメント： <a class="" href="{{ route('profile.mycommentposts') }}">{{ Auth::user()->joinCommentsPosts()->count() }}</a> 回
+                    書いたコメント： <a class="" href="{{ route('profile.mycommentposts') }}">{{ Auth::user()->joinCommentsPosts()->count() }}</a> 件
                 </div>
                 <a class="btn btn-primary mb-4" href="{{ route('posts.create') }}">投稿する</a>
             </div>
