@@ -9,7 +9,7 @@
                 ユーザ情報の変更
             </div>
 
-            <div class="ml-4">
+            <div class="ml-4 mb-5">
                 <form action="{{ route('profile.update') }}" method="post" class="">
                 @csrf
                     <div class="form-group mb-4">
@@ -63,6 +63,9 @@
                     <button type="submit" class="btn btn-primary">更新</button>
 
                 </form>
+            </div>
+            <div class="ml-4">
+                <a href="{{ '/profile/withdraw_confirm' }}">退会はコチラから</a>
             </div>
         </div>
 

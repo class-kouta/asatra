@@ -22,6 +22,14 @@ Route::get('nopage',function(){
     return view('nopage');
 })->name('nopage');
 
+Route::get('/footer/faq/',function(){
+    return view('footer.faq');
+})->name('footer.faq');
+
+Route::get('/footer/faq/about_withdraw',function(){
+    return view('/footer/faq/about_withdraw');
+})->name('faq.about_withdraw');
+
 Auth::routes();
 
 Route::get('{post}','PostController@showGuest')->name('posts.show_guest');
@@ -51,7 +59,4 @@ Route::group(['prefix' => '','middleware'=>'auth'],function(){
     Route::get('/profile/withdraw_confirm','ProfileController@withdrawConfirm')->name('profile.withdraw_confirm');
     Route::post('/profile/withdraw/{id}','ProfileController@withdraw')->name('profile.withdraw');
 
-    Route::get('/footer/faq/',function(){
-        return view('footer.faq');
-    })->name('footer.faq');
 });
