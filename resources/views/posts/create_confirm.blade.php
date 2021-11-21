@@ -149,9 +149,12 @@
                     <button type="button" onClick="history.back()" class="btn btn-link ml-3">入力画面に戻る</button>
                 </div>
             </div>
-
     </form>
         </div>
+
+        @component('components.profilebar')
+        @endcomponent
+
     </div>
 </div>
 @endsection

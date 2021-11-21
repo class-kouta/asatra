@@ -24,8 +24,12 @@
                         <a href="/">トップに戻る</a>
                     </div>
                 </div>
-          </div>
+            </div>
         </div>
+
+        @component('components.profilebar')
+        @endcomponent
+
     </div>
 </div>
 @endsection

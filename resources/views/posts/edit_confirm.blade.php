@@ -151,6 +151,10 @@
                 </div>
             </form>
         </div>
+
+        @component('components.profilebar')
+        @endcomponent
+
     </div>
 </div>
 @endsection

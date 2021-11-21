@@ -186,6 +186,10 @@
             @endforeach
 
         </div>
+
+        @component('components.profilebar')
+        @endcomponent
+
     </div>
 
 </div>

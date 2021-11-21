@@ -58,6 +58,10 @@
                 @endif
 
         </div>
+
+        @component('components.profilebar')
+        @endcomponent
+
     </div>
 </div>
 @endsection
