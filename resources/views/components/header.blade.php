@@ -19,7 +19,7 @@
                 <a class="nav-link" href="{{ route('nopage') }}">ブログ</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('top') }}">みんなの投稿</a>
+                <a class="nav-link active" href="{{ route('top') }}">みんなの投稿</a>
             </li>
             @guest
                 <li class="nav-item">
