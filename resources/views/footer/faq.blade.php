@@ -11,7 +11,7 @@
 
             <ul class="">
                 <li class="list-unstyled">
-                    <a href="{{ route('faq.about_withdraw') }}">退会するにはどうしたらいいですか？</a>
+                    <a href="{{ route('footer.faq.about_withdraw') }}">退会するにはどうしたらいいですか？</a>
                 </li>
             </ul>
         </div>

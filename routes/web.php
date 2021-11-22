@@ -11,24 +11,14 @@
 |
 */
 
-// Route::get('/', function () {
-//     $posts = App\Models\Post::all();
-//     $data = ['posts' => $posts];
-//     return view('top',$data);
-// });
 Route::get('/', 'TopController@index')->name('top');
+
+Route::get('/footer/faq/', 'FooterController@faqTop')->name('footer.faq');
+Route::get('/footer/faq/about_withdraw', 'FooterController@faqAboutWithdraw')->name('footer.faq.about_withdraw');
 
 Route::get('nopage',function(){
     return view('nopage');
 })->name('nopage');
-
-Route::get('/footer/faq/',function(){
-    return view('footer.faq');
-})->name('footer.faq');
-
-Route::get('/footer/faq/about_withdraw',function(){
-    return view('/footer/faq/about_withdraw');
-})->name('faq.about_withdraw');
 
 Auth::routes();
 
