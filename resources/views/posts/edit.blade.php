@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-8" id="content">
+        <div class="col col-lg-8" id="content">
 
             <div class="text-secondary border-bottom pl-3 pb-1 mb-4 h5">
                 投稿内容の編集

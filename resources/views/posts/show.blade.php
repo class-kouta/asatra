@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-8">
+        <div class="col col-lg-8">
             {{-- アイコン・名前・年代・編集・削除 --}}
                 <div class="d-flex align-items-center mb-4">
                     <img src="/storage/user_img/{{ $post->user->sex }}.jpeg" class="rounded-circle">
@@ -24,32 +24,32 @@
             {{-- 投稿内容 --}}
             <div>
                 @if($post->user->sex === (string)1)
-                    <div class="d-flex align-items-center justify-content-between mb-4 border-bottom border-primary">
+                    <div class="mb-4 border-bottom border-primary">
                 @elseif($post->user->sex === (string)2)
-                    <div class="d-flex align-items-center justify-content-between mb-4 border-bottom border-danger">
+                    <div class="mb-4 border-bottom border-danger">
                 @else
-                    <div class="d-flex align-items-center justify-content-between mb-4 border-bottom border-dark">
+                    <div class="mb-4 border-bottom border-dark">
                 @endif
-                    <div class="d-flex align-items-center">
-                        <h4 class="ml-3 text-truncate">{{ $post->title }}</h4>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
                         @if(!isset($post->category->category_name))
                             <h4 class="ml-3"><span class="badge badge-secondary badge-pill font-weight-light">カテゴリ未設定</span></h4>
                         @else
                             <h4 class="ml-3"><span class="badge badge-info badge-pill font-weight-light text-light">{{ $post->category->category_name }}</span></h4>
                         @endif
-                    </div>
-                    <div class="ml-5">
-                        @can('edit',$post)
-                            <a href="{{ route('posts.edit',$post) }}" class="text-secondary">編集</a>
-                        @endcan
+                        <div class="d-flex">
+                            @can('edit',$post)
+                                <a href="{{ route('posts.edit',$post) }}" class="btn btn-outline-secondary btn-sm">編集</a>
+                            @endcan
 
-                        @can('delete',$post)
-                            <form method="post" action="{{ route('posts.destroy',$post) }}" id="delete_{{ $post->id }}">
-                                @csrf
-                                <a href="#" data-id="{{ $post->id }}" onclick="deletePost(this);" class="text-secondary">削除</a>
-                            </form>
-                        @endcan
+                            @can('delete',$post)
+                                <form method="post" action="{{ route('posts.destroy',$post) }}" id="delete_{{ $post->id }}">
+                                    @csrf
+                                    <a href="#" data-id="{{ $post->id }}" onclick="deletePost(this);" class="btn btn-outline-secondary btn-sm ml-1">削除</a>
+                                </form>
+                            @endcan
+                        </div>
                     </div>
+                    <h4 class="ml-3">{{ $post->title }}</h4>
                 </div>
 
                 <ul>

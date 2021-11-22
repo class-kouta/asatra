@@ -1,6 +1,6 @@
 @guest
-    <div class="col-3 mx-auto">
-        <div class="card p-3 d-md-none d-lg-block" id="sidebar">
+    <div class="col-3 mx-auto d-none d-lg-block">
+        <div class="card p-3 " id="sidebar">
             <div class="d-flex align-items-center mb-4">
                 <img src="/storage/user_img/9.jpeg" class="rounded-circle">
                     <div class="h4 ml-3">ゲスト</div>
@@ -21,8 +21,8 @@
         </div>
     </div>
 @else
-    <div class="col-3 mx-auto">
-        <div class="card p-3 d-md-none d-lg-block" id="sidebar">
+    <div class="col-3 mx-auto d-none d-lg-block">
+        <div class="card p-3" id="sidebar">
             <div class="d-flex align-items-center mb-4">
                 <img src="/storage/user_img/{{ Auth::user()->sex }}.jpeg" class="rounded-circle">
                 <div class="ml-3">

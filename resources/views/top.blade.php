@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-8" id="content">
+        <div class="col col-lg-8" id="content">
 
             <form method="get" action="{{ route('top') }}">
                 <div class="form-row">

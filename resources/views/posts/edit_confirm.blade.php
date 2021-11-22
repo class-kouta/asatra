@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-8">
+        <div class="col col-lg-8">
 
             <div class="text-secondary border-bottom pl-3 pb-1 mb-4 h4">
                 入力内容の確認
