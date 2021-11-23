@@ -52,9 +52,36 @@
 
                 <div>
                     <ul class="ml-5 mb-2 p-0 w-75">
-                        <li class="list-unstyled text-truncate mt-2">D : {{ $post->describe }}</li>
-                        <li class="list-unstyled text-truncate mt-2">E : {{ $post->explain }}</li>
-                        <li class="list-unstyled text-truncate mt-2">S : {{ $post->specify }}</li>
+                        <li class="list-unstyled mt-2">
+                            <div class="d-flex row">
+                                <div class="col-2 text-secondary">
+                                    Describe
+                                </div>
+                                <div class="col-10 text-truncate">
+                                    {{ $post->describe }}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-unstyled mt-2">
+                            <div class="d-flex row">
+                                <div class="col-2 text-secondary">
+                                    Explain
+                                </div>
+                                <div class="col-10 text-truncate">
+                                    {{ $post->explain }}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-unstyled mt-2">
+                            <div class="d-flex row">
+                                <div class="col-2 text-secondary">
+                                    Specify
+                                </div>
+                                <div class="col-10 text-truncate">
+                                    {{ $post->specify }}
+                                </div>
+                            </div>
+                        </li>
                         @guest
                             <li class="list-unstyled text-truncate mt-2"><a href="{{ route('posts.show_guest',$post) }}">...続きを読む</a></li>
                         @else
