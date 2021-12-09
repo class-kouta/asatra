@@ -18,7 +18,6 @@
                         </select>
                     </div>
                     <div class="form-group col-md-6">
-                        {{-- <input type="text" class="form-control" id=""> --}}
                         <input type="text" name="search" class="form-control" placeholder="キーワード検索" value="@if (isset($search)) {{ $search }} @endif">
                     </div>
                     <div class="col-md-2">
