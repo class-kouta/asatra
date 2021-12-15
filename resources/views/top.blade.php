@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col col-lg-8" id="content">
-
+            {{-- featureブランチからプッシュ --}}
             <form method="get" action="{{ route('top') }}">
                 <div class="form-row">
                     <div class="form-group col-md-2">
