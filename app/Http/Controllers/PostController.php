@@ -37,7 +37,8 @@ class PostController extends Controller
         $post->explain = $request->input('explain');
         $post->specify = $request->input('specify');
         $post->choose_yes = $request->input('choose_yes');
-        $post->choose_no = $request->input('choose_no');
+        $post->choose_no_reply = $request->input('choose_no_reply');
+        $post->choose_no_answer = $request->input('choose_no_answer');
         $post->note = $request->input('note');
 
         $post->save();
@@ -123,7 +124,8 @@ class PostController extends Controller
         $post->explain = $request->input('explain');
         $post->specify = $request->input('specify');
         $post->choose_yes = $request->input('choose_yes');
-        $post->choose_no = $request->input('choose_no');
+        $post->choose_no_reply = $request->input('choose_no_reply');
+        $post->choose_no_answer = $request->input('choose_no_answer');
         $post->note = $request->input('note');
 
         $post->save();

@@ -114,16 +114,30 @@
 
                         <div class="mb-3">
                             <div class="mb-2 text-secondary border-bottom">
-                                Choose ... ノーに対する回答
+                                Choose ... 想定される否定的な返答
                             </div>
                             <div class="ml-3">
-                                @if(empty($inputs['choose_no']))
+                                @if(empty($inputs['choose_no_reply']))
                                     未設定
                                 @else
-                                    {!! nl2br(e($inputs['choose_no'])) !!}
+                                    {!! nl2br(e($inputs['choose_no_reply'])) !!}
                                 @endif
                             </div>
-                            <input name="choose_no" value="{{ $inputs['choose_no'] }}" type="hidden">
+                            <input name="choose_no_reply" value="{{ $inputs['choose_no_reply'] }}" type="hidden">
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="mb-2 text-secondary border-bottom">
+                                Choose ... 返答に対する回答
+                            </div>
+                            <div class="ml-3">
+                                @if(empty($inputs['choose_no_answer']))
+                                    未設定
+                                @else
+                                    {!! nl2br(e($inputs['choose_no_answer'])) !!}
+                                @endif
+                            </div>
+                            <input name="choose_no_answer" value="{{ $inputs['choose_no_answer'] }}" type="hidden">
                         </div>
 
                         <div class="mb-5">

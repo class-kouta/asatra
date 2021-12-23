@@ -37,7 +37,8 @@ class TopController extends Controller
                     ->orWhere('explain','Like','%'.$value.'%')
                     ->orWhere('specify','Like','%'.$value.'%')
                     ->orWhere('choose_yes','Like','%'.$value.'%')
-                    ->orWhere('choose_no','Like','%'.$value.'%')
+                    ->orWhere('choose_no_reply','Like','%'.$value.'%')
+                    ->orWhere('choose_no_answer','Like','%'.$value.'%')
                     ->orWhere('note','Like','%'.$value.'%');
                 }
             });

@@ -22,7 +22,7 @@
                                 </button>
                             </div>
                             @error('title')
-                                <div class="text-danger ml-3">{{ $message }}</div>
+                                <div class="text-danger mb-2">{{ $message }}</div>
                             @enderror
                             <input type="text" name="title" class="form-control" value="{{ old('title') }}">
                             <div class="collapse" id="collapseTitleExample">
@@ -231,22 +231,49 @@
                         </div>
                     </div>
 
-                    {{-- Choose No --}}
+                    {{-- Choose No Reply--}}
                     <div class="form-group mb-4 px-4">
                         <div class="d-flex align-items-center mb-1">
-                            <div class="text-secondary">Choose ... ノーに対する回答</div>
-                            <button class="btn btn-sm btn-outline-info ml-2" type="button" data-toggle="collapse" data-target="#collapseChooseNoTricks" aria-expanded="false" aria-controls="collapseChooseNoTricks">
-                                コツ
-                            </button>
-                            <button class="btn btn-sm btn-outline-info ml-1" type="button" data-toggle="collapse" data-target="#collapseChooseNoExample" aria-expanded="false" aria-controls="collapseChooseNoExample">
+                            <div class="text-secondary">Choose ... 想定される否定的な返答</div>
+                            <button class="btn btn-sm btn-outline-info ml-1" type="button" data-toggle="collapse" data-target="#collapseChooseNoReplyExample" aria-expanded="false" aria-controls="collapseChooseNoReplyExample">
                                 例
                             </button>
-                            @error('choose_no')
+                            @error('choose_no_reply')
                                 <div class="text-danger ml-3">{{ $message }}</div>
                             @enderror
                         </div>
-                        <textarea name="choose_no" class="form-control mb-2" rows="2">{{ old('choose_no') }}</textarea>
-                        <div class="collapse" id="collapseChooseNoTricks">
+                        <textarea name="choose_no_reply" class="form-control mb-2" rows="1">{{ old('choose_no_reply') }}</textarea>
+
+                        <div class="collapse" id="collapseChooseNoReplyExample">
+                            <div class="card mt-1">
+                                <div class="card-header p-2">
+                                    【 例 】
+                                </div>
+                                <div class="card-body p-2">
+                                    <p class="card-text">
+                                        「俺も疲れてるんだけどなあ。」
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Choose No Answer--}}
+                    <div class="form-group mb-4 px-4">
+                        <div class="d-flex align-items-center mb-1">
+                            <div class="text-secondary">Choose ... 返答に対する回答</div>
+                            <button class="btn btn-sm btn-outline-info ml-2" type="button" data-toggle="collapse" data-target="#collapseChooseNoAnswerTricks" aria-expanded="false" aria-controls="collapseChooseNoAnswerTricks">
+                                コツ
+                            </button>
+                            <button class="btn btn-sm btn-outline-info ml-1" type="button" data-toggle="collapse" data-target="#collapseChooseNoAnswerExample" aria-expanded="false" aria-controls="collapseChooseNoAnswerExample">
+                                例
+                            </button>
+                            @error('choose_no_answer')
+                                <div class="text-danger ml-3">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <textarea name="choose_no_answer" class="form-control mb-2" rows="2">{{ old('choose_no_answer') }}</textarea>
+                        <div class="collapse" id="collapseChooseNoAnswerTricks">
                             <div class="card mt-1">
                                 <div class="card-header p-2">
                                     【 コツ 】
@@ -258,14 +285,14 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="collapse" id="collapseChooseNoExample">
+                        <div class="collapse" id="collapseChooseNoAnswerExample">
                             <div class="card mt-1">
                                 <div class="card-header p-2">
                                     【 例 】
                                 </div>
                                 <div class="card-body p-2">
                                     <p class="card-text">
-                                        「あなたも仕事で仕事で疲れているのは分かるけど、それは私も一緒なの。土曜の午前中じゃなくてもいいから、協力してもらえないかな。」
+                                        「あなたも仕事で疲れているのは分かるけど、それは私も一緒なの。土曜の午前中じゃなくてもいいから、協力してもらえないかな。」
                                     </p>
                                 </div>
                             </div>
