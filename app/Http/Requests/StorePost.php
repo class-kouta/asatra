@@ -29,7 +29,8 @@ class StorePost extends FormRequest
             'explain' => 'required|string|max:200',
             'specify' => 'required|string|max:200',
             'choose_yes' => 'nullable|string|max:200',
-            'choose_no' => 'nullable|string|max:200',
+            'choose_no_reply' => 'nullable|string|max:100',
+            'choose_no_answer' => 'nullable|string|max:200',
             'note' => 'nullable|string|max:200',
         ];
     }
@@ -46,7 +47,8 @@ class StorePost extends FormRequest
             'specify.required' => '入力必須です',
             'specify.max' => '200文字以内で入力してください',
             'choose_yes.max' => '200文字以内で入力してください',
-            'choose_no.max' => '200文字以内で入力してください',
+            'choose_no_reply.max' => '100文字以内で入力してください',
+            'choose_no_answer.max' => '200文字以内で入力してください',
             'note.max' => '200文字以内で入力してください',
         ];
     }

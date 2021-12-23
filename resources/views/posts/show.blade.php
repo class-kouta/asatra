@@ -83,11 +83,21 @@
                     </li>
                     <li class="list-unstyled">
                         <div class="mb-4">
-                            <div class="mb-2 text-secondary border-bottom">Choose ... ノーに対する回答</div>
-                            @if(empty($post->choose_no))
+                            <div class="mb-2 text-secondary border-bottom">Choose ... 想定される否定的な返答</div>
+                            @if(empty($post->choose_no_reply))
                                 <div class="ml-3 text-secondary">未設定</div>
                             @else
-                                <div class="ml-3">{!! nl2br(e($post->choose_no)) !!}</div>
+                                <div class="ml-3">{!! nl2br(e($post->choose_no_reply)) !!}</div>
+                            @endif
+                        </div>
+                    </li>
+                    <li class="list-unstyled">
+                        <div class="mb-4">
+                            <div class="mb-2 text-secondary border-bottom">Choose ... 返答に対する回答</div>
+                            @if(empty($post->choose_no_answer))
+                                <div class="ml-3 text-secondary">未設定</div>
+                            @else
+                                <div class="ml-3">{!! nl2br(e($post->choose_no_answer)) !!}</div>
                             @endif
                         </div>
                     </li>

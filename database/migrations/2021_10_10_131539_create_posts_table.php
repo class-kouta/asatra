@@ -22,7 +22,8 @@ class CreatePostsTable extends Migration
             $table->string('explain');
             $table->string('specify');
             $table->string('choose_yes')->nullable();
-            $table->string('choose_no')->nullable();
+            $table->string('choose_no_reply')->nullable();
+            $table->string('choose_no_answer')->nullable();
             $table->text('note')->nullable();
             $table->timestamps();
 
