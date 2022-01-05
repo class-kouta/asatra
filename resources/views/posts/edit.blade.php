@@ -38,7 +38,7 @@
                         </div>
                         <div class="form-group col-4 mb-0">
                             <div class="text-secondary">カテゴリ</div>
-                            <select name="categoryId" class="form-control">
+                            <select name="category_id" class="form-control">
                                 @if(!isset($post->category->id))
                                     <option class="form-control" value="" selected>未選択</option>
                                     <option class="form-control" value="1" >結婚</option>

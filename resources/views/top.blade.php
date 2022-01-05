@@ -8,10 +8,10 @@
             <form method="get" action="{{ route('top') }}">
                 <div class="form-row">
                     <div class="form-group col-md-2">
-                        <select name="categoryId" class="form-control">
+                        <select name="category_id" class="form-control">
                             <option value="">未選択</option>
                             @foreach($categories as $id => $category_name)
-                                <option value="{{ $id }}" @if($categoryId === "$id") selected @endif>
+                                <option value="{{ $id }}" @if($category_id === "$id") selected @endif>
                                     {{ $category_name }}
                                 </option>
                             @endforeach

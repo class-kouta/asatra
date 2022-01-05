@@ -6,7 +6,7 @@
         <div class="col col-lg-8" id="content">
 
             <div class="text-secondary border-bottom pl-3 pb-1 mb-5 h5">
-                {{ $pageTitle }}
+                {{ $page_title }}
             </div>
 
                 @foreach ($posts as $post)

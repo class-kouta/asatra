@@ -51,7 +51,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row mb-0">
+                <div class="form-group row mb-3">
                     <div class="col-md-8 offset-md-4">
                         <button type="submit" class="btn btn-primary">
                             ログイン
@@ -63,6 +63,13 @@
                                 パスワードを忘れた方へ
                             </a>
                         @endif
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 offset-md-4">
+                        <div>テストユーザー</div>
+                        <div>メールアドレス：test@gmail.com</div>
+                        <div>　　パスワード：test</div>
                     </div>
                 </div>
             </form>

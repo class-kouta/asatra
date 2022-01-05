@@ -8,21 +8,18 @@ use App\Models\Category;
 
 class TopController extends Controller
 {
-    public function index(Request $request)
+    public function index(Category $category, Request $request)
     {
-        // $posts = Post::latest()->paginate(10);
-
         $search = $request->input('search');
-        $categoryId = $request->input('categoryId');
+        $category_id = $request->input('category_id');
 
         $query = Post::query();
 
-        $category = new Category;
         $categories = $category->getLists();
 
         // カテゴリ検索
-        if($categoryId){
-            $query->where('category_id', $categoryId);
+        if($category_id){
+            $query->where('category_id', $category_id);
         }
 
         // キーワード検索
@@ -46,7 +43,7 @@ class TopController extends Controller
 
         $posts = $query->latest()->paginate(10);
 
-        return view('top',compact('posts','search','categoryId','categories'));
+        return view('top',compact('posts','search','category_id','categories'));
     }
 
     private function escape(string $value)

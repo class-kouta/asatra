@@ -38,7 +38,7 @@
                         </div>
                         <div class="form-group col-4 mb-0">
                             <div class="text-secondary mb-2">カテゴリ</div>
-                            <select name="categoryId" class="form-control">
+                            <select name="category_id" class="form-control">
                                 <option class="form-control" value="">未選択</option>
                                 @foreach($categories as $id => $category_name)
                                     <option value="{{ $id }}">

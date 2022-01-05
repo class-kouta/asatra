@@ -26,12 +26,10 @@ class PostController extends Controller
         return view('posts.create_confirm',compact('inputs'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
-        $post = new Post;
-
         $post->user_id = Auth::id();
-        $post->category_id = $request->input('categoryId');
+        $post->category_id = $request->input('category_id');
         $post->title = $request->input('title');
         $post->describe = $request->input('describe');
         $post->explain = $request->input('explain');
@@ -48,7 +46,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        $nice = Nice::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
+        $nice = Nice::where('post_id', $post->id)->where('user_id', Auth::id())->first();
 
         return view('posts.show',compact('post','nice'));
     }
@@ -60,20 +58,19 @@ class PostController extends Controller
 
     public function showMyPosts()
     {
-        $id = Auth::id();
-        $posts = Post::where('user_id',$id)->latest()->get();
-        $pageTitle = '自分の投稿';
+        $posts = Post::where('user_id', Auth::id())->latest()->get();
+        $page_title = '自分の投稿';
 
-        return view('profile.myposts',compact('posts','pageTitle'));
+        return view('profile.myposts',compact('posts','page_title'));
     }
 
     public function showMyNicePosts()
     {
         $user = Auth::user();
         $posts = $user->joinNicesPosts()->latest()->get();
-        $pageTitle = 'いいねした投稿';
+        $page_title = 'いいねした投稿';
 
-        return view('profile.myposts',compact('posts','pageTitle'));
+        return view('profile.myposts',compact('posts','page_title'));
     }
 
     public function showMyCommentPosts()
@@ -91,16 +88,14 @@ class PostController extends Controller
             return $uniqueArray;
         }
         $posts = myArrayUnique($posts);
-        $pageTitle = 'コメントした投稿';
+        $page_title = 'コメントした投稿';
 
-        return view('profile.myposts',compact('posts','pageTitle'));
+        return view('profile.myposts',compact('posts','page_title'));
     }
 
-    public function edit(Post $post)
+    public function edit(Category $category, Post $post)
     {
         $this->authorize('edit', $post);
-
-        $category = new Category;
         $categories = $category->getLists();
 
         return view('posts.edit', compact('post','categories'));
@@ -118,7 +113,7 @@ class PostController extends Controller
         $this->authorize('update', $post);
 
         $post->user_id = Auth::id();
-        $post->category_id = $request->input('categoryId');
+        $post->category_id = $request->input('category_id');
         $post->title = $request->input('title');
         $post->describe = $request->input('describe');
         $post->explain = $request->input('explain');
