@@ -25,10 +25,9 @@ class TopController extends Controller
         // キーワード検索
         if($search){
             $search = $this->escape($search);
-            $spaceConversion = mb_convert_kana($search, 's');
-            $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
-            $query->where(function($query) use ($wordArraySearched){
-                foreach($wordArraySearched as $value){
+            $word_array_searched = preg_split('/[\s　,]+/', $search, -1, PREG_SPLIT_NO_EMPTY);
+            $query->where(function($query) use ($word_array_searched){
+                foreach($word_array_searched as $value){
                     $query->where('title','Like','%'.$value.'%')
                     ->orWhere('describe','Like','%'.$value.'%')
                     ->orWhere('explain','Like','%'.$value.'%')
