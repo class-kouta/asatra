@@ -29,17 +29,7 @@ class PostController extends Controller
     public function store(Request $request, Post $post)
     {
         $post->user_id = Auth::id();
-        $post->category_id = $request->input('category_id');
-        $post->title = $request->input('title');
-        $post->describe = $request->input('describe');
-        $post->explain = $request->input('explain');
-        $post->specify = $request->input('specify');
-        $post->choose_yes = $request->input('choose_yes');
-        $post->choose_no_reply = $request->input('choose_no_reply');
-        $post->choose_no_answer = $request->input('choose_no_answer');
-        $post->note = $request->input('note');
-
-        $post->save();
+        $post->fill($request->all())->save();
 
         return $this->showMyPosts();
     }
@@ -111,19 +101,7 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $this->authorize('update', $post);
-
-        $post->user_id = Auth::id();
-        $post->category_id = $request->input('category_id');
-        $post->title = $request->input('title');
-        $post->describe = $request->input('describe');
-        $post->explain = $request->input('explain');
-        $post->specify = $request->input('specify');
-        $post->choose_yes = $request->input('choose_yes');
-        $post->choose_no_reply = $request->input('choose_no_reply');
-        $post->choose_no_answer = $request->input('choose_no_answer');
-        $post->note = $request->input('note');
-
-        $post->save();
+        $post->fill($request->all())->save();
 
         return $this->showMyPosts();
     }
