@@ -24,7 +24,7 @@ class CreatePostsTable extends Migration
             $table->string('choose_yes')->nullable();
             $table->string('choose_no_reply')->nullable();
             $table->string('choose_no_answer')->nullable();
-            $table->text('note')->nullable();
+            $table->string('note')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
