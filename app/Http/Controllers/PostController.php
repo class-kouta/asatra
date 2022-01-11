@@ -11,19 +11,20 @@ use App\Http\Requests\StorePost;
 
 class PostController extends Controller
 {
-    public function create()
+    public function create(Category $category )
     {
-        $category = new Category;
         $categories = $category->getLists();
+        $page = 'create';
 
-        return view('posts.create',compact('categories'));
+        return view('posts.create',compact('categories','page'));
     }
 
     public function createConfirm(StorePost $request)
     {
         $inputs = $request->all();
+        $page = 'create';
 
-        return view('posts.create_confirm',compact('inputs'));
+        return view('posts.create_confirm',compact('inputs','page'));
     }
 
     public function store(Request $request, Post $post)
@@ -87,15 +88,17 @@ class PostController extends Controller
     {
         $this->authorize('edit', $post);
         $categories = $category->getLists();
+        $page = 'edit';
 
-        return view('posts.edit', compact('post','categories'));
+        return view('posts.edit', compact('post','categories','page'));
     }
 
     public function editConfirm(StorePost $request, Post $post)
     {
         $inputs = $request->all();
+        $page = 'edit';
 
-        return view('posts.edit_confirm', compact('inputs','post'));
+        return view('posts.edit_confirm', compact('inputs','post','page'));
     }
 
     public function update(Request $request, Post $post)
