@@ -13,40 +13,48 @@
 
 Route::get('/', 'TopController@index')->name('top');
 
-Route::get('/footer/faq/', 'FooterController@faqTop')->name('footer.faq');
-Route::get('/footer/faq/about_withdraw', 'FooterController@faqAboutWithdraw')->name('footer.faq.about_withdraw');
+Auth::routes();
+
+Route::get('/posts/show_guest/{post}','PostController@showGuest')->name('posts.show_guest');
+
+Route::group(['prefix' => 'posts','middleware'=>'auth'],function(){
+    Route::get('create', 'PostController@create')->name('posts.create');
+    Route::post('create_confirm', 'PostController@createConfirm')->name('posts.create_confirm');
+    Route::post('store', 'PostController@store')->name('posts.store');
+    Route::get('show/{post}','PostController@show')->name('posts.show');
+    Route::get('edit/{post}','PostController@edit')->name('posts.edit');
+    Route::post('edit_confirm/{post}','PostController@editConfirm')->name('posts.edit_confirm');
+    Route::post('update/{post}','PostController@update')->name('posts.update');
+    Route::post('destroy/{post}','PostController@destroy')->name('posts.destroy');
+
+    Route::post('/{post}/comments','CommentController@store')->name('comments.store');
+    Route::post('/{post}/comments/{comment}','CommentController@destroy')->name('comments.destroy');
+
+    Route::get('/nice/{post}', 'NiceController@nice')->name('nice');
+    Route::get('/unnice/{post}', 'NiceController@unnice')->name('unnice');
+});
+
+Route::group(['prefix' => 'profile','middleware'=>'auth'],function(){
+    Route::get('myposts', 'PostController@showMyPosts')->name('profile.myposts');
+    Route::get('myniceposts', 'PostController@showMyNicePosts')->name('profile.myniceposts');
+    Route::get('mycommentposts', 'PostController@showMyCommentPosts')->name('profile.mycommentposts');
+
+    Route::get('edit', 'ProfileController@edit')->name('profile.edit');
+    Route::post('update', 'ProfileController@update')->name('profile.update');
+    Route::get('withdraw_confirm','ProfileController@withdrawConfirm')->name('profile.withdraw_confirm');
+    Route::post('withdraw/{id}','ProfileController@withdraw')->name('profile.withdraw');
+});
+
+Route::group(['prefix' => 'footer'],function(){
+    Route::get('faq',function(){
+        return view('footer.faq');
+    })->name('footer.faq');
+
+    Route::get('/faq/about_withdraw',function(){
+        return view('footer.faq.about_withdraw');
+    })->name('footer.faq.about_withdraw');
+});
 
 Route::get('nopage',function(){
     return view('nopage');
 })->name('nopage');
-
-Auth::routes();
-
-Route::get('{post}','PostController@showGuest')->name('posts.show_guest');
-
-Route::group(['prefix' => '','middleware'=>'auth'],function(){
-    Route::get('/profile/myposts', 'PostController@showMyPosts')->name('profile.myposts');
-    Route::get('/profile/myniceposts', 'PostController@showMyNicePosts')->name('profile.myniceposts');
-    Route::get('/profile/mycommentposts', 'PostController@showMyCommentPosts')->name('profile.mycommentposts');
-    Route::get('/posts/create', 'PostController@create')->name('posts.create');
-    Route::post('/posts/create_confirm', 'PostController@createConfirm')->name('posts.create_confirm');
-    Route::post('/posts/store', 'PostController@store')->name('posts.store');
-    Route::get('show/{post}','PostController@show')->name('posts.show');
-    Route::get('/posts/edit/{post}','PostController@edit')->name('posts.edit');
-    Route::post('/posts/edit_confirm/{post}','PostController@editConfirm')->name('posts.edit_confirm');
-    Route::post('/posts/update/{post}','PostController@update')->name('posts.update');
-    Route::post('/posts/destroy/{post}','PostController@destroy')->name('posts.destroy');
-
-    Route::post('/posts/{post}/comments','CommentController@store')->name('comments.store');
-    Route::post('/posts/{post}/comments/{comment}','CommentController@destroy')->name('comments.destroy');
-
-    Route::get('/posts/nice/{post}', 'NiceController@nice')->name('nice');
-    Route::get('/posts/unnice/{post}', 'NiceController@unnice')->name('unnice');
-
-    Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
-    Route::post('/profile/update', 'ProfileController@update')->name('profile.update');
-
-    Route::get('/profile/withdraw_confirm','ProfileController@withdrawConfirm')->name('profile.withdraw_confirm');
-    Route::post('/profile/withdraw/{id}','ProfileController@withdraw')->name('profile.withdraw');
-
-});
