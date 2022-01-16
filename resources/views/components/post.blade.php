@@ -8,11 +8,7 @@
     @endif
     </div>
 
-    @if($page === 'create')
-        <form action="{{ route('posts.create_confirm') }}" method="post">
-    @elseif($page === 'edit')
-        <form action="{{ route('posts.edit_confirm',$post) }}" method="post">
-    @endif
+    <form action="{{ $page === 'create' ? route('posts.create_confirm') : route('posts.edit_confirm',$post)}}" method="post">
         @csrf
             {{-- タイトル・カテゴリ --}}
             <div class="d-flex mb-4 px-4 row">
@@ -27,11 +23,7 @@
                     @error('title')
                         <div class="text-danger mb-2">{{ $message }}</div>
                     @enderror
-                    @if($page === 'create')
-                        <input type="text" name="title" class="form-control" value="{{ old('title') }}">
-                    @elseif($page === 'edit')
-                        <input type="text" name="title" class="form-control" value="{{ $post->title }}">
-                    @endif
+                    <input type="text" name="title" class="form-control" value="{{ old('title', optional($post)->title) }}">
                     <div class="collapse" id="collapseTitleExample">
                         <div class="card mt-1">
                             <div class="card-header p-2">
@@ -46,42 +38,12 @@
                 <div class="form-group col-4 mb-0">
                     <div class="text-secondary mb-2">カテゴリ</div>
                     <select name="category_id" class="form-control">
-                        @if($page === 'create')
                             <option class="form-control" value="">未選択</option>
                             @foreach($categories as $id => $category_name)
-                                <option value="{{ $id }}">
+                                <option value="{{ $id }}" @if(optional($post)->category_id == $id) selected @endif>
                                     {{ $category_name }}
                                 </option>
                             @endforeach
-                        @elseif($page === 'edit')
-                            @if(!isset($post->category->id))
-                                <option class="form-control" value="" selected>未選択</option>
-                                <option class="form-control" value="1" >結婚</option>
-                                <option class="form-control" value="2" >育児・家事</option>
-                                <option class="form-control" value="3" >お金</option>
-                                <option class="form-control" value="4" >人間関係</option>
-                                <option class="form-control" value="5" >性生活</option>
-                                <option class="form-control" value="6" >コミュニケーション</option>
-                                <option class="form-control" value="7" >習慣</option>
-                                <option class="form-control" value="8" >仕事</option>
-                                <option class="form-control" value="9" >健康</option>
-                                <option class="form-control" value="10">モラハラ</option>
-                                <option class="form-control" value="11">その他</option>
-                            @else
-                                <option class="form-control" value="">未選択</option>
-                                <option class="form-control" value="1" {{ $post->category->id == "1" ? 'selected' : '' }}>結婚</option>
-                                <option class="form-control" value="2" {{ $post->category->id == "2" ? 'selected' : '' }}>育児・家事</option>
-                                <option class="form-control" value="3" {{ $post->category->id == "3" ? 'selected' : '' }}>お金</option>
-                                <option class="form-control" value="4" {{ $post->category->id == "4" ? 'selected' : '' }}>人間関係</option>
-                                <option class="form-control" value="5" {{ $post->category->id == "5" ? 'selected' : '' }}>性生活</option>
-                                <option class="form-control" value="6" {{ $post->category->id == "6" ? 'selected' : '' }}>コミュニケーション</option>
-                                <option class="form-control" value="7" {{ $post->category->id == "7" ? 'selected' : '' }}>習慣</option>
-                                <option class="form-control" value="8" {{ $post->category->id == "8" ? 'selected' : '' }}>仕事</option>
-                                <option class="form-control" value="9" {{ $post->category->id == "9" ? 'selected' : '' }}>健康</option>
-                                <option class="form-control" value="10" {{ $post->category->id == "10" ? 'selected' : '' }}>モラハラ</option>
-                                <option class="form-control" value="11" {{ $post->category->id == "11" ? 'selected' : '' }}>その他</option>
-                            @endif
-                        @endif
                     </select>
                 </div>
             </div>
@@ -101,11 +63,7 @@
                 @error('describe')
                     <div class="text-danger mb-2">{{ $message }}</div>
                 @enderror
-                @if($page === 'create')
-                    <textarea name="describe" class="form-control mb-2" rows="3">{{ old('describe') }}</textarea>
-                @elseif($page === 'edit')
-                    <textarea name="describe" class="form-control mb-2" rows="3">{{ $post->describe }}</textarea>
-                @endif
+                <textarea name="describe" class="form-control mb-2" rows="3">{{ old('describe', optional($post)->describe) }}</textarea>
                 <div class="collapse" id="collapseDescribeTricks">
                     <div class="card mt-1">
                         <div class="card-header p-2">
@@ -150,11 +108,7 @@
                 @error('explain')
                     <div class="text-danger  mb-2">{{ $message }}</div>
                 @enderror
-                @if($page === 'create')
-                    <textarea name="explain" class="form-control mb-2" rows="3">{{ old('explain') }}</textarea>
-                @elseif($page === 'edit')
-                    <textarea name="explain" class="form-control mb-2" rows="3">{{ $post->explain }}</textarea>
-                @endif
+                <textarea name="explain" class="form-control mb-2" rows="3">{{ old('explain', optional($post)->explain) }}</textarea>
                 <div class="collapse" id="collapseExplainTricks">
                     <div class="card mt-1">
                         <div class="card-header p-2">
@@ -202,11 +156,7 @@
                 @error('specify')
                     <div class="text-danger  mb-2">{{ $message }}</div>
                 @enderror
-                @if($page === 'create')
-                    <textarea name="specify" class="form-control mb-2" rows="3">{{ old('specify') }}</textarea>
-                @elseif($page === 'edit')
-                    <textarea name="specify" class="form-control mb-2" rows="3">{{ $post->specify }}</textarea>
-                @endif
+                <textarea name="specify" class="form-control mb-2" rows="3">{{ old('specify', optional($post)->specify) }}</textarea>
                 <div class="collapse" id="collapseSpecifyTricks">
                     <div class="card mt-1">
                         <div class="card-header p-2">
@@ -254,7 +204,7 @@
                     @enderror
                 </div>
                 @if($page === 'create')
-                    <textarea name="choose_yes" class="form-control mb-2" rows="2">{{ old('choose_yes') }}</textarea>
+                    <textarea name="choose_yes" class="form-control mb-2" rows="2">{{ old('choose_yes', optional($post)->choose_yes) }}</textarea>
                 @elseif($page === 'edit')
                     <textarea name="choose_yes" class="form-control mb-2" rows="2">{{ $post->choose_yes }}</textarea>
                 @endif
@@ -295,11 +245,7 @@
                         <div class="text-danger ml-3">{{ $message }}</div>
                     @enderror
                 </div>
-                @if($page === 'create')
-                    <textarea name="choose_no_reply" class="form-control mb-2" rows="1">{{ old('choose_no_reply') }}</textarea>
-                @elseif($page === 'edit')
-                    <textarea name="choose_no_reply" class="form-control mb-2" rows="1">{{$post->choose_no_reply }}</textarea>
-                @endif
+                <textarea name="choose_no_reply" class="form-control mb-2" rows="1">{{ old('choose_no_reply', optional($post)->choose_no_reply ) }}</textarea>
                 <div class="collapse" id="collapseChooseNoReplyExample">
                     <div class="card mt-1">
                         <div class="card-header p-2">
@@ -328,11 +274,7 @@
                         <div class="text-danger ml-3">{{ $message }}</div>
                     @enderror
                 </div>
-                @if($page === 'create')
-                    <textarea name="choose_no_answer" class="form-control mb-2" rows="2">{{ old('choose_no_answer') }}</textarea>
-                @elseif($page === 'edit')
-                    <textarea name="choose_no_answer" class="form-control mb-2" rows="2">{{$post->choose_no_answer }}</textarea>
-                @endif
+                <textarea name="choose_no_answer" class="form-control mb-2" rows="2">{{ old('choose_no_answer', optional($post)->choose_no_answer) }}</textarea>
                 <div class="collapse" id="collapseChooseNoAnswerTricks">
                     <div class="card mt-1">
                         <div class="card-header p-2">
@@ -367,11 +309,7 @@
                         <div class="text-danger ml-3">{{ $message }}</div>
                     @enderror
                 </div>
-                @if($page === 'create')
-                    <textarea name="note" class="form-control" rows="3">{{ old('note') }}</textarea>
-                @elseif($page === 'edit')
-                    <textarea name="note" class="form-control" rows="3">{{ $post->note }}</textarea>
-                @endif
+                <textarea name="note" class="form-control" rows="3">{{ old('note', optional($post)->note) }}</textarea>
             </div>
 
 
