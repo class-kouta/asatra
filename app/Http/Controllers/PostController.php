@@ -71,6 +71,8 @@ class PostController extends Controller
             }
             $posts = myArrayUnique($posts);
             $page_title = 'コメントした投稿';
+        }else{
+            abort(404);
         }
 
         return view('profile.myposts',compact('posts','page_title'));
