@@ -32,7 +32,7 @@ class PostController extends Controller
         $post->user_id = Auth::id();
         $post->fill($request->all())->save();
 
-        return $this->showMyPosts();
+        return $this->showMyPosts(1);
     }
 
     public function show(Post $post)
@@ -47,39 +47,33 @@ class PostController extends Controller
         return view('posts.show', compact('post'));
     }
 
-    public function showMyPosts()
+    public function showMyPosts(int $page)
     {
-        $posts = Post::where('user_id', Auth::id())->latest()->get();
-        $page_title = '自分の投稿';
+        if($page === 1){
+            $posts = Post::where('user_id', Auth::id())->latest()->get();
+            $page_title = '自分の投稿';
+        }elseif($page === 2){
+            $user = Auth::user();
+            $posts = $user->joinNicesPosts()->latest()->get();
+            $page_title = 'いいねした投稿';
+        }elseif($page === 3){
+            $user = Auth::user();
+            $posts = $user->joinCommentsPosts()->latest()->get();
 
-        return view('profile.myposts',compact('posts','page_title'));
-    }
-
-    public function showMyNicePosts()
-    {
-        $user = Auth::user();
-        $posts = $user->joinNicesPosts()->latest()->get();
-        $page_title = 'いいねした投稿';
-
-        return view('profile.myposts',compact('posts','page_title'));
-    }
-
-    public function showMyCommentPosts()
-    {
-        $user = Auth::user();
-        $posts = $user->joinCommentsPosts()->latest()->get();
-
-        function myArrayUnique($array) {
-            $uniqueArray = [];
-            foreach($array as $key => $value) {
-                if (!in_array($value, $uniqueArray)) {
-                    $uniqueArray[$key] = $value;
+            function myArrayUnique($array) {
+                $uniqueArray = [];
+                foreach($array as $key => $value) {
+                    if (!in_array($value, $uniqueArray)) {
+                        $uniqueArray[$key] = $value;
+                    }
                 }
+                return $uniqueArray;
             }
-            return $uniqueArray;
+            $posts = myArrayUnique($posts);
+            $page_title = 'コメントした投稿';
+        }else{
+            abort(404);
         }
-        $posts = myArrayUnique($posts);
-        $page_title = 'コメントした投稿';
 
         return view('profile.myposts',compact('posts','page_title'));
     }
@@ -106,7 +100,7 @@ class PostController extends Controller
         $this->authorize('update', $post);
         $post->fill($request->all())->save();
 
-        return $this->showMyPosts();
+        return $this->showMyPosts(1);
     }
 
     public function destroy(Post $post)
@@ -115,7 +109,7 @@ class PostController extends Controller
 
         $post->delete();
 
-        return $this->showMyPosts();
+        return $this->showMyPosts(1);
     }
 
 }

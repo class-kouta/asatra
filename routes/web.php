@@ -35,10 +35,7 @@ Route::group(['prefix' => 'posts','middleware'=>'auth'],function(){
 });
 
 Route::group(['prefix' => 'profile','middleware'=>'auth'],function(){
-    Route::get('myposts', 'PostController@showMyPosts')->name('profile.myposts');
-    Route::get('myniceposts', 'PostController@showMyNicePosts')->name('profile.myniceposts');
-    Route::get('mycommentposts', 'PostController@showMyCommentPosts')->name('profile.mycommentposts');
-
+    Route::get('myposts/{page}', 'PostController@showMyPosts')->name('profile.myposts');
     Route::get('edit', 'ProfileController@edit')->name('profile.edit');
     Route::post('update', 'ProfileController@update')->name('profile.update');
     Route::get('withdraw_confirm','ProfileController@withdrawConfirm')->name('profile.withdraw_confirm');
