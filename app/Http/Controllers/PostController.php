@@ -58,18 +58,11 @@ class PostController extends Controller
             $page_title = 'いいねした投稿';
         }elseif($page === 3){
             $user = Auth::user();
-            $posts = $user->joinCommentsPosts()->latest()->get();
-
-            function myArrayUnique($array) {
-                $uniqueArray = [];
-                foreach($array as $key => $value) {
-                    if (!in_array($value, $uniqueArray)) {
-                        $uniqueArray[$key] = $value;
-                    }
-                }
-                return $uniqueArray;
-            }
-            $posts = myArrayUnique($posts);
+            $posts = $user
+            ->joinCommentsPosts()
+            ->distinct()
+            ->latest()
+            ->get();
             $page_title = 'コメントした投稿';
         }else{
             abort(404);
