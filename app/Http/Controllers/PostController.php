@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Nice;
+use App\Models\Comment;
 use App\Models\Category;
 use App\Http\Requests\StorePost;
 
@@ -50,25 +51,26 @@ class PostController extends Controller
     public function showMyPosts(int $page)
     {
         if($page === 1){
-            $posts = Post::where('user_id', Auth::id())->latest()->get();
             $page_title = '自分の投稿';
+            $posts = Post::where('user_id', Auth::id())
+                ->latest()->get();
         }elseif($page === 2){
-            $user = Auth::user();
-            $posts = $user->joinNicesPosts()->latest()->get();
             $page_title = 'いいねした投稿';
+            $posts = Post::whereIn('id', Nice::select('post_id')
+                ->where('user_id', Auth::id())
+            )
+            ->latest()->get();
         }elseif($page === 3){
-            $user = Auth::user();
-            $posts = $user
-            ->joinCommentsPosts()
-            ->distinct()
-            ->latest()
-            ->get();
             $page_title = 'コメントした投稿';
+            $posts = Post::whereIn('id', Comment::select('post_id')
+                ->where('user_id', Auth::id())
+            )
+            ->latest()->get();
         }else{
             abort(404);
         }
 
-        return view('profile.myposts',compact('posts','page_title'));
+        return view('profile.myposts',compact('page_title','posts'));
     }
 
     public function edit(Category $category, Post $post)
