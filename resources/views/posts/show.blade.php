@@ -34,7 +34,7 @@
                         @if(!isset($post->category->category_name))
                             <h4 class="ml-3"><span class="badge badge-secondary badge-pill font-weight-light">カテゴリ未設定</span></h4>
                         @else
-                            <h4 class="ml-3"><span class="badge badge-info badge-pill font-weight-light text-light">{{ $post->category->category_name }}</span></h4>
+                            <h4 class="ml-3"><a href="/?category_id={{ $post->category->id }}" class="badge badge-info badge-pill font-weight-light text-light">{{ $post->category->category_name }}</a></h4>
                         @endif
                         <div class="d-flex">
                             @can('edit',$post)
