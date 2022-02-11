@@ -44,7 +44,7 @@
                     @if(!isset($post->category->category_name))
                         <span class="ml-3 h4"><span class="badge badge-secondary badge-pill font-weight-light">カテゴリ未設定</span></span>
                     @else
-                        <span class="ml-3 h4"><a href="{{ route('top') }}?category_id={{ $post->category->id }}" class="badge badge-info badge-pill font-weight-light text-light">{{ $post->category->category_name }}</a></span>
+                        <span class="ml-3 h4"><a href="{{ route('top', ['category_id' =>  $post->category->id ])}}" class="badge badge-info badge-pill font-weight-light text-light">{{ $post->category->category_name }}</a></span>
                     @endif
 
                 </div>
