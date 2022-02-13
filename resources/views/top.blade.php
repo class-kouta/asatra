@@ -36,15 +36,15 @@
                 @endif
 
                     @guest
-                        <h5 class="ml-3 text-truncate"><a href="{{ route('posts.show_guest',$post) }}" class="text-reset">{{ $post->title }}</a></h5>
+                        <span class="ml-3 h5 text-truncate"><a href="{{ route('posts.show_guest',$post) }}" class="text-reset">{{ $post->title }}</a></span>
                     @else
-                        <h5 class="ml-3 text-truncate"><a href="{{ route('posts.show',$post) }}" class="text-reset">{{ $post->title }}</a></h5>
+                        <span class="ml-3 h5 text-truncate"><a href="{{ route('posts.show',$post) }}" class="text-reset">{{ $post->title }}</a></span>
                     @endguest
 
                     @if(!isset($post->category->category_name))
-                        <h4 class="ml-3"><span class="badge badge-secondary badge-pill font-weight-light">カテゴリ未設定</span></h4>
+                        <span class="ml-3 h4"><span class="badge badge-secondary badge-pill font-weight-light">カテゴリ未設定</span></span>
                     @else
-                        <h4 class="ml-3"><span class="badge badge-info badge-pill font-weight-light text-light">{{ $post->category->category_name }}</span></h4>
+                        <span class="ml-3 h4"><a href="{{ route('top', ['category_id' =>  $post->category->id ])}}" class="badge badge-info badge-pill font-weight-light text-light">{{ $post->category->category_name }}</a></span>
                     @endif
 
                 </div>

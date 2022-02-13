@@ -14,7 +14,6 @@ class TopController extends Controller
         $category_id = $request->input('category_id');
 
         $query = Post::query();
-
         $categories = $category->getLists();
 
         // カテゴリ検索

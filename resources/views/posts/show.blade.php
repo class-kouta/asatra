@@ -32,9 +32,9 @@
                 @endif
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         @if(!isset($post->category->category_name))
-                            <h4 class="ml-3"><span class="badge badge-secondary badge-pill font-weight-light">カテゴリ未設定</span></h4>
+                            <span class="ml-3 h4"><span class="badge badge-secondary badge-pill font-weight-light">カテゴリ未設定</span></span>
                         @else
-                            <h4 class="ml-3"><span class="badge badge-info badge-pill font-weight-light text-light">{{ $post->category->category_name }}</span></h4>
+                            <span class="ml-3 h4"><a href="{{ route('top', ['category_id' => $post->category->id]) }}" class="badge badge-info badge-pill font-weight-light text-light">{{ $post->category->category_name }}</a></span>
                         @endif
                         <div class="d-flex">
                             @can('edit',$post)
@@ -49,7 +49,7 @@
                             @endcan
                         </div>
                     </div>
-                    <h4 class="ml-3">{{ $post->title }}</h4>
+                    <span class="ml-3 h4">{{ $post->title }}</span>
                 </div>
 
                 <ul>
