@@ -95,7 +95,7 @@ class PostController extends Controller
         $this->authorize('update', $post);
         $post->fill($request->all())->save();
 
-        return $this->showMyPosts(1);
+        return redirect()->route('profile.myposts',1);
     }
 
     public function destroy(Post $post)
@@ -104,7 +104,7 @@ class PostController extends Controller
 
         $post->delete();
 
-        return $this->showMyPosts(1);
+        return redirect()->route('profile.myposts',1);
     }
 
 }
