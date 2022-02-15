@@ -33,7 +33,8 @@ class PostController extends Controller
         $post->user_id = Auth::id();
         $post->fill($request->all())->save();
 
-        return $this->showMyPosts(1);
+        $request->session()->regenerateToken();
+        return redirect()->route('profile.myposts',1);
     }
 
     public function show(Post $post)
