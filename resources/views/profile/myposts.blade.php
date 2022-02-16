@@ -72,6 +72,11 @@
                                 <div class="ml-3">
                                     コメント：{{ $post->comments->count() }}
                                 </div>
+                                @if($post->created_at)
+                                    <div class="ml-4 text-secondary">
+                                        {{ $post->created_at->format('Y/n/j H:i') }}
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
