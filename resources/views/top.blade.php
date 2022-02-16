@@ -100,7 +100,7 @@
 
             @endforeach
 
-            <div class="mt-5">{{ $posts->links() }}</div>
+            <div class="mt-5">{{ $posts->appends(request()->query())->links() }}</div>
 
             @if(empty($posts[0]))
                 検索に一致する投稿はございません。
