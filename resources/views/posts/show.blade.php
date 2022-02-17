@@ -49,7 +49,14 @@
                             @endcan
                         </div>
                     </div>
-                    <span class="ml-3 h4">{{ $post->title }}</span>
+                    <div class="d-flex justify-content-between ">
+                        <span class="ml-3 mb-0 h4">{{ $post->title }}</span>
+                        @if($post->created_at)
+                            <div class="text-secondary">
+                                {{ $post->created_at->format('Y/n/j H:i') }}
+                            </div>
+                        @endif
+                    </div>
                 </div>
 
                 <ul>
@@ -177,7 +184,12 @@
                     </div>
                     <div>
                         <div class="d-flex align-items-center ml-2 mb-2">
-                            <div>{{ $comment->user->name }}</div>
+                            <div>
+                                {{ $comment->user->name }}
+                            </div>
+                            <div class="ml-3 text-secondary">
+                                {{ $comment->created_at->format('Y/n/j H:i') }}
+                            </div>
                             <div>
                                 @if( $post->user_id === Auth::id() || $comment->user_id === Auth::id() )
                                 {{-- コメント削除 --}}
