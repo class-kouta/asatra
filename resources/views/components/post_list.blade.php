@@ -1,24 +1,26 @@
 @foreach ($posts as $post)
-<div class="mx-4 mb-5">
-    {{-- タイトル・カテゴリ --}}
     @if($post->user->sex === (string)1)
-        <div class="d-flex align-items-center border-bottom border-primary">
+        <div class="d-flex align-items-center mt-5 border-bottom border-primary">
     @elseif($post->user->sex === (string)2)
-        <div class="d-flex align-items-center border-bottom border-danger">
+        <div class="d-flex align-items-center mt-5 border-bottom border-danger">
     @else
-        <div class="d-flex align-items-center border-bottom border-dark">
+        <div class="d-flex align-items-center mt-5 border-bottom border-dark">
     @endif
 
-    <h5 class="ml-3 text-truncate"><a href="{{ route('posts.show',$post) }}" class="text-reset">{{ $post->title }}</a></h5>
+        @guest
+            <span class="ml-3 h5 text-truncate"><a href="{{ route('posts.show_guest',$post) }}" class="text-reset">{{ $post->title }}</a></span>
+        @else
+            <span class="ml-3 h5 text-truncate"><a href="{{ route('posts.show',$post) }}" class="text-reset">{{ $post->title }}</a></span>
+        @endguest
 
-    @if(!isset($post->category->category_name))
-        <h4 class="ml-3"><span class="badge badge-secondary badge-pill font-weight-light">カテゴリ未設定</span></h4>
-    @else
-        <h4 class="ml-3"><span class="badge badge-info badge-pill font-weight-light text-light">{{ $post->category->category_name }}</span></h4>
-    @endif
+        @if(!isset($post->category->category_name))
+            <span class="ml-3 h4"><span class="badge badge-secondary badge-pill font-weight-light">カテゴリ未設定</span></span>
+        @else
+            <span class="ml-3 h4"><a href="{{ route('top', ['category_id' =>  $post->category->id ])}}" class="badge badge-info badge-pill font-weight-light text-light">{{ $post->category->category_name }}</a></span>
+        @endif
+
     </div>
 
-    {{-- 投稿内容・いいね&コメント数 --}}
     <div>
         <ul class="ml-5 mb-2 p-0 w-75">
             <li class="list-unstyled mt-2">
@@ -51,7 +53,11 @@
                     </div>
                 </div>
             </li>
-            <li class="list-unstyled text-truncate mt-2"><a href="{{ route('posts.show',$post) }}">...続きを読む</a></li>
+            @guest
+                <li class="list-unstyled text-truncate mt-2"><a href="{{ route('posts.show_guest',$post) }}">...続きを読む</a></li>
+            @else
+                <li class="list-unstyled text-truncate mt-2"><a href="{{ route('posts.show',$post) }}">...続きを読む</a></li>
+            @endguest
         </ul>
 
         <div class="d-flex">
@@ -61,7 +67,12 @@
             <div class="ml-3">
                 コメント：{{ $post->comments->count() }}
             </div>
+            @if($post->created_at)
+                <div class="ml-4 text-secondary">
+                    {{ $post->created_at->format('Y/n/j H:i') }}
+                </div>
+            @endif
         </div>
     </div>
-</div>
+
 @endforeach
