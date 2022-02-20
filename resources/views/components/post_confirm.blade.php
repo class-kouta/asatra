@@ -153,6 +153,15 @@
                     <input name="note" value="{{ $inputs['note'] }}" type="hidden">
                 </div>
 
+                <div class="mb-5">
+                    @if($inputs['private_post'] === '0')
+                        みんなに公開
+                    @elseif($inputs['private_post'] === '1')
+                        非公開
+                    @endif
+                </div>
+                <input name="private_post" value="{{ $inputs['private_post'] }}" type="hidden">
+
                 <div class="mb-4">
                     @if($page === 'create')
                         以上の内容で投稿します（投稿後に編集可能です）

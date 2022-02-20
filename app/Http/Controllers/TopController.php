@@ -13,7 +13,10 @@ class TopController extends Controller
         $search = $request->input('search');
         $category_id = $request->input('category_id');
 
-        $query = Post::query();
+        $query = Post::query()
+            ->whereNotIn('private_post',[1])
+            ->orWhereNull('private_post');
+
         $categories = $category->getLists();
 
         // カテゴリ検索

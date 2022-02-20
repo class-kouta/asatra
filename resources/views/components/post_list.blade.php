@@ -19,6 +19,10 @@
             <span class="ml-3 h4"><a href="{{ route('top', ['category_id' =>  $post->category->id ])}}" class="badge badge-info badge-pill font-weight-light text-light">{{ $post->category->category_name }}</a></span>
         @endif
 
+        @if($post->private_post === 1)
+            <div>非公開</div>
+        @endif
+
     </div>
 
     <div>

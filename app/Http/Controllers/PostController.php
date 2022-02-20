@@ -60,12 +60,14 @@ class PostController extends Controller
             $posts = Post::whereIn('id', Nice::select('post_id')
                 ->where('user_id', Auth::id())
             )
+            ->WhereNotIn('private_post',[1])
             ->latest()->get();
         }elseif($page === 3){
             $page_title = 'コメントした投稿';
             $posts = Post::whereIn('id', Comment::select('post_id')
                 ->where('user_id', Auth::id())
             )
+            ->WhereNotIn('private_post',[1])
             ->latest()->get();
         }else{
             abort(404);

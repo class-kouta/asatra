@@ -26,6 +26,7 @@ class CreatePostsTable extends Migration
             $table->string('choose_no_answer')->nullable();
             $table->string('note')->nullable();
             $table->timestamps();
+            $table->integer('private_post')->nullable();
 
             $table->foreign('user_id')
                 ->references('id')->on('users')
