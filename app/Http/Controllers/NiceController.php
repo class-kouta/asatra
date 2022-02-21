@@ -14,6 +14,9 @@ class NiceController extends Controller
         $nice->post_id = $post->id;
         $nice->user_id = Auth::user()->id;
         $nice->save();
+
+        $post->nice_notice = 1;
+        $post->save();
         return back();
     }
 

@@ -41,6 +41,12 @@ class PostController extends Controller
     {
         $nice = Nice::where('post_id', $post->id)->where('user_id', Auth::id())->first();
 
+        if ($post->user_id === Auth::id()) {
+            $post->nice_notice = 0;
+            $post->comment_notice = 0;
+            $post->save();
+        }
+
         return view('posts.show',compact('post','nice'));
     }
 

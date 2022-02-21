@@ -161,17 +161,18 @@
             @else
                 <form class="" method="post" action="{{ route('comments.store' ,$post) }}">
                     @csrf
-                        <div class="form-group mb-1">
-                            <textarea name="comment" class="form-control" rows="3">{{ old('comment') }}</textarea>
-                        </div>
-                        <div class="d-flex align-items-center mb-4">
-                            <button class="btn btn-outline-secondary">コメント</button>
-                            @error('comment')
-                                <div class="text-danger ml-3">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </form>
-                @endguest
+                    <div class="form-group mb-1">
+                        <textarea name="comment" class="form-control" rows="3">{{ old('comment') }}</textarea>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <button class="btn btn-outline-secondary">コメント</button>
+                        @error('comment')
+                            <div class="text-danger ml-3">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    {{-- <input type="hidden" name="comment_notice" value="1"> --}}
+                </form>
+            @endguest
 
             {{-- コメント一覧 --}}
             @if(!isset($post->comments[0]))

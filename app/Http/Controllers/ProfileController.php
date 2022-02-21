@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Post;
 use App\Http\Requests\StoreProfile;
 
 class ProfileController extends Controller
@@ -25,6 +26,19 @@ class ProfileController extends Controller
         $user->save();
 
         return redirect('/');
+    }
+
+    public function notification()
+    {
+        $nice_posts = Post::where('nice_notice', '1')
+            ->where('user_id', Auth::id())
+            ->latest()->get();
+
+        $comment_posts = Post::where('comment_notice', '1')
+            ->where('user_id', Auth::id())
+            ->latest()->get();
+
+        return view('profile.notifications', compact('nice_posts', 'comment_posts'));
     }
 
     public function withdrawConfirm()

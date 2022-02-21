@@ -55,6 +55,10 @@
             <div class="ml-2">
                 <a href="{{ route('profile.edit') }}">ユーザ情報の変更</a>
             </div>
+            <div>
+            <div class="ml-2">
+                <a href="{{ route('profile.notifications') }}">お知らせ</a>
+            </div>
         </div>
     </div>
 @endguest
