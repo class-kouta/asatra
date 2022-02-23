@@ -154,13 +154,13 @@
                 </div>
 
                 <div class="mb-5">
-                    @if($inputs['private_post'] === '0')
+                    @if($inputs['status'] === PostStatusType::PUBLISHED)
                         みんなに公開
-                    @elseif($inputs['private_post'] === '1')
+                    @elseif($inputs['status'] === PostStatusType::SECRET)
                         非公開
                     @endif
                 </div>
-                <input name="private_post" value="{{ $inputs['private_post'] }}" type="hidden">
+                <input name="status" value="{{ $inputs['status'] }}" type="hidden">
 
                 <div class="mb-4">
                     @if($page === 'create')

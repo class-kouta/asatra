@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
+use App\Enums\PostStatusType;
 
 class TopController extends Controller
 {
@@ -14,8 +15,7 @@ class TopController extends Controller
         $category_id = $request->input('category_id');
 
         $query = Post::query()
-            ->whereNotIn('private_post',[1])
-            ->orWhereNull('private_post');
+            ->whereNotIn('status',[PostStatusType::SECRET]);
 
         $categories = $category->getLists();
 

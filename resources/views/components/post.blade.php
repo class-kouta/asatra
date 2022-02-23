@@ -365,9 +365,9 @@
                 </div>
 
                 {{-- 非公開設定 --}}
-                <select name="private_post" id="" class="ml-3">
-                    <option value="0">公開</option>
-                    <option value="1">非公開</option>
+                <select name="status" id="" class="ml-3">
+                    <option value="{{ PostStatusType::PUBLISHED }}">公開</option>
+                    <option value="{{ PostStatusType::SECRET }}">非公開</option>
                 </select>
             </div>
 
