@@ -29,7 +29,7 @@ class PostController extends Controller
         return view('posts.create_confirm',compact('inputs','page'));
     }
 
-    public function store(Request $request, Post $post)
+    public function store(StorePost $request, Post $post)
     {
         $post->user_id = Auth::id();
         $post->fill($request->all())->save();
@@ -61,14 +61,14 @@ class PostController extends Controller
             $posts = Post::whereIn('id', Nice::select('post_id')
                 ->where('user_id', Auth::id())
             )
-            ->WhereNotIn('status',[PostStatusType::SECRET])
+            ->where('status', '<>', PostStatusType::SECRET)
             ->latest()->get();
         }elseif($page === 3){
             $page_title = 'コメントした投稿';
             $posts = Post::whereIn('id', Comment::select('post_id')
                 ->where('user_id', Auth::id())
             )
-            ->WhereNotIn('status',[PostStatusType::SECRET])
+            ->where('status', '<>', PostStatusType::SECRET)
             ->latest()->get();
         }else{
             abort(404);
@@ -94,7 +94,7 @@ class PostController extends Controller
         return view('posts.edit_confirm', compact('inputs','post','page'));
     }
 
-    public function update(Request $request, Post $post)
+    public function update(StorePost $request, Post $post)
     {
         $this->authorize('update', $post);
         $post->fill($request->all())->save();

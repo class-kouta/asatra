@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\PostStatusType;
 use Illuminate\Foundation\Http\FormRequest;
+use BenSampo\Enum\Rules\EnumValue;
 
 class StorePost extends FormRequest
 {
@@ -32,6 +34,7 @@ class StorePost extends FormRequest
             'choose_no_reply' => 'nullable|string|max:100',
             'choose_no_answer' => 'nullable|string|max:200',
             'note' => 'nullable|string|max:200',
+            'status' => [ 'required', 'integer', new EnumValue(PostStatusType::class, false)],
         ];
     }
 
