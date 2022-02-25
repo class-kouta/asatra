@@ -153,6 +153,15 @@
                     <input name="note" value="{{ $inputs['note'] }}" type="hidden">
                 </div>
 
+                <div class="mb-5">
+                    @if($inputs['status'] === PostStatusType::PUBLISHED)
+                        みんなに公開
+                    @elseif($inputs['status'] === PostStatusType::SECRET)
+                        非公開
+                    @endif
+                </div>
+                <input name="status" value="{{ $inputs['status'] }}" type="hidden">
+
                 <div class="mb-4">
                     @if($page === 'create')
                         以上の内容で投稿します（投稿後に編集可能です）

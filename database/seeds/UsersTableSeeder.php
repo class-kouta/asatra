@@ -624,6 +624,12 @@ class UsersTableSeeder extends Seeder
                 'age' => '0',
                 'email' => 'test@gmail.com',
                 'password' => Hash::make('test'),
+            ],[
+                'name' => 'テスト2',
+                'sex' => '9',
+                'age' => '0',
+                'email' => 'test2@gmail.com',
+                'password' => Hash::make('test2'),
             ]
         ]);
     }

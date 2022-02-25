@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
+use App\Enums\PostStatusType;
 
 class TopController extends Controller
 {
@@ -13,7 +14,9 @@ class TopController extends Controller
         $search = $request->input('search');
         $category_id = $request->input('category_id');
 
-        $query = Post::query();
+        $query = Post::query()
+            ->where('status', '<>', PostStatusType::SECRET);
+
         $categories = $category->getLists();
 
         // カテゴリ検索

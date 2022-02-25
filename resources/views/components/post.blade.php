@@ -312,55 +312,63 @@
                 <textarea name="note" class="form-control" rows="3">{{ old('note', optional($post)->note) }}</textarea>
             </div>
 
+            <div class="d-flex">
 
-            {{-- 共通のコツ --}}
-            <div class="mb-4 pl-4">
-                <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#collapseCommonTricks" aria-expanded="false" aria-controls="collapseCommonTricks">
-                    共通のコツ
-                </button>
-                <div class="collapse" id="collapseCommonTricks">
-                    <div class="card mt-1">
-                        <div class="card-header p-2">
-                            （可能であれば）相手への共感も示しましょう。
-                        </div>
-                        <div class="card-body p-2">
-                            <p class="card-text">
-                                共感されると、相手は自分の意見を受け入れやすくなります。
-                            </p>
-                        </div>
-                        <div class="card-body p-2">
-                            <p class="card-text">
-                                【 例 】<br>
-                                「あなたの気持ちも分かる」<br>
-                                「面倒くさい気持ちも分かる」<br>
-                                「あなたが仕事で疲れているのも分かる」etc...<br>
-                            </p>
-                        </div>
-                        <div class="card-header p-2">
-                            「私は」を主語にしましょう。
-                        </div>
-                        <div class="card-body p-2">
-                            <p class="card-text">
-                                「あなたは」を主語にすると攻撃的になりやすいです。
-                            </p>
-                        </div>
-                        <div class="card-body p-2">
-                            <p class="card-text">
-                                【 例 】<br>
-                                「あなたはいつも...」「どうしてあなたは...」etc...<br>
-                            </p>
-                        </div>
-                        <div class="card-header p-2">
-                            次のような表現は攻撃的になりやすいので控えましょう。
-                        </div>
-                        <div class="card-body p-2">
-                            <p class="card-text">
-                                【 例 】<br>
-                                「どうして」「なんで」「いつも」「あなたは」etc...
-                            </p>
+                {{-- 共通のコツ --}}
+                <div class="mb-4 pl-4">
+                    <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#collapseCommonTricks" aria-expanded="false" aria-controls="collapseCommonTricks">
+                        共通のコツ
+                    </button>
+                    <div class="collapse" id="collapseCommonTricks">
+                        <div class="card mt-1">
+                            <div class="card-header p-2">
+                                （可能であれば）相手への共感も示しましょう。
+                            </div>
+                            <div class="card-body p-2">
+                                <p class="card-text">
+                                    共感されると、相手は自分の意見を受け入れやすくなります。
+                                </p>
+                            </div>
+                            <div class="card-body p-2">
+                                <p class="card-text">
+                                    【 例 】<br>
+                                    「あなたの気持ちも分かる」<br>
+                                    「面倒くさい気持ちも分かる」<br>
+                                    「あなたが仕事で疲れているのも分かる」etc...<br>
+                                </p>
+                            </div>
+                            <div class="card-header p-2">
+                                「私は」を主語にしましょう。
+                            </div>
+                            <div class="card-body p-2">
+                                <p class="card-text">
+                                    「あなたは」を主語にすると攻撃的になりやすいです。
+                                </p>
+                            </div>
+                            <div class="card-body p-2">
+                                <p class="card-text">
+                                    【 例 】<br>
+                                    「あなたはいつも...」「どうしてあなたは...」etc...<br>
+                                </p>
+                            </div>
+                            <div class="card-header p-2">
+                                次のような表現は攻撃的になりやすいので控えましょう。
+                            </div>
+                            <div class="card-body p-2">
+                                <p class="card-text">
+                                    【 例 】<br>
+                                    「どうして」「なんで」「いつも」「あなたは」etc...
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                {{-- 非公開設定 --}}
+                <select name="status" id="" class="ml-3">
+                    <option value="{{ PostStatusType::PUBLISHED }}">公開</option>
+                    <option value="{{ PostStatusType::SECRET }}">非公開</option>
+                </select>
             </div>
 
             <button type="submit" class="btn btn-primary mb-4 mx-4">入力内容確認</button>
