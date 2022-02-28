@@ -13,6 +13,7 @@ final class PostStatusType extends Enum
 {
     const PUBLISHED = 0;
     const SECRET = 1;
+    const DRAFT = 2;
 
     public static function getDescription($value): string
     {
@@ -22,6 +23,10 @@ final class PostStatusType extends Enum
 
         if ($value === self::SECRET) {
             return '非公開';
+        }
+
+        if ($value === self::DRAFT) {
+            return '下書き';
         }
 
         return parent::getDescription($value);
@@ -35,6 +40,10 @@ final class PostStatusType extends Enum
 
         if ($key === '非公開') {
             return self::SECRET;
+        }
+
+        if ($key === '下書き') {
+            return self::DRAFT;
         }
 
         return parent::getValue($key);

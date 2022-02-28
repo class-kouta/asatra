@@ -49,7 +49,11 @@
                 <div class="mb-4">
                     書いたコメント： <a class="" href="{{ route('profile.myposts',3) }}">{{ Auth::user()->joinCommentsPosts()->count() }}</a> 件
                 </div>
-                <a class="btn btn-primary mb-4" href="{{ route('posts.create') }}">投稿する</a>
+                <a class="btn btn-primary mb-1" href="{{ route('posts.create') }}">投稿する</a>
+            </div>
+
+            <div class="ml-2 mb-3">
+                <a href="{{ route('profile.myposts', 4) }}">下書きリスト</a>
             </div>
 
             <div class="ml-2">

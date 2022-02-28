@@ -72,7 +72,11 @@
                         Describe ... 問題や葛藤を描写
                     </div>
                     <div class="ml-3">
-                        {!! nl2br(e($inputs['describe'])) !!}
+                        @if(empty($inputs['describe']))
+                            未設定
+                        @else
+                            {!! nl2br(e($inputs['describe'])) !!}
+                        @endif
                     </div>
                     <input name="describe" value="{{ $inputs['describe'] }}" type="hidden">
                 </div>
@@ -82,7 +86,11 @@
                         Explain ... 自分の気持ちを説明
                     </div>
                     <div class="ml-3">
-                        {!! nl2br(e($inputs['explain'])) !!}
+                        @if(empty($inputs['explain']))
+                            未設定
+                        @else
+                            {!! nl2br(e($inputs['explain'])) !!}
+                        @endif
                     </div>
                     <input name="explain" value="{{ $inputs['explain'] }}" type="hidden">
                 </div>
@@ -92,7 +100,11 @@
                         Specify ... 具体的な提案
                     </div>
                     <div class="ml-3">
-                        {!! nl2br(e($inputs['specify'])) !!}
+                        @if(empty($inputs['specify']))
+                            未設定
+                        @else
+                            {!! nl2br(e($inputs['specify'])) !!}
+                        @endif
                     </div>
                     <input name="specify" value="{{ $inputs['specify'] }}" type="hidden">
                 </div>
@@ -154,10 +166,12 @@
                 </div>
 
                 <div class="mb-5">
-                    @if($inputs['status'] === PostStatusType::PUBLISHED)
+                    @if($inputs['status'] == PostStatusType::PUBLISHED)
                         みんなに公開
-                    @elseif($inputs['status'] === PostStatusType::SECRET)
+                    @elseif($inputs['status'] == PostStatusType::SECRET)
                         非公開
+                    @elseif($inputs['status'] == PostStatusType::DRAFT)
+                        下書き
                     @endif
                 </div>
                 <input name="status" value="{{ $inputs['status'] }}" type="hidden">

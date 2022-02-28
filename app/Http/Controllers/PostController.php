@@ -52,24 +52,30 @@ class PostController extends Controller
 
     public function showMyPosts(int $page)
     {
-        if($page === 1){
+        if ($page === 1) {
             $page_title = '自分の投稿';
             $posts = Post::where('user_id', Auth::id())
+                ->where('status', '<>', PostStatusType::DRAFT)
                 ->latest()->get();
-        }elseif($page === 2){
+        } elseif ($page === 2) {
             $page_title = 'いいねした投稿';
             $posts = Post::whereIn('id', Nice::select('post_id')
                 ->where('user_id', Auth::id())
             )
-            ->where('status', '<>', PostStatusType::SECRET)
+            ->whereNotIn('status', [PostStatusType::SECRET, PostStatusType::DRAFT])
             ->latest()->get();
-        }elseif($page === 3){
+        } elseif ($page === 3) {
             $page_title = 'コメントした投稿';
             $posts = Post::whereIn('id', Comment::select('post_id')
                 ->where('user_id', Auth::id())
             )
-            ->where('status', '<>', PostStatusType::SECRET)
+            ->whereNotIn('status', [PostStatusType::SECRET, PostStatusType::DRAFT])
             ->latest()->get();
+        } elseif ($page === 4) {
+            $page_title = '下書きリスト';
+            $posts = Post::where('user_id', Auth::id())
+                ->where('status', PostStatusType::DRAFT)
+                ->latest()->get();
         }else{
             abort(404);
         }

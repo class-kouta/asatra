@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Enums\PostStatusType;
 use Illuminate\Foundation\Http\FormRequest;
 use BenSampo\Enum\Rules\EnumValue;
+use Illuminate\Validation\Validator;
 
 class StorePost extends FormRequest
 {
@@ -27,15 +28,22 @@ class StorePost extends FormRequest
     {
         return [
             'title' => 'required|string|max:50',
-            'describe' => 'required|string|max:200',
-            'explain' => 'required|string|max:200',
-            'specify' => 'required|string|max:200',
+            'describe' => 'max:200',
+            'explain' => 'max:200',
+            'specify' => 'max:200',
             'choose_yes' => 'nullable|string|max:200',
             'choose_no_reply' => 'nullable|string|max:100',
             'choose_no_answer' => 'nullable|string|max:200',
             'note' => 'nullable|string|max:200',
             'status' => [ 'required', 'integer', new EnumValue(PostStatusType::class, false)],
         ];
+    }
+
+    public function withValidator(Validator $validator)
+    {
+        $validator->sometimes (['describe','explain','specify'], 'required|string', function ($input) {
+            return $input->status == PostStatusType::PUBLISHED || $input->status == PostStatusType::SECRET;
+        });
     }
 
     public function messages()

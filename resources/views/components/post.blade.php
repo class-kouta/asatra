@@ -368,6 +368,7 @@
                 <select name="status" id="" class="ml-3">
                     <option value="{{ PostStatusType::PUBLISHED }}">公開</option>
                     <option value="{{ PostStatusType::SECRET }}">非公開</option>
+                    <option value="{{ PostStatusType::DRAFT }}">下書き</option>
                 </select>
             </div>
 
