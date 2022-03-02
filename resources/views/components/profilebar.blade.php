@@ -41,19 +41,19 @@
 
             <div class="ml-2">
                 <div class="mb-3">
-                    自分の投稿： <a class="" href="{{ route('profile.myposts',1) }}">{{ Auth::user()->post->count() }}</a> 件
+                    自分の投稿： <a class="" href="{{ route('profile.myposts', PostListType::MY_POST) }}">{{ Auth::user()->post->count() }}</a> 件
                 </div>
                 <div class="mb-3">
-                    いいねした投稿： <a class="" href="{{ route('profile.myposts',2) }}">{{ Auth::user()->joinNicesPosts()->count() }}</a> 件
+                    いいねした投稿： <a class="" href="{{ route('profile.myposts',PostListType::MY_NICE) }}">{{ Auth::user()->joinNicesPosts()->count() }}</a> 件
                 </div>
                 <div class="mb-4">
-                    書いたコメント： <a class="" href="{{ route('profile.myposts',3) }}">{{ Auth::user()->joinCommentsPosts()->count() }}</a> 件
+                    書いたコメント： <a class="" href="{{ route('profile.myposts', PostListType::MY_COMMENT) }}">{{ Auth::user()->joinCommentsPosts()->count() }}</a> 件
                 </div>
                 <a class="btn btn-primary mb-1" href="{{ route('posts.create') }}">投稿する</a>
             </div>
 
             <div class="ml-2 mb-3">
-                <a href="{{ route('profile.myposts', 4) }}">下書きリスト</a>
+                <a href="{{ route('profile.myposts', PostListType::MY_DRAFT) }}">下書きリスト</a>
             </div>
 
             <div class="ml-2">

@@ -18,9 +18,9 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id')->nullable();
             $table->string('title');
-            $table->string('describe')->nullable();
-            $table->string('explain')->nullable();
-            $table->string('specify')->nullable();
+            $table->string('describe');
+            $table->string('explain');
+            $table->string('specify');
             $table->string('choose_yes')->nullable();
             $table->string('choose_no_reply')->nullable();
             $table->string('choose_no_answer')->nullable();

@@ -10,6 +10,7 @@ use App\Models\Comment;
 use App\Models\Category;
 use App\Http\Requests\StorePost;
 use App\Enums\PostStatusType;
+use App\Enums\PostListType;
 
 class PostController extends Controller
 {
@@ -35,7 +36,7 @@ class PostController extends Controller
         $post->fill($request->all())->save();
 
         $request->session()->regenerateToken();
-        return redirect()->route('profile.myposts',1);
+        return redirect()->route('profile.myposts',PostListType::MY_POST);
     }
 
     public function show(Post $post)
@@ -52,26 +53,26 @@ class PostController extends Controller
 
     public function showMyPosts(int $page)
     {
-        if ($page === 1) {
+        if ($page === PostListType::MY_POST) {
             $page_title = '自分の投稿';
             $posts = Post::where('user_id', Auth::id())
                 ->where('status', '<>', PostStatusType::DRAFT)
                 ->latest()->get();
-        } elseif ($page === 2) {
+        } elseif ($page === PostListType::MY_NICE) {
             $page_title = 'いいねした投稿';
             $posts = Post::whereIn('id', Nice::select('post_id')
                 ->where('user_id', Auth::id())
             )
             ->whereNotIn('status', [PostStatusType::SECRET, PostStatusType::DRAFT])
             ->latest()->get();
-        } elseif ($page === 3) {
+        } elseif ($page === PostListType::MY_COMMENT) {
             $page_title = 'コメントした投稿';
             $posts = Post::whereIn('id', Comment::select('post_id')
                 ->where('user_id', Auth::id())
             )
             ->whereNotIn('status', [PostStatusType::SECRET, PostStatusType::DRAFT])
             ->latest()->get();
-        } elseif ($page === 4) {
+        } elseif ($page === PostListType::MY_DRAFT) {
             $page_title = '下書きリスト';
             $posts = Post::where('user_id', Auth::id())
                 ->where('status', PostStatusType::DRAFT)
@@ -105,7 +106,7 @@ class PostController extends Controller
         $this->authorize('update', $post);
         $post->fill($request->all())->save();
 
-        return redirect()->route('profile.myposts',1);
+        return redirect()->route('profile.myposts',PostListType::MY_POST);
     }
 
     public function destroy(Post $post)
@@ -114,7 +115,7 @@ class PostController extends Controller
 
         $post->delete();
 
-        return redirect()->route('profile.myposts',1);
+        return redirect()->route('profile.myposts',PostListType::MY_POST);
     }
 
 }
