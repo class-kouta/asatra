@@ -63,19 +63,31 @@
                     <li class="list-unstyled">
                         <div class="mb-4">
                             <div class="mb-2 text-secondary border-bottom">Describe ... 問題や葛藤を描写</div>
-                            <div class="ml-3">{!! nl2br(e($post->describe)) !!}</div>
+                            @if(empty($post->discribe))
+                                <div class="ml-3 text-secondary">未設定</div>
+                            @else
+                                <div class="ml-3">{!! nl2br(e($post->describe)) !!}</div>
+                            @endif
                         </div>
                     </li>
                     <li class="list-unstyled">
                         <div class="mb-4">
                             <div class="mb-2 text-secondary border-bottom">Explain ... 自分の気持ちを説明</div>
-                            <div class="ml-3">{!! nl2br(e($post->explain)) !!}</div>
+                            @if(empty($post->explain))
+                                <div class="ml-3 text-secondary">未設定</div>
+                            @else
+                                <div class="ml-3">{!! nl2br(e($post->explain)) !!}</div>
+                            @endif
                         </div>
                     </li>
                     <li class="list-unstyled">
                         <div class="mb-4">
                             <div class="mb-2 text-secondary border-bottom">Specify ... 具体的な提案</div>
-                            <div class="ml-3">{!! nl2br(e($post->specify)) !!}</div>
+                            @if(empty($post->specify))
+                                <div class="ml-3 text-secondary">未設定</div>
+                            @else
+                                <div class="ml-3">{!! nl2br(e($post->specify)) !!}</div>
+                            @endif
                         </div>
                     </li>
                     <li class="list-unstyled">

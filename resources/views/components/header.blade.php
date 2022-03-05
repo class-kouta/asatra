@@ -36,9 +36,10 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('profile.edit') }}">ユーザ情報の変更</a>
                         <a class="dropdown-item" href="{{ route('posts.create') }}">投稿する</a>
-                        <a class="dropdown-item" href="{{ route('profile.myposts',1) }}">自分の投稿</a>
-                        <a class="dropdown-item" href="{{ route('profile.myposts',2) }}">いいねした投稿</a>
-                        <a class="dropdown-item" href="{{ route('profile.myposts',3) }}">コメントした投稿</a>
+                        <a class="dropdown-item" href="{{ route('profile.myposts',PostListType::MY_DRAFT) }}">下書きリスト</a>
+                        <a class="dropdown-item" href="{{ route('profile.myposts',PostListType::MY_POST) }}">自分の投稿</a>
+                        <a class="dropdown-item" href="{{ route('profile.myposts', PostListType::MY_NICE) }}">いいねした投稿</a>
+                        <a class="dropdown-item" href="{{ route('profile.myposts',PostListType::MY_COMMENT) }}">コメントした投稿</a>
                     </div>
                 </li>
                 <li class="nav-item">
