@@ -14,9 +14,9 @@ use App\Enums\PostListType;
 
 class PostController extends Controller
 {
-    public function create(Category $category )
+    public function create()
     {
-        $categories = $category->getLists();
+        $categories = Category::pluck('category_name', 'id');
         $page = 'create';
 
         return view('posts.create',compact('categories','page'));
@@ -24,10 +24,11 @@ class PostController extends Controller
 
     public function createConfirm(StorePost $request)
     {
+        $category = Category::find($request->category_id);
         $inputs = $request->all();
         $page = 'create';
 
-        return view('posts.create_confirm',compact('inputs','page'));
+        return view('posts.create_confirm', compact('category', 'inputs', 'page'));
     }
 
     public function store(StorePost $request, Post $post)
@@ -84,10 +85,10 @@ class PostController extends Controller
         return view('profile.myposts',compact('page_title','posts'));
     }
 
-    public function edit(Category $category, Post $post)
+    public function edit(Post $post)
     {
         $this->authorize('edit', $post);
-        $categories = $category->getLists();
+        $categories = Category::pluck('category_name', 'id');
         $page = 'edit';
 
         return view('posts.edit', compact('post','categories','page'));
@@ -95,10 +96,11 @@ class PostController extends Controller
 
     public function editConfirm(StorePost $request, Post $post)
     {
+        $category = Category::find($request->category_id);
         $inputs = $request->all();
         $page = 'edit';
 
-        return view('posts.edit_confirm', compact('inputs','post','page'));
+        return view('posts.edit_confirm', compact('category', 'inputs', 'post', 'page'));
     }
 
     public function update(StorePost $request, Post $post)
