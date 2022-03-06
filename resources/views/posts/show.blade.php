@@ -23,9 +23,9 @@
 
             {{-- 投稿内容 --}}
             <div>
-                @if($post->user->sex === (string)1)
+                @if($post->user->sex === UserSexType::MALE)
                     <div class="mb-4 border-bottom border-primary">
-                @elseif($post->user->sex === (string)2)
+                @elseif($post->user->sex === UserSexType::FEMALE)
                     <div class="mb-4 border-bottom border-danger">
                 @else
                     <div class="mb-4 border-bottom border-dark">

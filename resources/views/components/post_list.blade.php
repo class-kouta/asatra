@@ -1,7 +1,7 @@
 @foreach ($posts as $post)
-    @if($post->user->sex === (string)1)
+    @if($post->user->sex === UserSexType::MALE)
         <div class="d-flex align-items-center mt-5 border-bottom border-primary">
-    @elseif($post->user->sex === (string)2)
+    @elseif($post->user->sex === UserSexType::FEMALE)
         <div class="d-flex align-items-center mt-5 border-bottom border-danger">
     @else
         <div class="d-flex align-items-center mt-5 border-bottom border-dark">

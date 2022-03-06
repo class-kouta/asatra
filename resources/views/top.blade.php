@@ -7,16 +7,22 @@
 
             <form method="get" action="{{ route('top') }}">
                 <div class="form-row mb-4">
-                    <div class="form-group col-md-2">
-                        <select name="category_id" class="form-control">
-                            <option value="">未選択</option>
-                            @foreach($categories as $id => $category_name)
-                                <option value="{{ $id }}" @if($category_id === "$id") selected @endif>
-                                    {{ $category_name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
+
+                    @foreach($categories as $id => $category_name)
+                        @if($loop->first)
+                            <div class="form-group col-md-2">
+                                <select name="category_id" class="form-control">
+                                    <option value="">未選択</option>
+                        @endif
+                                    <option value="{{ $id }}" @if($category_id === "$id") selected @endif>
+                                        {{ $category_name }}
+                                    </option>
+                        @if($loop->last)
+                                </select>
+                            </div>
+                        @endif
+                    @endforeach
+
                     <div class="form-group col-md-6">
                         <input type="text" name="search" class="form-control" placeholder="キーワード検索" value="@if (isset($search)) {{ $search }} @endif">
                     </div>

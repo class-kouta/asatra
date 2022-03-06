@@ -35,9 +35,9 @@
                     <div class="form-group mb-3">
                         <label for="sex" class="text-secondary">性別</label>
                         <select name="sex" id="sex" class="ml-3">
-                            <option value="9" {{ Auth::user()->sex === '9' ? 'selected' : '' }}>回答しない</option>
-                            <option value="1" {{ Auth::user()->sex === '1' ? 'selected' : '' }}>男性</option>
-                            <option value="2" {{ Auth::user()->sex === '2' ? 'selected' : '' }}>女性</option>
+                            <option value="9" {{ Auth::user()->sex === UserSexType::NOT_APPLICABLE ? 'selected' : '' }}>回答しない</option>
+                            <option value="1" {{ Auth::user()->sex === UserSexType::MALE ? 'selected' : '' }}>男性</option>
+                            <option value="2" {{ Auth::user()->sex === UserSexType::FEMALE ? 'selected' : '' }}>女性</option>
                         </select>
                         @error('sex')
                             <div class="text-danger ml-3">{{ $message }}</div>

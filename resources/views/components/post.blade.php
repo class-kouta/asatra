@@ -10,7 +10,7 @@
 
     <form action="{{ $page === 'create' ? route('posts.create_confirm') : route('posts.edit_confirm',$post)}}" method="post">
         @csrf
-            {{-- タイトル・カテゴリ --}}
+            {{-- タイトル --}}
             <div class="d-flex mb-4 px-4 row">
                 <div class="form-group col-8 mb-0">
                     <div class="d-flex align-items-center mb-1">
@@ -35,17 +35,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group col-4 mb-0">
-                    <div class="text-secondary mb-2">カテゴリ</div>
-                    <select name="category_id" class="form-control">
-                            <option class="form-control" value="">未選択</option>
-                            @foreach($categories as $id => $category_name)
+
+                {{-- カテゴリー --}}
+                @foreach($categories as $id => $category_name)
+                    @if($loop->first)
+                        <div class="form-group col-4 mb-0">
+                            <div class="text-secondary mb-2">カテゴリ</div>
+                            <select name="category_id" class="form-control">
+                                <option class="form-control" value="">未選択</option>
+                    @endif
                                 <option value="{{ $id }}" @if(optional($post)->category_id == $id) selected @endif>
                                     {{ $category_name }}
                                 </option>
-                            @endforeach
-                    </select>
-                </div>
+                    @if($loop->last)
+                            </select>
+                        </div>
+                    @endif
+                @endforeach
             </div>
 
             {{-- Describe --}}

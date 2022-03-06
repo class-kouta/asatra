@@ -15,7 +15,7 @@ class TopController extends Controller
         $category_id = $request->input('category_id');
 
         $query = Post::query()
-            ->where('status', '<>', PostStatusType::SECRET);
+            ->whereNotIn('status', [PostStatusType::SECRET, PostStatusType::DRAFT]);
 
         $categories = $category->getLists();
 
