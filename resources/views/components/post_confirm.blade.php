@@ -26,43 +26,14 @@
                     <div class="mb-2 text-secondary border-bottom">
                         カテゴリ
                     </div>
+
                     <div class="ml-3">
-                        @if($inputs['category_id'] == 1)
-                        結婚
-                        <input name="category_id" value="{{ $inputs['category_id'] }}" type="hidden">
-                        @elseif($inputs['category_id'] == 2)
-                        育児・家事
-                        <input name="category_id" value="{{ $inputs['category_id'] }}" type="hidden">
-                        @elseif($inputs['category_id'] == 3)
-                        お金
-                        <input name="category_id" value="{{ $inputs['category_id'] }}" type="hidden">
-                        @elseif($inputs['category_id'] == 4)
-                        人間関係
-                        <input name="category_id" value="{{ $inputs['category_id'] }}" type="hidden">
-                        @elseif($inputs['category_id'] == 5)
-                        性生活
-                        <input name="category_id" value="{{ $inputs['category_id'] }}" type="hidden">
-                        @elseif($inputs['category_id'] == 6)
-                        コミュニケーション
-                        <input name="category_id" value="{{ $inputs['category_id'] }}" type="hidden">
-                        @elseif($inputs['category_id'] == 7)
-                        習慣
-                        <input name="category_id" value="{{ $inputs['category_id'] }}" type="hidden">
-                        @elseif($inputs['category_id'] == 8)
-                        仕事
-                        <input name="category_id" value="{{ $inputs['category_id'] }}" type="hidden">
-                        @elseif($inputs['category_id'] == 9)
-                        健康
-                        <input name="category_id" value="{{ $inputs['category_id'] }}" type="hidden">
-                        @elseif($inputs['category_id'] == 10)
-                        モラハラ
-                        <input name="category_id" value="{{ $inputs['category_id'] }}" type="hidden">
-                        @elseif($inputs['category_id'] == 11)
-                        その他
-                        <input name="category_id" value="{{ $inputs['category_id'] }}" type="hidden">
-                        @else
+                        @if(empty($inputs['category_id']))
                         未設定
                         <input name="category_id" value="" type="hidden">
+                        @else
+                        {{ $category->category_name }}
+                        <input name="category_id" value="{{ $inputs['category_id'] }}" type="hidden">
                         @endif
                     </div>
                 </div>

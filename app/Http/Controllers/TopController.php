@@ -9,7 +9,7 @@ use App\Enums\PostStatusType;
 
 class TopController extends Controller
 {
-    public function index(Category $category, Request $request)
+    public function index(Request $request)
     {
         $search = $request->input('search');
         $category_id = $request->input('category_id');
@@ -17,7 +17,7 @@ class TopController extends Controller
         $query = Post::query()
             ->where('status', '<>', PostStatusType::SECRET);
 
-        $categories = $category->getLists();
+        $categories = Category::pluck('category_name', 'id');
 
         // カテゴリ検索
         if($category_id){
