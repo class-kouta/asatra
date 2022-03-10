@@ -37,21 +37,18 @@
                 </div>
 
                 {{-- カテゴリー --}}
-                @foreach($categories as $id => $category_name)
-                    @if($loop->first)
-                        <div class="form-group col-4 mb-0">
-                            <div class="text-secondary mb-2">カテゴリ</div>
-                            <select name="category_id" class="form-control">
-                                <option class="form-control" value="">未選択</option>
-                    @endif
-                                <option value="{{ $id }}" @if(optional($post)->category_id == $id) selected @endif>
-                                    {{ $category_name }}
-                                </option>
-                    @if($loop->last)
-                            </select>
-                        </div>
-                    @endif
-                @endforeach
+                <div class="form-group col-4 mb-0">
+                    <div class="text-secondary mb-2">カテゴリ</div>
+                    <select name="category_id" class="form-control">
+                        <option class="form-control" value="">未選択</option>
+                        @foreach($categories as $id => $category_name)
+                            <option value="{{ $id }}" @if(optional($post)->category_id == $id) selected @endif>
+                                {{ $category_name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
             </div>
 
             {{-- Describe --}}
