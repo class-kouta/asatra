@@ -36,6 +36,7 @@ Route::group(['prefix' => 'posts','middleware'=>'auth'],function(){
 
 Route::group(['prefix' => 'profile','middleware'=>'auth'],function(){
     Route::get('myposts/{page}', 'PostController@showMyPosts')->name('profile.myposts');
+    Route::get('notifications', 'ProfileController@notification')->name('profile.notifications');
     Route::get('edit', 'ProfileController@edit')->name('profile.edit');
     Route::post('update', 'ProfileController@update')->name('profile.update');
     Route::get('withdraw_confirm','ProfileController@withdrawConfirm')->name('profile.withdraw_confirm');

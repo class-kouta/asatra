@@ -15,4 +15,9 @@ class Comment extends Model
     {
         return $this->belongsTo(Post::class);
     }
+
+    public function notification()
+    {
+        return $this->morphOne('App\Models\Notification', 'notificationable');
+    }
 }

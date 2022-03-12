@@ -63,7 +63,7 @@
                     <li class="list-unstyled">
                         <div class="mb-4">
                             <div class="mb-2 text-secondary border-bottom">Describe ... 問題や葛藤を描写</div>
-                            @if(empty($post->discribe))
+                            @if(empty($post->describe))
                                 <div class="ml-3 text-secondary">未設定</div>
                             @else
                                 <div class="ml-3">{!! nl2br(e($post->describe)) !!}</div>
