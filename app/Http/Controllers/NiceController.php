@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Nice;
 use App\Models\Notification;
-use App\Enums\PostReadType;
 
 class NiceController extends Controller
 {
@@ -19,10 +18,8 @@ class NiceController extends Controller
         $notification = new Notification();
         $notification->user_id = $post->user_id;
         $notification->target_user_id = Auth::id();
-        $notification->post_id = $post->id;
         $notification->text = '新しいいいねが付きました';
-        $notification->read = PostReadType::UNREAD;
-        $nice->notification()->save($notification);
+        $post->notifications()->save($notification);
 
         return back();
     }

@@ -7,14 +7,13 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Notification;
 use App\Http\Requests\StoreProfile;
-use App\Enums\PostReadType;
 
 class ProfileController extends Controller
 {
     public function notification()
     {
         $notifications = Notification::where('user_id', Auth::id())
-            ->where('read', PostReadType::UNREAD)
+            ->whereNull('read')
             ->latest()->get();
 
         return view('profile.notifications', compact('notifications'));

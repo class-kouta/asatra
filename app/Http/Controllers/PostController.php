@@ -12,7 +12,6 @@ use App\Models\Notification;
 use App\Http\Requests\StorePost;
 use App\Enums\PostStatusType;
 use App\Enums\PostListType;
-use App\Enums\PostReadType;
 
 class PostController extends Controller
 {
@@ -45,8 +44,8 @@ class PostController extends Controller
     public function show(Post $post)
     {
         if($post->user_id === Auth::id()){
-            $notifications = Notification::where('post_id', $post->id)
-                ->update(['read' => PostReadType::READ]);
+            $notifications = Notification::where('notificationable_id', $post->id)
+                ->update(['read' => true]);
         }
         $nice = Nice::where('post_id', $post->id)->where('user_id', Auth::id())->first();
 

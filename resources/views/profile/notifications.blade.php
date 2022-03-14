@@ -16,8 +16,8 @@
             @else
                 @foreach ($notifications as $notification)
                     <div>
-                        <a href="{{ route('posts.show', Post::find($notification->post_id)) }}">
-                            「{{ Post::find($notification->post_id)->title }}」に{{ $notification->text }}
+                        <a href="{{ route('posts.show', $notification->notificationable) }}">
+                            「{{ $notification->notificationable->title }}」に{{ $notification->text }}
                         </a>
                     </div>
                 @endforeach

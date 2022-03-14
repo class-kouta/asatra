@@ -17,10 +17,9 @@ class CreateNotificationsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('target_user_id');
-            $table->unsignedBigInteger('post_id');
             $table->morphs('notificationable');
             $table->string('text');
-            $table->integer('read');
+            $table->boolean('read')->nullable();
             $table->timestamps();
         });
     }

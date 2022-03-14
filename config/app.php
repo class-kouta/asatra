@@ -229,7 +229,6 @@ return [
         'PostListType'=>App\Enums\PostListType::class,
         'UserSexType'=>App\Enums\UserSexType::class,
         'PostCategoryType'=>App\Enums\PostCategoryType::class,
-        'Post'=>App\Models\Post::class,
     ],
 
 ];

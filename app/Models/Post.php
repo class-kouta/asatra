@@ -31,4 +31,9 @@ class Post extends Model
     {
         return $this->hasMany(Nice::class);
     }
+
+    public function notifications()
+    {
+        return $this->morphMany('App\Models\Notification', 'notificationable');
+    }
 }

@@ -8,7 +8,6 @@ use App\Models\Post;
 use App\Models\Comment;
 use App\Models\Notification;
 use App\Http\Requests\StoreComment;
-use App\Enums\PostReadType;
 
 class CommentController extends Controller
 {
@@ -23,10 +22,8 @@ class CommentController extends Controller
         $notification = new Notification();
         $notification->user_id = $post->user_id;
         $notification->target_user_id = Auth::id();
-        $notification->post_id = $post->id;
         $notification->text = '新しいコメントが付きました';
-        $notification->read = PostReadType::UNREAD;
-        $comment->notification()->save($notification);
+        $post->notifications()->save($notification);
 
         return redirect()
             ->route('posts.show', $post);
