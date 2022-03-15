@@ -45,6 +45,7 @@ class PostController extends Controller
     {
         if($post->user_id === Auth::id()){
             $notifications = Notification::where('notificationable_id', $post->id)
+                ->where('user_id', Auth::id())
                 ->update(['read' => true]);
         }
         $nice = Nice::where('post_id', $post->id)->where('user_id', Auth::id())->first();
