@@ -17,9 +17,9 @@
                 </ul>
                 <div class="btn-group d-flex align-items-center ml-5">
 
-                    <form method="post" action="{{ route('profile.withdraw',Auth::user()->id) }}" id="delete_{{ Auth::user()->id }}">
+                    <form method="post" action="{{ route('profile.withdraw' ,Auth::id()) }}" id="delete_{{ Auth::id() }}">
                         @csrf
-                        <a href="#" data-id="{{ Auth::user()->id }}" onclick="deleteUser(this);" class="btn btn-secondary">退会する</a>
+                        <a href="#" data-id="{{ Auth::id() }}" onclick="deleteUser(this);" class="btn btn-secondary">退会する</a>
                     </form>
                     <div class="ml-3">
                         <a href="/">トップに戻る</a>

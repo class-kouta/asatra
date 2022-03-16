@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Nice;
 use App\Models\Comment;
 use App\Models\Category;
+use App\Models\Notification;
 use App\Http\Requests\StorePost;
 use App\Enums\PostStatusType;
 use App\Enums\PostListType;
@@ -42,6 +43,11 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
+        if($post->user_id === Auth::id()){
+            $notifications = Notification::where('notificationable_id', $post->id)
+                ->where('user_id', Auth::id())
+                ->update(['read' => true]);
+        }
         $nice = Nice::where('post_id', $post->id)->where('user_id', Auth::id())->first();
 
         return view('posts.show',compact('post','nice'));

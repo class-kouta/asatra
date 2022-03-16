@@ -49,6 +49,9 @@
                 <div class="mb-4">
                     書いたコメント： <a class="" href="{{ route('profile.myposts', PostListType::MY_COMMENT) }}">{{ Auth::user()->joinCommentsPosts()->count() }}</a> 件
                 </div>
+                <div class="mb-4">
+                    <a class="" href="{{ route('profile.notifications') }}">通知</a>
+                </div>
                 <a class="btn btn-primary mb-1" href="{{ route('posts.create') }}">投稿する</a>
             </div>
 
