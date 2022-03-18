@@ -32,7 +32,7 @@
 
             @include('components.post_list')
 
-            <div class="mt-5">{{ $posts->appends(request()->query())->links() }}</div>
+            <div class="mt-5">{{ $posts->appends(request()->query())->links('vendor.pagination.custom_pagination_view') }}</div>
 
             @if(empty($posts[0]))
                 検索に一致する投稿はございません。
