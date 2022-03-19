@@ -228,7 +228,7 @@ return [
         'PostStatusType'=>App\Enums\PostStatusType::class,
         'PostListType'=>App\Enums\PostListType::class,
         'UserSexType'=>App\Enums\UserSexType::class,
-        'PostCategoryType'=>App\Enums\PostCategoryType::class,
+        'SortType'=>App\Enums\SortType::class,
     ],
 
 ];
