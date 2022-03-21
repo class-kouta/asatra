@@ -46,21 +46,26 @@ class TopController extends Controller
         }
 
         // 並び替え
-        if ($sorting === SortType::LATEST) {
-            $posts = $query->latest()->paginate(10);
-        } elseif ($sorting === SortType::OLDEST) {
-            $posts = $query->oldest()->paginate(10);
-        } elseif ($sorting === SortType::NICE_DESC) {
-            $posts = $query
-                ->withCount('nices')
-                ->orderBy('nices_count', 'desc')
-                ->latest()
-                ->paginate(10);
-        } else {
-            $posts = $query->latest()->paginate(10);
+        switch ($sorting) {
+            case SortType::LATEST:
+            case '':
+                $posts = $query->latest()->paginate(10);
+                break;
+            case SortType::OLDEST:
+                $posts = $query->oldest()->paginate(10);
+                break;
+            case SortType::NICE_DESC:
+                $posts = $query
+                    ->withCount('nices')
+                    ->orderBy('nices_count', 'desc')
+                    ->latest()
+                    ->paginate(10);
+                break;
+            default:
+                abort(404);
         }
 
-        return view('top',compact('posts', 'search', 'category_id', 'sorting', 'categories' ));
+        return view('top',compact('posts', 'search', 'category_id', 'categories' ));
     }
 
     private function escape(string $value)
