@@ -58,34 +58,39 @@ class PostController extends Controller
         return view('posts.show', compact('post'));
     }
 
-    public function showMyPosts(int $page)
+    public function showMyPosts($page)
     {
-        if ($page === PostListType::MY_POST) {
-            $page_title = '自分の投稿';
-            $posts = Post::where('user_id', Auth::id())
-                ->where('status', '<>', PostStatusType::DRAFT)
+        switch ($page) {
+            case PostListType::MY_POST:
+                $page_title = '自分の投稿';
+                $posts = Post::where('user_id', Auth::id())
+                    ->where('status', '<>', PostStatusType::DRAFT)
+                    ->latest()->get();
+                break;
+            case PostListType::MY_NICE:
+                $page_title = 'いいねした投稿';
+                $posts = Post::whereIn('id', Nice::select('post_id')
+                    ->where('user_id', Auth::id())
+                )
+                ->whereNotIn('status', [PostStatusType::SECRET, PostStatusType::DRAFT])
                 ->latest()->get();
-        } elseif ($page === PostListType::MY_NICE) {
-            $page_title = 'いいねした投稿';
-            $posts = Post::whereIn('id', Nice::select('post_id')
-                ->where('user_id', Auth::id())
-            )
-            ->whereNotIn('status', [PostStatusType::SECRET, PostStatusType::DRAFT])
-            ->latest()->get();
-        } elseif ($page === PostListType::MY_COMMENT) {
-            $page_title = 'コメントした投稿';
-            $posts = Post::whereIn('id', Comment::select('post_id')
-                ->where('user_id', Auth::id())
-            )
-            ->whereNotIn('status', [PostStatusType::SECRET, PostStatusType::DRAFT])
-            ->latest()->get();
-        } elseif ($page === PostListType::MY_DRAFT) {
-            $page_title = '下書きリスト';
-            $posts = Post::where('user_id', Auth::id())
-                ->where('status', PostStatusType::DRAFT)
+                break;
+            case PostListType::MY_COMMENT:
+                $page_title = 'コメントした投稿';
+                $posts = Post::whereIn('id', Comment::select('post_id')
+                    ->where('user_id', Auth::id())
+                )
+                ->whereNotIn('status', [PostStatusType::SECRET, PostStatusType::DRAFT])
                 ->latest()->get();
-        }else{
-            abort(404);
+                break;
+            case PostListType::MY_DRAFT:
+                $page_title = '下書きリスト';
+                $posts = Post::where('user_id', Auth::id())
+                    ->where('status', PostStatusType::DRAFT)
+                    ->latest()->get();
+                break;
+            default:
+                abort(404);
         }
 
         return view('profile.myposts',compact('page_title','posts'));
