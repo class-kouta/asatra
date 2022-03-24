@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
 use App\Enums\PostStatusType;
+use App\Enums\SortType;
 
 class TopController extends Controller
 {
@@ -13,6 +14,8 @@ class TopController extends Controller
     {
         $search = $request->input('search');
         $category_id = $request->input('category_id');
+        $sorting = $request->input('sorting');
+
 
         $query = Post::query()
             ->whereNotIn('status', [PostStatusType::SECRET, PostStatusType::DRAFT]);
@@ -42,9 +45,27 @@ class TopController extends Controller
             });
         }
 
-        $posts = $query->latest()->paginate(10);
+        // 並び替え
+        switch ($sorting) {
+            case SortType::LATEST:
+            case '':
+                $posts = $query->latest()->paginate(10);
+                break;
+            case SortType::OLDEST:
+                $posts = $query->oldest()->paginate(10);
+                break;
+            case SortType::NICE_DESC:
+                $posts = $query
+                    ->withCount('nices')
+                    ->orderBy('nices_count', 'desc')
+                    ->latest()
+                    ->paginate(10);
+                break;
+            default:
+                abort(404);
+        }
 
-        return view('top',compact('posts','search','category_id','categories'));
+        return view('top',compact('posts', 'search', 'category_id', 'categories' ));
     }
 
     private function escape(string $value)
