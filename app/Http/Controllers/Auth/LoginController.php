@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Enums\UserSexType;
 
 class LoginController extends Controller
 {
@@ -63,10 +64,18 @@ class LoginController extends Controller
             return $this->sendLoginResponse($request);
         }
 
-        return redirect()->route('register.{provider}', [
-            'provider' => $provider,
+        $user = User::create([
+            'name' => $providerUser->getName(),
             'email' => $providerUser->getEmail(),
-            'token' => $providerUser->token,
+            'sex' => UserSexType::NOT_APPLICABLE,
+            'age' => '0',
+            'password' => null,
         ]);
+
+        $this->guard()->login($user, true);
+
+        return redirect()
+            ->route('profile.edit');
+
     }
 }
