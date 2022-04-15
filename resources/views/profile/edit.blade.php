@@ -22,7 +22,8 @@
                         <input type="text" name="name" class="form-control w-50" id="name" value="{{ Auth::user()->name }}">
                     </div>
 
-                    <div class="form-group mb-4">
+                    {{-- 現在、Googleアカウントで登録したユーザーがメールアドレスを修正するとログインできなくなる仕様になっているため、一時コメントアウト --}}
+                    {{-- <div class="form-group mb-4">
                         <div class="d-flex">
                             <label for="email" class="text-secondary">メールアドレス</label>
                             @error('email')
@@ -30,7 +31,7 @@
                             @enderror
                         </div>
                         <input type="email" name="email" class="form-control w-50" id="email" value="{{ Auth::user()->email }}">
-                    </div>
+                    </div> --}}
 
                     <div class="form-group mb-3">
                         <label for="sex" class="text-secondary">性別</label>

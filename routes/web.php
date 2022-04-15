@@ -15,6 +15,11 @@ Route::get('/', 'TopController@index')->name('top');
 
 Auth::routes();
 
+Route::prefix('login')->name('login.')->group(function () {
+    Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('{provider}');
+    Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('{provider}.callback');
+});
+
 Route::get('/posts/show_guest/{post}','PostController@showGuest')->name('posts.show_guest');
 
 Route::group(['prefix' => 'posts','middleware'=>'auth'],function(){
