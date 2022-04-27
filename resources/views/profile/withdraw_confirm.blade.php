@@ -34,7 +34,7 @@
     </div>
 </div>
 
-<script>
+{{-- <script>
 
     function deleteUser(e) {
         'use strict';
@@ -43,6 +43,6 @@
         }
     }
 
-</script>
+</script> --}}
 
 @endsection

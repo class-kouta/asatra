@@ -10,6 +10,9 @@ use App\Models\Notification;
 class NiceController extends Controller
 {
     public function nice(Post $post){
+
+        logger('test');
+
         $nice = new Nice();
         $nice->post_id = $post->id;
         $nice->user_id = Auth::id();
@@ -21,13 +24,28 @@ class NiceController extends Controller
         $notification->text = '新しいいいねが付きました';
         $post->notifications()->save($notification);
 
-        return back();
+        // 同期
+        // return back();
+
+        // 非同期
+        return [
+            'id' => $post->id,
+            'countNices' => $post->count_nices,
+        ];
     }
 
     public function unnice(Post $post){
         $user_id = Auth::id();
         $nice = Nice::where('post_id', $post->id)->where('user_id', $user_id)->first();
         $nice->delete();
-        return back();
+
+        // 同期
+        // return back();
+
+        // 非同期
+        return [
+            'id' => $post->id,
+            'countNices' => $post->count_nices,
+        ];
     }
 }

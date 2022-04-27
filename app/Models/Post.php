@@ -36,4 +36,18 @@ class Post extends Model
     {
         return $this->morphMany('App\Models\Notification', 'notificationable');
     }
+
+    // うまく値が送信されないため削除
+    // public function isNicedBy(?User $user): bool
+    // {
+    //     return $user
+    //         ? (bool)$this->nices->where('id', $user->id)->count()
+    //         : false;
+    // }
+
+    // レッスン６。一旦コメントアウト。
+    public function getCountNicesAttribute(): int
+    {
+        return $this->nices->count();
+    }
 }

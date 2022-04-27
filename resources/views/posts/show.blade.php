@@ -134,10 +134,11 @@
             </div>
 
             {{-- いいね --}}
+            {{-- 同期 --}}
             <div class="mb-5 float-right">
                 @guest
                     <a href="{{ route('login') }}" class="btn btn-outline-danger btn-sm">
-                        いいね
+                        同期
                     </a>
                     <span>
                         {{ $post->nices->count() }}
@@ -145,14 +146,14 @@
                 @else
                     @if($nice)
                     <a href="{{ route('unnice', $post) }}" class="btn btn-danger btn-sm">
-                        いいね
+                        同期
                     </a>
                     <span>
                         {{ $post->nices->count() }}
                     </span>
                     @else
                     <a href="{{ route('nice', $post) }}" class="btn btn-outline-danger btn-sm">
-                        いいね
+                        同期
                     </a>
                     <span>
                         {{ $post->nices->count() }}
@@ -160,6 +161,15 @@
                     @endif
                 @endguest
             </div>
+
+            {{-- 非同期 --}}
+            <post-nice
+                :initial-is-niced-by='{{ $nice ? "true" : "false" }}'
+                :initial-count-nices='@json($post->count_nices)'
+                :authorized='@json(Auth::check())'
+                endpoint="{{ route('nice', ['post' => $post]) }}"
+            >
+            </post-nice>
 
             {{-- コメント追加 --}}
             @guest
@@ -228,7 +238,7 @@
 
 </div>
 
-<script>
+{{-- <script>
 
     function deletePost(e) {
         'use strict';
@@ -237,6 +247,6 @@
         }
     }
 
-</script>
+</script> --}}
 
 @endsection
