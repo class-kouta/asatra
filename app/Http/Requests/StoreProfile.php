@@ -25,7 +25,7 @@ class StoreProfile extends FormRequest
     {
         return [
             'name' => 'required|string|max:20',
-            'email' => 'required|string|email|max:255',
+            // 'email' => 'required|string|email|max:255',
             'sex' => 'required',
             'age' => 'required',
         ];

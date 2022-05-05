@@ -29,7 +29,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $user->name = $request->name;
-        $user->email = $request->email;
+        // $user->email = $request->email;
         $user->sex = $request->sex;
         $user->age = $request->age;
 

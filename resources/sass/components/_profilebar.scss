@@ -1,0 +1,53 @@
+.c-profilebar {
+    margin: 0 auto;
+    @media (max-width: 991px) {
+        display: none;
+    }
+
+    ul {
+        padding-left: 0;
+        margin-bottom: 0;
+
+        li {
+            list-style-type: none;
+            padding-bottom: 15px;
+        }
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
+
+.c-profilebar_primary {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.c-profilebar_card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.c-profilebar_card_image {
+    border-radius: 50%;
+}
+
+.c-profilebar_card_name {
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.c-profilebar_card_age {
+    font-size: 14px;
+    padding-left: 20px;
+}
