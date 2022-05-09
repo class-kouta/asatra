@@ -13,15 +13,11 @@
     vertical-align: middle;
     text-decoration: none;
     letter-spacing: 0.1em;
-    color: #212529;
+    color: $indigo;
     border-radius: 5px;
-}
 
-.c-btn--orange {
-    color: #fff;
-    background-color: #eb6100;
-}
-
-.c-btn--border-solid {
-    border: 2px solid #b84c00;
+    &--orange {
+    color: $white;
+    background-color: $orange;
+    }
 }

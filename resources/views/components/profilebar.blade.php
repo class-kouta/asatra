@@ -1,9 +1,9 @@
 @guest
     <div class="c-profilebar col-3">
-        <div class="c-profilebar_card">
-            <div class="c-footer_primary">
-                <img src="/storage/user_img/9.jpeg" class="c-profilebar_card_image">
-                <div class="c-profilebar_card_name">ゲスト</div>
+        <div class="c-profilebar__card">
+            <div class="c-profilebar__card__primary">
+                <img src="/storage/user_img/9.jpeg" class="c-profilebar__card__image">
+                <div class="c-profilebar__card__name">ゲスト</div>
             </div>
 
             <ul>
@@ -23,12 +23,12 @@
     </div>
 @else
     <div class="c-profilebar col-3">
-        <div class="c-profilebar_card">
-            <div class="c-profilebar_primary">
-                <img src="/storage/user_img/{{ Auth::user()->sex }}.jpeg" class="c-profilebar_card_image">
+        <div class="c-profilebar__card">
+            <div class="c-profilebar__card__primary">
+                <img src="/storage/user_img/{{ Auth::user()->sex }}.jpeg" class="c-profilebar__card__image">
                 <div>
-                    <div class="c-profilebar_card_name">{{ Auth::user()->name }}</div>
-                    <div class="c-profilebar_card_age">
+                    <div class="c-profilebar__card__name">{{ Auth::user()->name }}</div>
+                    <div class="c-profilebar__card__age">
                             @if(Auth::user()->age === 0)
                                 年代未設定
                             @else

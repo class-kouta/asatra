@@ -8,7 +8,7 @@ footer nav {
         font-size: 18px;
 
         a {
-            color: #ffffff;
+            color: $white;
             padding: 8px 16px;
         }
     }
@@ -16,20 +16,20 @@ footer nav {
 
 .l-footer {
     margin-top: 100px;
-    background-color: #c1994d;
-}
+    background-color: $orange;
 
-.l-footer_nav {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 0;
-}
+    &__nav {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+    }
 
-.l-footer_copy {
-    font-size: 14px;
-    color: #ffffff;
-    padding-bottom: 50px;
-    text-align: center;
+    &__copy {
+        font-size: 14px;
+        color: $white;
+        padding-bottom: 50px;
+        text-align: center;
+    }
 }

@@ -1,5 +1,5 @@
 <nav>
-    <ul class="l-footer_nav">
+    <ul class="l-footer__nav">
         <li>
             <a href="{{ route('nopage') }}">製作者について</a>
         </li>
@@ -12,4 +12,4 @@
     </ul>
 </nav>
 
-<p class="l-footer_copy">&copy; 2021 Kouta Sasaki</p>
+<p class="l-footer__copy">&copy; 2021 Kouta Sasaki</p>
