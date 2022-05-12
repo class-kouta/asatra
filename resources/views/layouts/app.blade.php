@@ -21,17 +21,15 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            @component('components.header')
-            @endcomponent
-        </header>
+        @component('components.header')
+        @endcomponent
 
         <main class="py-4">
             @yield('content')
         </main>
     </div>
 
-    <footer class="footer">
+    <footer class="l-footer">
         @component('components.footer')
         @endcomponent
     </footer>

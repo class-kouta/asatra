@@ -1,0 +1,23 @@
+.c-btn {
+    font-size: 16px;
+    display: inline-block;
+    padding: 8px 16px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    color: $indigo;
+    border-radius: 5px;
+
+    &--orange {
+    color: $white;
+    background-color: $orange;
+    }
+}

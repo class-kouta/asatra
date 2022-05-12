@@ -1,17 +1,15 @@
-<div class="my-5"></div>
-<div class="bg-primary" id="footer">
-    <ul class="nav justify-content-center py-4">
-        <li class="nav-item">
-            <u><a class="nav-link text-light h5" href="{{ route('nopage') }}">製作者について</a></u>
+<nav>
+    <ul class="l-footer__nav">
+        <li>
+            <a href="{{ route('nopage') }}">製作者について</a>
         </li>
-        <li class="nav-item">
-            <u><a class="nav-link text-light h5" href="{{ route('footer.faq') }}">FAQ</a></u>
+        <li>
+            <a href="{{ route('footer.faq') }}">FAQ</a>
         </li>
-        <li class="nav-item">
-            <u><a class="nav-link text-light h5" href="{{ route('nopage') }}">お問い合わせ</a></u>
+        <li>
+            <a href="{{ route('nopage') }}">お問い合わせ</a>
         </li>
     </ul>
-    <div id="copy">
-        <p class="text-center pb-5">&copy; 2021 Kouta Sasaki</p>
-    </div>
-</div>
+</nav>
+
+<p class="l-footer__copy">&copy; 2021 Kouta Sasaki</p>

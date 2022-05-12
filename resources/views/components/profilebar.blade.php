@@ -1,67 +1,65 @@
 @guest
-    <div class="col-3 mx-auto d-none d-lg-block">
-        <div class="card p-3 " id="sidebar">
-            <div class="d-flex align-items-center mb-4">
-                <img src="/storage/user_img/9.jpeg" class="rounded-circle">
-                    <div class="h4 ml-3">ゲスト</div>
+    <div class="c-profilebar col-3">
+        <div class="c-profilebar__card">
+            <div class="c-profilebar__card__primary">
+                <img src="/storage/user_img/9.jpeg" class="c-profilebar__card__image">
+                <div class="c-profilebar__card__name">ゲスト</div>
             </div>
 
-            <div class="ml-2">
-                <div class="mb-3">
+            <ul>
+                <li>
                     自分の投稿： - 件
-                </div>
-                <div class="mb-3">
+                </li>
+                <li>
                     いいねした投稿： - 件
-                </div>
-                <div class="mb-4">
+                </li>
+                <li>
                     書いたコメント： - 件
-                </div>
-                <a class="btn btn-primary mb-4" href="{{ route('login') }}">ログインして投稿</a>
-            </div>
+                </li>
+            </ul>
+
+            <a class="c-btn c-btn--orange" href="{{ route('login') }}">ログイン</a>
         </div>
     </div>
 @else
-    <div class="col-3 mx-auto d-none d-lg-block">
-        <div class="card p-3" id="sidebar">
-            <div class="d-flex align-items-center mb-4">
-                <img src="/storage/user_img/{{ Auth::user()->sex }}.jpeg" class="rounded-circle">
-                <div class="ml-3">
-                    <div class="h4">{{ Auth::user()->name }}</div>
-                    <div class="">
-                        <div>
+    <div class="c-profilebar col-3">
+        <div class="c-profilebar__card">
+            <div class="c-profilebar__card__primary">
+                <img src="/storage/user_img/{{ Auth::user()->sex }}.jpeg" class="c-profilebar__card__image">
+                <div>
+                    <div class="c-profilebar__card__name">{{ Auth::user()->name }}</div>
+                    <div class="c-profilebar__card__age">
                             @if(Auth::user()->age === 0)
                                 年代未設定
                             @else
                                 {{ Auth::user()->age }} 代
                             @endif
-                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="ml-2">
-                <div class="mb-3">
+            <ul>
+                <li>
                     自分の投稿： <a class="" href="{{ route('profile.myposts', PostListType::MY_POST) }}">{{ Auth::user()->post->count() }}</a> 件
-                </div>
-                <div class="mb-3">
+                </li>
+                <li>
                     いいねした投稿： <a class="" href="{{ route('profile.myposts',PostListType::MY_NICE) }}">{{ Auth::user()->joinNicesPosts()->count() }}</a> 件
-                </div>
-                <div class="mb-4">
+                </li>
+                <li>
                     書いたコメント： <a class="" href="{{ route('profile.myposts', PostListType::MY_COMMENT) }}">{{ Auth::user()->joinCommentsPosts()->count() }}</a> 件
-                </div>
-                <div class="mb-4">
+                </li>
+                <li>
+                    <a href="{{ route('profile.myposts', PostListType::MY_DRAFT) }}">下書きリスト</a>
+                </li>
+                <li>
                     <a class="" href="{{ route('profile.notifications') }}">通知</a>
-                </div>
-                <a class="btn btn-primary mb-1" href="{{ route('posts.create') }}">投稿する</a>
-            </div>
+                </li>
+                <li>
+                    <a href="{{ route('profile.edit') }}">ユーザ情報の変更</a>
+                </li>
+            </ul>
 
-            <div class="ml-2 mb-3">
-                <a href="{{ route('profile.myposts', PostListType::MY_DRAFT) }}">下書きリスト</a>
-            </div>
-
-            <div class="ml-2">
-                <a href="{{ route('profile.edit') }}">ユーザ情報の変更</a>
-            </div>
+            <a class="c-btn c-btn--orange" href="{{ route('posts.create') }}">投稿する</a>
         </div>
     </div>
 @endguest
