@@ -5,12 +5,12 @@
     <div class="row">
         <div class="col-8">
 
-            <div class="text-secondary border-bottom pl-3 pb-1 mb-4 h5">
+            <div class="e-heading2 mb-5 pl-3 is-heading_bdb-gray is-heading_color-gray">
                 FAQ よくある質問
             </div>
 
-            <ul class="">
-                <li class="list-unstyled">
+            <ul class="e-list_disc">
+                <li>
                     <a href="{{ route('footer.faq.about_withdraw') }}">退会するにはどうしたらいいですか？</a>
                 </li>
             </ul>

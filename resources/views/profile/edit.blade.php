@@ -5,49 +5,53 @@
     <div class="row">
         <div class="col col-lg-8" id="content">
 
-            <div class="text-secondary border-bottom pl-3 pb-1 mb-5 h5">
+            <div class="e-heading2 mb-5 pl-3 is-heading_bdb-gray is-heading_color-gray">
                 ユーザ情報の変更
             </div>
 
             <div class="ml-4 mb-5">
                 <form action="{{ route('profile.update') }}" method="post" class="">
                 @csrf
-                    <div class="form-group mb-4">
-                        <div class="d-flex">
-                            <label for="name" class="text-secondary">ユーザ名</label>
-                            @error('name')
-                                <div class="text-danger ml-3">{{ $message }}</div>
-                            @enderror
+                    <div class="mb-3">
+                        <div class="c-form-group__primary">
+                            <div class="c-form-group__title">ユーザ名</div>
                         </div>
-                        <input type="text" name="name" class="form-control w-50" id="name" value="{{ Auth::user()->name }}">
+                        @error('name')
+                        <div class="is-text_red">{{ $message }}</div>
+                        @enderror
+                        <input type="text" name="name" class="e-form w-50" id="name" value="{{ Auth::user()->name }}">
                     </div>
 
                     {{-- 現在、Googleアカウントで登録したユーザーがメールアドレスを修正するとログインできなくなる仕様になっているため、一時コメントアウト --}}
-                    {{-- <div class="form-group mb-4">
-                        <div class="d-flex">
-                            <label for="email" class="text-secondary">メールアドレス</label>
-                            @error('email')
-                                <div class="text-danger ml-3">{{ $message }}</div>
-                            @enderror
+                    {{-- <div class="mb-3">
+                        <div class="c-form-group__primary">
+                            <div class="c-form-group__title">メールアドレス</div>
                         </div>
-                        <input type="email" name="email" class="form-control w-50" id="email" value="{{ Auth::user()->email }}">
+                        @error('email')
+                        <div class="is-text_red">{{ $message }}</div>
+                        @enderror
+                        <input type="email" name="email" class="e-form w-50" id="email" value="{{ Auth::user()->email }}">
                     </div> --}}
 
-                    <div class="form-group mb-3">
-                        <label for="sex" class="text-secondary">性別</label>
-                        <select name="sex" id="sex" class="ml-3">
+                    <div class="mb-3">
+                        <div class="c-form-group__primary">
+                            <div class="c-form-group__title">性別</div>
+                        </div>
+                        <select name="sex" id="sex" class="e-form col-4">
                             <option value="{{ UserSexType::NOT_APPLICABLE }}" {{ Auth::user()->sex === UserSexType::NOT_APPLICABLE ? 'selected' : '' }}>回答しない</option>
                             <option value="{{ UserSexType::MALE }}" {{ Auth::user()->sex === UserSexType::MALE ? 'selected' : '' }}>男性</option>
                             <option value="{{ UserSexType::FEMALE }}" {{ Auth::user()->sex === UserSexType::FEMALE ? 'selected' : '' }}>女性</option>
                         </select>
                         @error('sex')
-                            <div class="text-danger ml-3">{{ $message }}</div>
+                        <div class="is-text_red">{{ $message }}</div>
                         @enderror
                     </div>
 
-                    <div class="form-group mb-4">
-                        <label for="age" class="text-secondary">年代</label>
-                        <select name="age" id="age" class="ml-3">
+                    <div class="mb-4">
+                        <div class="c-form-group__primary">
+                            <div class="c-form-group__title">年代</div>
+                        </div>
+                        <select name="age" id="age" class="e-form col-4">
                             <option value="0" {{ Auth::user()->age === 0 ? 'selected' : '' }}>回答しない</option>
                             <option value="10" {{ Auth::user()->age === 10 ? 'selected' : '' }}>10代</option>
                             <option value="20" {{ Auth::user()->age === 20 ? 'selected' : '' }}>20代</option>
@@ -57,14 +61,15 @@
                             <option value="60" {{ Auth::user()->age === 60 ? 'selected' : '' }}>60代〜</option>
                         </select>
                         @error('age')
-                            <div class="text-danger ml-3">{{ $message }}</div>
+                        <div class="is-text_red">{{ $message }}</div>
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-primary">更新</button>
+                    <button type="submit" class="e-btn is-btn_orange">更新</button>
 
                 </form>
             </div>
+
             <div class="ml-4">
                 <a href="{{ '/profile/withdraw_confirm' }}">退会はコチラから</a>
             </div>

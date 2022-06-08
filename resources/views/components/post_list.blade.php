@@ -1,82 +1,82 @@
 @foreach ($posts as $post)
-    @if($post->user->sex === UserSexType::MALE)
-        <div class="d-flex align-items-center mt-5 border-bottom border-primary">
-    @elseif($post->user->sex === UserSexType::FEMALE)
-        <div class="d-flex align-items-center mt-5 border-bottom border-danger">
-    @else
-        <div class="d-flex align-items-center mt-5 border-bottom border-dark">
+
+<div class="c-post-list">
+
+    @if($post->status === PostStatusType::SECRET)
+    <span class="c-post-list__header__secret">【非公開】</span>
     @endif
 
-        @guest
-            <span class="ml-3 h5 text-truncate"><a href="{{ route('posts.show_guest',$post) }}" class="text-reset">{{ $post->title }}</a></span>
-        @else
-            <span class="ml-3 h5 text-truncate"><a href="{{ route('posts.show',$post) }}" class="text-reset">{{ $post->title }}</a></span>
-        @endguest
+    @if($post->user->sex === UserSexType::MALE)
+    <div class="c-post-list__header is-post-list__header_male">
+    @elseif($post->user->sex === UserSexType::FEMALE)
+    <div class="c-post-list__header is-post-list__header_female">
+    @else
+    <div class="c-post-list__header">
+    @endif
 
-        @if(!isset($post->category->category_name))
-            <span class="ml-3 h4"><span class="badge badge-secondary badge-pill font-weight-light">カテゴリ未設定</span></span>
-        @else
-            <span class="ml-3 h4"><a href="{{ route('top', ['category_id' => $post->category->id ])}}" class="badge badge-info badge-pill font-weight-light text-light">{{ $post->category->category_name }}</a></span>
-        @endif
+        <span class="c-post-list__header__title">{{ $post->title }}</span>
 
-        @if($post->status === PostStatusType::SECRET)
-            <div>非公開</div>
-        @endif
+        <span class="c-post-list__header__category">
+            @if(!isset($post->category->category_name))
+            <span class="e-tag is-tag_gray">カテゴリ未設定</span>
+            @else
+            <a href="{{ route('top', ['category_id' => $post->category->id ])}}" class="e-tag is-tag_orange">{{ $post->category->category_name }}</a>
+            @endif
+        </span>
 
     </div>
 
-    <div>
-        <ul class="ml-5 mb-2 p-0 w-75">
-            <li class="list-unstyled mt-2">
-                <div class="d-flex row">
-                    <div class="col-2 text-secondary">
+    <div class="c-post-list__body">
+        @guest
+        <a href="{{ route('posts.show_guest',$post) }}">
+        @else
+        <a href="{{ route('posts.show',$post) }}">
+        @endguest
+            <ul>
+                <li>
+                    <div class="c-post-list__body__subtitle">
                         Describe
                     </div>
-                    <div class="col-10 text-truncate">
+                    <div class="c-post-list__body__text">
                         {{ $post->describe }}
                     </div>
-                </div>
-            </li>
-            <li class="list-unstyled mt-2">
-                <div class="d-flex row">
-                    <div class="col-2 text-secondary">
+                </li>
+                <li>
+                    <div class="c-post-list__body__subtitle">
                         Explain
                     </div>
-                    <div class="col-10 text-truncate">
+                    <div class="c-post-list__body__text">
                         {{ $post->explain }}
                     </div>
-                </div>
-            </li>
-            <li class="list-unstyled mt-2">
-                <div class="d-flex row">
-                    <div class="col-2 text-secondary">
+
+                </li>
+                <li>
+                    <div class="c-post-list__body__subtitle">
                         Specify
                     </div>
-                    <div class="col-10 text-truncate">
+                    <div class="c-post-list__body__text">
                         {{ $post->specify }}
                     </div>
-                </div>
-            </li>
-            @guest
-                <li class="list-unstyled text-truncate mt-2"><a href="{{ route('posts.show_guest',$post) }}">...続きを読む</a></li>
-            @else
-                <li class="list-unstyled text-truncate mt-2"><a href="{{ route('posts.show',$post) }}">...続きを読む</a></li>
-            @endguest
-        </ul>
-
-        <div class="d-flex">
-            <div class="ml-3">
-                いいね：{{ $post->nices->count() }}
-            </div>
-            <div class="ml-3">
-                コメント：{{ $post->comments->count() }}
-            </div>
-            @if($post->created_at)
-                <div class="ml-4 text-secondary">
-                    {{ $post->created_at->format('Y/n/j H:i') }}
-                </div>
-            @endif
-        </div>
+                </li>
+                <li>...続きを読む</li>
+            </ul>
+        </a>
     </div>
+
+    <div class="c-post-list__footer">
+        <div class="c-post-list__footer__nice">
+            いいね：{{ $post->nices->count() }}
+        </div>
+        <div class="c-post-list__footer__comment">
+            コメント：{{ $post->comments->count() }}
+        </div>
+        @if($post->created_at)
+        <div class="c-post-list__footer__timestamp">
+            {{ $post->created_at->format('Y/n/j H:i') }}
+        </div>
+        @endif
+    </div>
+
+</div>
 
 @endforeach

@@ -26,30 +26,30 @@
     @endif
 
 
-    <ul class="pagination" role="navigation">
+    <ul class="c-page" role="navigation">
 
         @if ($end_page > Paginate::LINK_SUM)
-            <li class="page-item mx-1"><a class="page-link" href="{{ $paginator->url(1) }}">1</a></li>
+            <li><a class="c-page__link" href="{{ $paginator->url(1) }}">1</a></li>
         @endif
 
         @if ($end_page > Paginate::LINK_SUM + 1)
-            <li class="page-item mx-1">. . .</li>
+            <li>. . .</li>
         @endif
 
         @for ($i = $start_page; $i <= $end_page; $i++)
             @if ($i == $paginator->currentPage())
-                <li class="page-item active mx-1"><span class="page-link">{{ $i }}</span></li>
+                <li class="c-page__active"><span class="c-page__link">{{ $i }}</span></li>
             @else
-                <li class="page-item mx-1"><a class="page-link" href="{{ $paginator->url($i) }}">{{ $i }}</a></li>
+                <li><a class="c-page__link" href="{{ $paginator->url($i) }}">{{ $i }}</a></li>
             @endif
         @endfor
 
         @if ($end_page < $paginator->lastPage() - 1)
-            <li class="page-item mx-1">. . .</li>
+            <li>. . .</li>
         @endif
 
         @if($end_page != $paginator->lastPage())
-            <li class="page-item mx-1"><a class="page-link" href="{{ $paginator->url($paginator->lastPage()) }}">{{ $paginator->lastPage() }}</a></li>
+            <li><a class="c-page__link" href="{{ $paginator->url($paginator->lastPage()) }}">{{ $paginator->lastPage() }}</a></li>
         @endif
 
     </ul>

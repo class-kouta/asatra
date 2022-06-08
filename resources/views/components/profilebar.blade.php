@@ -1,9 +1,9 @@
 @guest
     <div class="c-profilebar col-3">
         <div class="c-profilebar__card">
-            <div class="c-profilebar__card__primary">
-                <img src="/storage/user_img/9.jpeg" class="c-profilebar__card__image">
-                <div class="c-profilebar__card__name">ゲスト</div>
+            <div class="c-user-status">
+                <img src="/storage/user_img/9.jpeg" class="c-user-status__img">
+                <div class="c-user-status__name">ゲスト</div>
             </div>
 
             <ul>
@@ -18,48 +18,48 @@
                 </li>
             </ul>
 
-            <a class="c-btn c-btn--orange" href="{{ route('login') }}">ログイン</a>
+            <a class="e-btn is-btn_orange" href="{{ route('login') }}">ログイン</a>
         </div>
     </div>
 @else
     <div class="c-profilebar col-3">
         <div class="c-profilebar__card">
-            <div class="c-profilebar__card__primary">
-                <img src="/storage/user_img/{{ Auth::user()->sex }}.jpeg" class="c-profilebar__card__image">
+            <div class="c-user-status">
+                <img src="/storage/user_img/{{ Auth::user()->sex }}.jpeg" class="c-user-status__img">
                 <div>
-                    <div class="c-profilebar__card__name">{{ Auth::user()->name }}</div>
-                    <div class="c-profilebar__card__age">
-                            @if(Auth::user()->age === 0)
-                                年代未設定
-                            @else
-                                {{ Auth::user()->age }} 代
-                            @endif
+                    <div class="c-user-status__name">{{ Auth::user()->name }}</div>
+                    <div class="c-user-status__age">
+                        @if(Auth::user()->age === 0)
+                            年代未設定
+                        @else
+                            {{ Auth::user()->age }} 代
+                        @endif
                     </div>
                 </div>
             </div>
 
             <ul>
                 <li>
-                    自分の投稿： <a class="" href="{{ route('profile.myposts', PostListType::MY_POST) }}">{{ Auth::user()->post->count() }}</a> 件
+                    自分の投稿　　： <a href="{{ route('profile.myposts', PostListType::MY_POST) }}">{{ Auth::user()->post->count() }}</a> 件
                 </li>
                 <li>
-                    いいねした投稿： <a class="" href="{{ route('profile.myposts',PostListType::MY_NICE) }}">{{ Auth::user()->joinNicesPosts()->count() }}</a> 件
+                    いいねした投稿： <a href="{{ route('profile.myposts',PostListType::MY_NICE) }}">{{ Auth::user()->joinNicesPosts()->count() }}</a> 件
                 </li>
                 <li>
-                    書いたコメント： <a class="" href="{{ route('profile.myposts', PostListType::MY_COMMENT) }}">{{ Auth::user()->joinCommentsPosts()->count() }}</a> 件
+                    書いたコメント： <a href="{{ route('profile.myposts', PostListType::MY_COMMENT) }}">{{ Auth::user()->joinCommentsPosts()->count() }}</a> 件
                 </li>
                 <li>
                     <a href="{{ route('profile.myposts', PostListType::MY_DRAFT) }}">下書きリスト</a>
                 </li>
                 <li>
-                    <a class="" href="{{ route('profile.notifications') }}">通知</a>
+                    <a href="{{ route('profile.notifications') }}">通知</a>
                 </li>
                 <li>
                     <a href="{{ route('profile.edit') }}">ユーザ情報の変更</a>
                 </li>
             </ul>
 
-            <a class="c-btn c-btn--orange" href="{{ route('posts.create') }}">投稿する</a>
+            <a class="e-btn is-btn_orange" href="{{ route('posts.create') }}">投稿する</a>
         </div>
     </div>
 @endguest

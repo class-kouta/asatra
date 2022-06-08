@@ -1,0 +1,33 @@
+.c-post-comment {
+    display: flex;
+    margin-bottom: 24px;
+
+    &__img {
+        border-radius: 50%;
+    }
+
+    &__primary {
+        display: flex;
+        align-items: center;
+        padding-left: 8px;
+        padding-bottom: 8px;
+    }
+
+    &__name {
+        color: $dark-gray;
+    }
+
+    &__timestamp {
+        color: $gray;
+        padding-left: 16px;
+    }
+
+    &__button {
+        padding-left: 16px;
+    }
+
+    &__text {
+        padding-left: 8px;
+        color: $dark-gray;
+    }
+}

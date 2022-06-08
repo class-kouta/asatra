@@ -1,0 +1,16 @@
+.c-form-group {
+    &__primary {
+        display: flex;
+        text-align: center;
+        padding-bottom: 4px;
+    }
+
+    &__title {
+        color: $indigo;
+    }
+
+    &__required {
+        color: $red;
+        padding-left: 4px;
+    }
+}
