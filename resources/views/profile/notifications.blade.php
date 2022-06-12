@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col col-lg-8" id="content">
 
-            <div class="text-secondary border-bottom pl-3 pb-1 mb-5 h5">
+            <div class="e-heading2 mb-5 pl-3 is-heading_bdb-gray is-heading_color-gray">
                 通知
             </div>
 
@@ -14,13 +14,15 @@
                     新しい通知はありません。
                 </div>
             @else
-                @foreach ($notifications as $notification)
-                    <div>
+                <ul class="e-list_disc">
+                    @foreach ($notifications as $notification)
+                    <li>
                         <a href="{{ route('posts.show', $notification->notificationable) }}">
                             「{{ $notification->notificationable->title }}」に{{ $notification->text }}
                         </a>
-                    </div>
-                @endforeach
+                    </li>
+                    @endforeach
+                </ul>
             @endif
 
         </div>

@@ -1,0 +1,19 @@
+.c-user-status {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+
+    &__img {
+        border-radius: 50%;
+    }
+
+    &__name {
+        font-size: 20px;
+        padding-left: 20px;
+    }
+
+    &__age {
+        font-size: 14px;
+        padding-left: 20px;
+    }
+}

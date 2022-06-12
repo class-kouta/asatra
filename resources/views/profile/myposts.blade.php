@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col col-lg-8" id="content">
 
-            <div class="text-secondary border-bottom pl-3 pb-1 mb-5 h5">
+            <div class="e-heading2 mb-5 pl-3 is-heading_bdb-gray is-heading_color-gray">
                 {{ $page_title }}
             </div>
 

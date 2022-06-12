@@ -4,20 +4,6 @@
         display: none;
     }
 
-    ul {
-        padding-left: 0;
-        margin-bottom: 0;
-
-        li {
-            list-style-type: none;
-            padding-bottom: 15px;
-        }
-    }
-
-    a {
-        text-decoration: none;
-    }
-
     &__card {
         position: relative;
         display: flex;
@@ -36,7 +22,7 @@
             margin-bottom: 24px;
         }
 
-        &__image {
+        &__img {
             border-radius: 50%;
         }
 
@@ -49,5 +35,22 @@
             font-size: 14px;
             padding-left: 20px;
         }
+    }
+
+    ul {
+        padding-left: 0;
+        padding-bottom: 5px;
+        margin-bottom: 0;
+
+        li {
+            list-style-type: none;
+            padding-left: 10px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba($black, 0.1);
+        }
+    }
+
+    a {
+        text-decoration: none;
     }
 }

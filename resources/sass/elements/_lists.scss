@@ -1,0 +1,23 @@
+.e-list {
+    &_disc {
+        list-style: none;
+
+        li {
+            position: relative;
+            padding-left: 1.4em;
+            margin-bottom: 0.6em;
+
+            &::before {
+                position: absolute;
+                top: 0.5em;
+                left: 0.3em;
+                display: block;
+                width: 0.5em;
+                height: 0.5em;
+                content: '';
+                border-radius: 100%;
+                background-color: $gray;
+            }
+        }
+    }
+}

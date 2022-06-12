@@ -1,0 +1,208 @@
+// c-card クラス
+
+.is-card {
+    &_bd-orange {
+        border-color: rgba($orange, 0.5);
+    }
+
+    &_bd-blue {
+        border-color: rgba($blue, 0.5);
+    }
+
+    &__header {
+        &_bg-orange {
+            background-color: rgba($orange, 0.125);
+        }
+
+        &_bg-blue {
+            background-color: rgba($blue, 0.125);
+        }
+    }
+}
+
+// c-post-list クラス
+
+.is-post-list {
+    &__header{
+        &_male {
+            border-bottom-color: rgba($cyan, 0.5);
+        }
+
+        &_female {
+            border-bottom-color: rgba($pink, 0.5);
+        }
+    }
+}
+
+
+// e-heading クラス
+
+.is-heading {
+    &_bdb-gray {
+        padding-bottom: 4px;
+        border-bottom: 1px solid $gray;
+    }
+
+    &_color-gray {
+        color: $gray;
+    }
+}
+
+
+// e-btn クラス
+
+.is-btn {
+    &_orange {
+        color: $white;
+        background-color: $orange;
+
+        &:focus,
+        &:hover {
+            color: $white;
+            text-decoration: none;
+            opacity: 0.6;
+        }
+    }
+
+    &_pink {
+        color: $white;
+        background-color: $pink;
+
+        &:focus,
+        &:hover {
+            color: $white;
+            text-decoration: none;
+            opacity: 0.6;
+        }
+    }
+
+    &_red {
+        color: $white;
+        background-color: $red;
+
+        &:focus,
+        &:hover {
+            color: $white;
+            text-decoration: none;
+            opacity: 0.6;
+        }
+    }
+
+    &_blue {
+        color: $white;
+        background-color: $blue;
+
+        &:focus,
+        &:hover {
+            color: $white;
+            text-decoration: none;
+            opacity: 0.6;
+        }
+    }
+
+    &_indigo {
+        color: $white;
+        background-color: $indigo;
+
+        &:focus,
+        &:hover {
+            color: $white;
+            text-decoration: none;
+            opacity: 0.6;
+        }
+    }
+
+    &_outline-blue {
+        color: $blue;
+        border: 1px solid $blue;
+        background-color: $white;
+
+        &:focus,
+        &:hover {
+            color: $white;
+            background-color: $blue;
+            text-decoration: none;
+        }
+    }
+
+    &_outline-orange {
+        color: $orange;
+        border: 1px solid $orange;
+        background-color: $white;
+
+        &:focus,
+        &:hover {
+            color: $white;
+            background-color: $orange;
+            text-decoration: none;
+        }
+    }
+
+    &_outline-pink {
+        color: $pink;
+        border: 1px solid $pink;
+        background-color: $white;
+
+        &:focus,
+        &:hover {
+            color: $white;
+            background-color: $pink;
+            text-decoration: none;
+        }
+    }
+
+    &_outline-indigo {
+        color: $indigo;
+        border: 1px solid $indigo;
+        background-color: $white;
+
+        &:focus,
+        &:hover {
+            color: $white;
+            background-color: $indigo;
+            text-decoration: none;
+        }
+    }
+
+    &_link {
+        padding: 0;
+        font-weight: 400;
+        color: #3490dc;
+        text-decoration: none;
+
+        &:focus,
+        &:hover {
+            color: #3490dc;
+            text-decoration: none;
+            opacity: 0.6;
+        }
+    }
+
+    &_sm {
+        font-size: 12px;
+        padding: 3px 8px;
+    }
+}
+
+
+// e-tag クラス
+
+.is-tag {
+    &_gray {
+        color: $white;
+        background-color: $gray;
+    }
+
+    &_orange {
+        color: $white;
+        background-color: $orange;
+    }
+}
+
+// e-text クラス
+
+.is-text {
+    &_red {
+        color: $red;
+    }
+}
