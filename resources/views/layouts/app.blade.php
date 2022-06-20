@@ -20,14 +20,14 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+    <header class="l-header">
         @component('components.header')
         @endcomponent
+    </header>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+    <main class="l-container">
+        @yield('content')
+    </main>
 
     <footer class="l-footer">
         @component('components.footer')
