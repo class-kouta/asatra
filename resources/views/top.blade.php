@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="col-md-2">
-                        <select name="sorting" class="e-form">
+                        <select name="sorting" class="e-form" onchange="submit(this.form)">
                             <option value="{{ SortType::LATEST }}" @if(request()->sorting == SortType::LATEST) selected @endif>投稿日時が新しい順</option>
                             <option value="{{ SortType::OLDEST }}" @if(request()->sorting == SortType::OLDEST) selected @endif>投稿日時が古い順</option>
                             <option value="{{ SortType::NICE_DESC }}" @if(request()->sorting == SortType::NICE_DESC) selected @endif>いいねが多い順</option>
