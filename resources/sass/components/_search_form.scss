@@ -1,0 +1,36 @@
+.c-search-form {
+    @media (max-width: 767px) {
+        padding-bottom: 12px;
+    }
+
+    @media (min-width: 768px) {
+        display: flex;
+        text-align: center;
+        flex-wrap: wrap;
+        padding-bottom: 12px;
+    }
+
+    &__category {
+        @media (max-width: 767px) {
+            padding-bottom: 8px;
+        }
+
+        @media (min-width: 768px) {
+            flex: 0 0 16.6666666667%;
+            max-width: 16.6666666667%;
+        }
+    }
+
+    &__keyword {
+        @media (max-width: 767px) {
+            padding-bottom: 8px;
+        }
+
+        @media (min-width: 768px) {
+            flex: 0 0 50%;
+            max-width: 50%;
+            padding-right: 8px;
+            padding-left: 8px;
+        }
+    }
+}

@@ -1,0 +1,103 @@
+.l-header {
+    padding: 10px 40px 10px;
+    width: 100%;
+
+    &__nav {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 16px;
+
+        @media (min-width: 992px) {
+            flex-flow: row nowrap;
+            justify-content: flex-start;
+
+            .navbar-collapse {      // bootstrap
+                display: flex;
+            }
+
+            .navbar-toggler {       // bootstrap
+                display: none;
+            }
+        }
+
+        &__top {
+            color: $orange;
+            display: inline-block;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin-right: 16px;
+            font-size: 18px;
+            line-height: inherit;
+            white-space: nowrap;
+
+            &:hover,
+            &:focus {
+                text-decoration: none;
+                color: $orange;
+                opacity: 0.6;
+            }
+        }
+
+        &__icon {
+            display: inline-block;
+            width: 1.5em;
+            height: 1.5em;
+            vertical-align: middle;
+            content: "";
+            background: 50%/100% 100% no-repeat;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        &__contents {
+            display: flex;
+            flex-direction: column;
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style: none;
+
+            .l-header__nav__contents__link {
+                padding-right: 0;
+                padding-left: 0;
+            }
+
+            .dropdown-menu {            // bootstrap
+                position: static;
+                float: none;
+            }
+
+            .l-header__nav__contents__dropdown-menu {
+                position: static;
+                float: none;
+            }
+
+            &__link {
+                color: $orange;
+                display: block;
+                padding: 8px 16px;
+
+                &:hover,
+                &:focus {
+                    text-decoration: none;
+                    color: $orange;
+                    opacity: 0.6;
+                }
+            }
+
+            @media (min-width: 992px) {
+                flex-direction: row;
+
+                .dropdown-menu {            // bootstrap
+                    position: absolute;
+                }
+
+                .l-header__nav__contents__link {
+                    padding-right: 8px;
+                    padding-left: 8px;
+                }
+            }
+        }
+    }
+}
