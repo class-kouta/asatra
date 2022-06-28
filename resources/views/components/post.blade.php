@@ -287,9 +287,9 @@
                 <div class="c-form-group__title">公開 or 非公開 or 下書き</div>
             </div>
             <select name="status" id="" class="e-form">
-                <option value="{{ PostStatusType::PUBLISHED }}">公開</option>
-                <option value="{{ PostStatusType::SECRET }}">非公開</option>
-                <option value="{{ PostStatusType::DRAFT }}">下書き</option>
+                @foreach(PostStatusType::getInstances() as $instance)
+                    <option value="{{ $instance->value }}" @if(optional($post)->status === $instance->value) selected @endif>{{ $instance->description }}</option>
+                @endforeach
             </select>
         </div>
 
