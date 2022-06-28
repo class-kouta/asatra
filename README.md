@@ -1,78 +1,128 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## アサトラ
+　自分の主張や考えを伝えるための技術であるアサーションについてトレーニングできるアプリです。
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
 
-## About Laravel
+## URL
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 開発した経緯
+　自分と同じように、パートナーとのコミュニケーションに悩んでいる人の助けになりたいと思ったことがきっかけです。
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+　以前の私は彼女に好かれるようにと、彼女と意見が異なっていても彼女に合わせることが多く、そのせいで恋愛に息苦しさを感じることがありました。
 
-## Learning Laravel
+　また、どうしても受け入れられない価値観などをぶつけられた際に、うまく自分の意見を伝えられず、建設的な話し合いができずにお互いが傷つくだけで終わってしまうこともよくありました。
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+　そんな時に「[夫婦・カップルのためのアサーション](https://www.amazon.co.jp/%E5%A4%AB%E5%A9%A6%E3%83%BB%E3%82%AB%E3%83%83%E3%83%97%E3%83%AB%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-%E9%87%8E%E6%9C%AB%E6%AD%A6%E7%BE%A9-ebook/dp/B08FCDW7M8/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=HDKURG9113TQ&keywords=%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3&qid=1656038633&sprefix=%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%2Caps%2C287&sr=8-1)」という本に出会い、伝える技術であるアサーションについて知りました。
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+　相手の意見を尊重しつつ、うまく自分の意見を伝えることができるようになり、恋愛で感じていた息苦しさを軽くすることができました。
 
-## Laravel Sponsors
+　このように、アサーションはすばらしい技術です。しかし、気をつけるポイントが多いことや、伝え方が合っているかどうかはパートナーからのフィードバックでしか得られないことなど、若干のとっつき辛さを感じました。
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+　そこで、万人により手軽にアサーションの技術を学んでもらえるように、本アプリの開発に至りました
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
 
-## Contributing
+## アプリ概要
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+本アプリのコンセプトは以下の２点です。
+- アサーティブな文章の作成にかかるユーザーの負担を最小限に抑える
+- 作成した文章に対するフィードバックの機会を創出
 
-## Code of Conduct
+上記のコンセプトを達成するために、本アプリには以下のような特徴を備えております。
+1. 入力フォームを順番に入力するだけで、アサーティブな文章構造が出来上がる
+2. 各入力フォームにコツ及び文章例を設置しており、文章作成時にすぐ参照できる。
+3. 検索機能により、同様の悩みを抱えた人が作成したアサーティブな文章を参照できる。
+4. いいねやコメント機能により、他ユーザーからのアクション・フィードバックを得られる。
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+　なお３については、サービス初期のユーザーが恩恵を享受しづらいことから、開発者本人により投稿を１００件以上自作しました（ネタは知恵袋等を参考）。
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 機能一覧
 
-## License
+#### ユーザー登録関連
+- ログイン・ログアウト
+  - GoogleAPIによりGoogleログインも可能
+- 新規登録・退会（論理削除）
+  - 退会したユーザーの投稿はデータとして残したかったため、物理削除ではなく論理削除を採用。
+  - 退会時にダイアログを表示
+- プロフィール編集
+  - メールアドレスの変更について、現在、Googleアカウントで登録したユーザーがメールアドレスを修正するとログインできなくなる仕様になっているため今後修正予定。
+- パスワード変更
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### 投稿機能(CRUD)
+- 新規作成
+  - フォーム入力時にコツや例を表示（Bootstrap）
+- 一覧表示
+- 編集
+- 削除
+  - 削除時にダイアログを表示
+
+#### コメント投稿機能
+- 新規作成、一覧表示、削除
+- 編集機能実装失念のため今後実装予定
+
+#### いいね機能
+- 現在非同期処理（Vye.js / ajax）移行中
+
+#### 投稿検索機能
+- カテゴリー、キーワード検索
+
+#### 投稿並び替え機能
+- 投稿日時が新しい
+- 投稿日時が古い順
+- いいねが多い順
+
+#### その他
+- ページネーション
+  - 表示数やCSSを独自にカスタマイズ
+- レスポンシブWebデザイン
+- ハンバーガーメニュー(Bootstrap)
+
+
+## 使用画面のイメージ
+
+
+## 使用技術
+
+### フロントエンド
+- Vue.js 2.6.14
+- jQuery 3.2
+- HTML/Sass/Bootstrap
+
+### バックエンド
+- PHP 7.4.27
+- Laravel 6.20.35
+
+### インフラ
+- MySQL
+- AWS
+
+
+## AWS構成図
+## DB設計
+### ER図
+![ER図（修正後） drawio](https://user-images.githubusercontent.com/78774242/176316230-b5dec0cb-44cf-4edf-a822-3b62ee74106d.png)
+
+### 各テーブルについて
+| テーブル名 | 説明 |
+| --- | --- |
+| users | ユーザーの情報 |
+| posts | ユーザー投稿の情報 |
+| comments | 投稿へのコメントの情報 |
+| nices | 投稿へのいいねの情報 |
+| notifications | ユーザーへの通知の情報 |
+| categories | 投稿のカテゴリー分類の情報 |
+
+## 今後実装したい機能など
+- 投稿入力画面において、デフォルトの文章例以外に、他の人の投稿を文章例として表示させたい
+- プロフィール画像の設定
+  - 現状は性別ごとにフリー素材のアイコンを設定しているだけだが、今後はユーザーが独自に画像を設定できるようにしたい
+- 各準備中ページの実装
+- 管理ユーザー関係
+  - ログイン・ログアウト
+  - 管理ユーザーはデフォルトの「コツ」「例」を編集できるようにする
+- 共感力トレーニング機能
+  - コメントフォームに共感のコツや例文集などを設置したい
+- いいね以外のボタンを設置
+  - 「分かる」「応援」ボタン等
+- googleアドセンスやamazonアフィリエイト等によりサービスの収益化
+- PHPUnitによるテスト
