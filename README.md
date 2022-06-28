@@ -100,6 +100,8 @@
 ## AWS構成図
 ## DB設計
 ### ER図
+![ER図 drawio](https://user-images.githubusercontent.com/78774242/176074475-ff6623b5-ff90-4ef6-ae23-9b8df5be952d.png)
+
 ### 各テーブルについて
 | テーブル名 | 説明 |
 | --- | --- |
