@@ -28,13 +28,13 @@
         <div class="c-show-detail">
             <div class="c-show-detail__header">
                 <span class="c-show-detail__header__category">
-                    @if(!isset($post->category->category_name))
+                    @if(!isset($post->category->name))
                     <span class="e-tag is-tag_gray">
                         カテゴリ未設定
                     </span>
                     @else
                     <a href="{{ route('top', ['category_id' => $post->category->id]) }}" class="e-tag is-tag_orange">
-                        {{ $post->category->category_name }}
+                        {{ $post->category->name }}
                     </a>
                     @endif
                 </span>

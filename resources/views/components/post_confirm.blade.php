@@ -32,7 +32,7 @@
                     未設定
                     <input name="category_id" value="" type="hidden">
                     @else
-                    {{ $category->category_name }}
+                    {{ $category->name }}
                     <input name="category_id" value="{{ $inputs['category_id'] }}" type="hidden">
                     @endif
                 </div>

@@ -17,7 +17,7 @@ class PostController extends Controller
 {
     public function create()
     {
-        $categories = Category::pluck('category_name', 'id');
+        $categories = Category::pluck('name', 'id');
         $page = 'create';
 
         return view('posts.create',compact('categories','page'));
@@ -99,7 +99,7 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $this->authorize('edit', $post);
-        $categories = Category::pluck('category_name', 'id');
+        $categories = Category::pluck('name', 'id');
         $page = 'edit';
 
         return view('posts.edit', compact('post','categories','page'));

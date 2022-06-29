@@ -17,10 +17,10 @@
         <span class="c-post-list__header__title">{{ $post->title }}</span>
 
         <span class="c-post-list__header__category">
-            @if(!isset($post->category->category_name))
+            @if(!isset($post->category->name))
             <span class="e-tag is-tag_gray">カテゴリ未設定</span>
             @else
-            <a href="{{ route('top', ['category_id' => $post->category->id ])}}" class="e-tag is-tag_orange">{{ $post->category->category_name }}</a>
+            <a href="{{ route('top', ['category_id' => $post->category->id ])}}" class="e-tag is-tag_orange">{{ $post->category->name }}</a>
             @endif
         </span>
 

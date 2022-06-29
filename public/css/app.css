@@ -11064,6 +11064,20 @@ a.e-tag:focus {
 .l-header {
   padding: 10px 40px 10px;
   width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 992px) {
+  .l-header {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .l-header {
+    max-width: 1140px;
+  }
 }
 
 .l-header__nav {
@@ -11072,7 +11086,6 @@ a.e-tag:focus {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 16px;
 }
 
 @media (min-width: 992px) {
