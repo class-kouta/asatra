@@ -39,9 +39,9 @@
             </div>
             <select name="category_id" class="e-form">
                 <option class="e-form" value="">未選択</option>
-                @foreach($categories as $id => $category_name)
+                @foreach($categories as $id => $name)
                     <option value="{{ $id }}" @if(optional($post)->category_id == $id) selected @endif>
-                        {{ $category_name }}
+                        {{ $name }}
                     </option>
                 @endforeach
             </select>

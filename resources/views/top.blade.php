@@ -10,9 +10,9 @@
                 <div class="c-search-form__category">
                     <select name="category_id" class="e-form">
                         <option value="">未選択</option>
-                        @foreach($categories as $id => $category_name)
+                        @foreach($categories as $id => $name)
                             <option value="{{ $id }}" @if($category_id === "$id") selected @endif>
-                                {{ $category_name }}
+                                {{ $name }}
                             </option>
                         @endforeach
                     </select>
@@ -25,7 +25,7 @@
                 <button type="submit" class="e-btn is-btn_blue">検索</button>
             </div>
 
-            <select name="sorting" class="e-form is-form_50">
+            <select name="sorting" class="e-form is-form_50" onchange="submit(this.form)">
                 <option value="{{ SortType::LATEST }}" @if(request()->sorting == SortType::LATEST) selected @endif>投稿日時が新しい順</option>
                 <option value="{{ SortType::OLDEST }}" @if(request()->sorting == SortType::OLDEST) selected @endif>投稿日時が古い順</option>
                 <option value="{{ SortType::NICE_DESC }}" @if(request()->sorting == SortType::NICE_DESC) selected @endif>いいねが多い順</option>

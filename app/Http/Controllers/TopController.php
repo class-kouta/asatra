@@ -20,7 +20,7 @@ class TopController extends Controller
         $query = Post::query()
             ->whereNotIn('status', [PostStatusType::SECRET, PostStatusType::DRAFT]);
 
-        $categories = Category::pluck('category_name', 'id');
+        $categories = Category::pluck('name', 'id');
 
         // カテゴリ検索
         if($category_id){
