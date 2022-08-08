@@ -85,20 +85,18 @@ https://asatra.app/
 ## 使用技術
 
 ### フロントエンド
-- Vue.js 2.6.14
-- jQuery 3.2
-- HTML/Sass/Bootstrap
+- HTML/Sass/Bootstrap/JavaScript
 
 ### バックエンド
 - PHP 7.4.27
 - Laravel 6.20.35
 
 ### インフラ
-- MySQL
-- AWS
+- MySQL 5.7.39
+- CentOS7
+- さくらのVPS
 
 
-## AWS構成図
 ## DB設計
 ### ER図
 ![ER図（修正後） drawio](https://user-images.githubusercontent.com/78774242/176316230-b5dec0cb-44cf-4edf-a822-3b62ee74106d.png)
