@@ -43,7 +43,7 @@
 
         <ul>
             <li>
-                自分の投稿　　： <a href="{{ route('profile.myposts', PostListType::MY_POST) }}">{{ Auth::user()->post->count() }}</a> 件
+                自分の投稿　　： <a href="{{ route('profile.myposts', PostListType::MY_POST) }}">{{ User::getPostsCountExceptDraft() }}</a> 件
             </li>
             <li>
                 いいねした投稿： <a href="{{ route('profile.myposts',PostListType::MY_NICE) }}">{{ Auth::user()->joinNicesPosts()->count() }}</a> 件
@@ -52,10 +52,10 @@
                 書いたコメント： <a href="{{ route('profile.myposts', PostListType::MY_COMMENT) }}">{{ Auth::user()->joinCommentsPosts()->count() }}</a> 件
             </li>
             <li>
-                <a href="{{ route('profile.myposts', PostListType::MY_DRAFT) }}">下書きリスト</a>
+                下書き　　　　： <a href="{{ route('profile.myposts', PostListType::MY_DRAFT) }}">{{ User::getPostsCountDraft() }}</a> 件
             </li>
             <li>
-                <a href="{{ route('profile.notifications') }}">通知</a>
+                通知　　　　　： <a href="{{ route('profile.notifications') }}">{{ User::getNotificationsCount() }}</a> 件
             </li>
             <li>
                 <a href="{{ route('profile.edit') }}">ユーザ情報の変更</a>

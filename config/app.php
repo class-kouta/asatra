@@ -230,7 +230,7 @@ return [
         'UserSexType'=>App\Enums\UserSexType::class,
         'SortType'=>App\Enums\SortType::class,
         'Paginate'=>App\Enums\Paginate::class,
-
+        'User'=>App\Models\User::class,
     ],
 
 ];

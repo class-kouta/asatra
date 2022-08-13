@@ -55,10 +55,15 @@
                 </a>
             </form>
 
-            <div>
+            <div class="mt24">
                 テストユーザー<br>
                 メールアドレス：test@gmail.com<br>
                 パスワード　　：test<br>
+            </div>
+            <div class="mt24">
+                テストユーザー２<br>
+                メールアドレス：test2@gmail.com<br>
+                パスワード　　：test2<br>
             </div>
         </div>
     </div>

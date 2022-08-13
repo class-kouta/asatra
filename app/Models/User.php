@@ -6,6 +6,10 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Post;
+use App\Models\Notification;
+use App\Enums\PostStatusType;
 
 class User extends Authenticatable
 {
@@ -82,5 +86,29 @@ class User extends Authenticatable
             null,
             'post_id',
         );
+    }
+
+    public static function getPostsCountExceptDraft()
+    {
+        $posts = Post::where('user_id', Auth::id())
+            ->where('status', '<>', PostStatusType::DRAFT)
+            ->count();
+        return $posts;
+    }
+
+    public static function getPostsCountDraft()
+    {
+        $posts = Post::where('user_id', Auth::id())
+            ->where('status', PostStatusType::DRAFT)
+            ->count();
+        return $posts;
+    }
+
+    public static function getNotificationsCount()
+    {
+        $notifications = Notification::where('user_id', Auth::id())
+            ->whereNull('read')
+            ->count();
+        return $notifications;
     }
 }
