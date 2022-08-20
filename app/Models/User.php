@@ -88,10 +88,10 @@ class User extends Authenticatable
         );
     }
 
-    public static function getPostsCount($status)
+    public static function getPostsCount($statuses)
     {
         $posts = Post::where('user_id', Auth::id())
-            ->whereIn('status', $status)
+            ->whereIn('status', $statuses)
             ->count();
         return $posts;
     }
