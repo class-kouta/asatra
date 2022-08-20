@@ -20,7 +20,7 @@
             @if(!isset($post->category->name))
             <span class="e-tag is-tag_gray">カテゴリ未設定</span>
             @else
-            <a href="{{ route('top', ['category_id' => $post->category->id ])}}" class="e-tag is-tag_orange">{{ $post->category->name }}</a>
+            <a href="{{ route('search', ['category_id' => $post->category->id ])}}" class="e-tag is-tag_orange">{{ $post->category->name }}</a>
             @endif
         </span>
 

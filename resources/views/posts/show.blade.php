@@ -33,7 +33,7 @@
                         カテゴリ未設定
                     </span>
                     @else
-                    <a href="{{ route('top', ['category_id' => $post->category->id]) }}" class="e-tag is-tag_orange">
+                    <a href="{{ route('search', ['category_id' => $post->category->id]) }}" class="e-tag is-tag_orange">
                         {{ $post->category->name }}
                     </a>
                     @endif

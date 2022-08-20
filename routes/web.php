@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'TopController@index')->name('top');
+Route::get('search', 'SearchController@search')->name('search');
 
 Auth::routes();
 
@@ -61,3 +61,7 @@ Route::group(['prefix' => 'footer'],function(){
 Route::get('nopage',function(){
     return view('nopage');
 })->name('nopage');
+
+Route::get('/',function(){
+    return view('index');
+})->name('index');
