@@ -11452,6 +11452,9 @@ footer nav ul li a {
 
 .c-post-list {
   margin-top: 40px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #ffffff;
 }
 
 .c-post-list__header {
