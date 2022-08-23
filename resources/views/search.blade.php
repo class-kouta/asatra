@@ -4,7 +4,7 @@
 <div class="is-container-column">
     <div class="l-container_primary">
 
-        <form method="get" action="{{ route('top') }}">
+        <form method="get" action="{{ route('search') }}">
             <div class="c-search-form">
 
                 <div class="c-search-form__category">

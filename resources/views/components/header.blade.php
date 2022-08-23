@@ -7,11 +7,9 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="l-header__nav__contents ml-auto">
-            <li><a class="l-header__nav__contents__link" href="{{ route('nopage') }}">アサーションとは</a></li>
-            <li><a class="l-header__nav__contents__link" href="{{ route('nopage') }}">アサトレの使い方</a></li>
+            <li><a class="l-header__nav__contents__link" href="{{ route('index') }}">アサトレについて</a></li>
             <li><a class="l-header__nav__contents__link" href="{{ route('nopage') }}">おすすめの書籍</a></li>
-            <li><a class="l-header__nav__contents__link" href="{{ route('nopage') }}">ブログ</a></li>
-            <li><a class="l-header__nav__contents__link" href="{{ route('top') }}">みんなの投稿</a></li>
+            <li><a class="l-header__nav__contents__link" href="{{ route('search') }}">みんなの投稿</a></li>
             @guest
                 <li><a class="l-header__nav__contents__link" href="{{ route('login') }}">ログイン</a></li>
                 <li><a class="l-header__nav__contents__link" href="{{ route('register') }}">新規登録</a></li>

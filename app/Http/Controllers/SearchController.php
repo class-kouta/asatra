@@ -8,9 +8,9 @@ use App\Models\Category;
 use App\Enums\PostStatusType;
 use App\Enums\SortType;
 
-class TopController extends Controller
+class SearchController extends Controller
 {
-    public function index(Request $request)
+    public function search(Request $request)
     {
         $search = $request->input('search');
         $category_id = $request->input('category_id');
@@ -65,7 +65,7 @@ class TopController extends Controller
                 abort(404);
         }
 
-        return view('top',compact('posts', 'search', 'category_id', 'categories' ));
+        return view('search',compact('posts', 'search', 'category_id', 'categories' ));
     }
 
     private function escape(string $value)
