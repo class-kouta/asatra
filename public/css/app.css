@@ -11917,6 +11917,10 @@ footer nav ul li a {
   color: #f6993f;
 }
 
+.is-text_gray {
+  color: #a2aad7;
+}
+
 .d-flex {
   display: flex;
 }
