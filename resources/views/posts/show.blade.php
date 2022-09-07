@@ -128,15 +128,15 @@
                     </span>
                 @else
                     @if($nice)
-                    <a href="{{ route('unnice', $post) }}" class="e-btn is-btn_pink is-btn_sm">
-                        いいね
+                    <a href="{{ route('unnice', $post) }}" class="e-btn is-btn_sm">
+                        <i class="fas fa-heart is-text_pink"></i>
                     </a>
                     <span>
                         {{ $post->nices->count() }}
                     </span>
                     @else
-                    <a href="{{ route('nice', $post) }}" class="e-btn is-btn_outline-pink is-btn_sm">
-                        いいね
+                    <a href="{{ route('nice', $post) }}" class="e-btn is-btn_sm">
+                        <i class="fas fa-heart is-text_gray"></i>
                     </a>
                     <span>
                         {{ $post->nices->count() }}
