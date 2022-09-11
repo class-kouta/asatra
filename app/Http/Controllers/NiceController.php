@@ -21,13 +21,20 @@ class NiceController extends Controller
         $notification->text = '新しいいいねが付きました';
         $post->notifications()->save($notification);
 
-        return back();
+        return [
+            'id' => $post->id,
+            'countNices' => $post->count_nices,
+        ];
     }
 
     public function unnice(Post $post){
         $user_id = Auth::id();
         $nice = Nice::where('post_id', $post->id)->where('user_id', $user_id)->first();
         $nice->delete();
-        return back();
+
+        return [
+            'id' => $post->id,
+            'countNices' => $post->count_nices,
+        ];
     }
 }

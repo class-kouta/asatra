@@ -119,30 +119,13 @@
         <div class="c-show-detail__footer">
             {{-- いいね --}}
             <div class="c-show-detail__footer__nice">
-                @guest
-                    <a href="{{ route('login') }}" class="e-btn is-btn_outline-pink is-btn_sm">
-                        いいね
-                    </a>
-                    <span>
-                        {{ $post->nices->count() }}
-                    </span>
-                @else
-                    @if($nice)
-                    <a href="{{ route('unnice', $post) }}" class="e-btn is-btn_sm">
-                        <i class="fas fa-heart is-text_pink"></i>
-                    </a>
-                    <span>
-                        {{ $post->nices->count() }}
-                    </span>
-                    @else
-                    <a href="{{ route('nice', $post) }}" class="e-btn is-btn_sm">
-                        <i class="fas fa-heart is-text_gray"></i>
-                    </a>
-                    <span>
-                        {{ $post->nices->count() }}
-                    </span>
-                    @endif
-                @endguest
+                <post-nice
+                    :initial-is-niced-by='@json($nice)'
+                    :initial-count-nices='@json($post->count_nices)'
+                    :authorized='@json(Auth::check())'
+                    endpoint="{{ route('nice', $post) }}"
+                >
+                </post-nice>
             </div>
 
             @if($post->created_at)

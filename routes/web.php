@@ -35,8 +35,8 @@ Route::group(['prefix' => 'posts','middleware'=>'auth'],function(){
     Route::post('/{post}/comments','CommentController@store')->name('comments.store');
     Route::post('/{post}/comments/{comment}','CommentController@destroy')->name('comments.destroy');
 
-    Route::get('/nice/{post}', 'NiceController@nice')->name('nice');
-    Route::get('/unnice/{post}', 'NiceController@unnice')->name('unnice');
+    Route::put('/nice/{post}', 'NiceController@nice')->name('nice');
+    Route::delete('/nice/{post}', 'NiceController@unnice')->name('nice');
 });
 
 Route::group(['prefix' => 'profile','middleware'=>'auth'],function(){
