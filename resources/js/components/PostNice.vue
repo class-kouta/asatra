@@ -53,16 +53,24 @@
           : this.nice()
       },
       async nice() {
-        const response = await axios.put(this.endpoint)
+        try {
+            const response = await axios.put(this.endpoint)
 
-        this.isNicedBy = true
-        this.countNices = response.data.countNices
+            this.isNicedBy = true
+            this.countNices = response.data.countNices
+        } catch (e) {
+            alert('エラーが発生しました')
+        }
       },
       async unnice() {
-        const response = await axios.delete(this.endpoint)
+          try {
+            const response = await axios.delete(this.endpoint)
 
-        this.isNicedBy = false
-        this.countNices = response.data.countNices
+            this.isNicedBy = false
+            this.countNices = response.data.countNices
+        } catch (e) {
+            alert('エラーが発生しました')
+        }
       },
     },
   }
