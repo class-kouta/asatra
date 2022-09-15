@@ -7,11 +7,21 @@
     </div>
 
     <div class="pb50 px24">
-        <div class="mb8">
-            早速アサトレを利用する場合は<a href="{{ route('posts.create') }}">こちら</a>
+        <div class="pb24">
+            <div class="pb8">
+                早速アサトレを利用する場合はこちら
+            </div>
+            <a class="e-btn is-btn_outline-orange" href="{{ route('posts.create') }}">
+                アサトレを利用（無料）
+            </a>
         </div>
         <div>
-            まずみんなの投稿をみたい方は<a href="{{ route('search') }}">こちら</a>
+            <div class="pb8">
+                まずはみんなの投稿をみたい方はこちら
+            </div>
+            <a class="e-btn is-btn_outline-blue" href="{{ route('search') }}">
+                みんなの投稿（登録不要）
+            </a>
         </div>
     </div>
 
@@ -142,8 +152,19 @@
 
     <div class="px24">
         <div class="mb32">皆さんがアサトレを通じて、パートナーと良好な関係を長きに渡って築いていくことを願っております。</div>
-        <div><a href="{{ route('posts.create') }}">アサトレを利用してみる（無料）</a></div>
-        <div><a href="{{ route('search') }}">みんなの投稿をみてみる（登録不要）</a></div>
+
+        <div class="d-flex">
+            <div class="pl24">
+                <a class="e-btn is-btn_outline-orange" href="{{ route('posts.create') }}">
+                    アサトレを利用する（無料）
+                </a>
+            </div>
+            <div class="pl24">
+                <a class="e-btn is-btn_outline-blue" href="{{ route('search') }}">
+                    みんなの投稿をみる（登録不要）
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
