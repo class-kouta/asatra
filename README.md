@@ -58,7 +58,7 @@ https://asatra.app/
 - 削除
 
 #### いいね機能
-- 現在非同期処理（Vye.js / ajax）移行中
+- 非同期処理で実装（Vue.js / ajax）
 
 #### 投稿検索機能
 - カテゴリー、キーワード検索
@@ -78,7 +78,26 @@ https://asatra.app/
 - ハンバーガーメニュー(Bootstrap)
 
 
-## 使用画面のイメージ
+## 使用画面のイメージ（主要ページ抜粋）
+
+【トップページ】
+
+![スクリーンショット 2022-09-16 8 18 04](https://user-images.githubusercontent.com/78774242/190837392-b10af9e1-7cde-494f-ae57-53e4ec78094d.png)
+
+
+【一覧画面】
+
+![スクリーンショット 2022-09-16 7 48 10](https://user-images.githubusercontent.com/78774242/190837396-514e5d5d-9966-4216-b942-064bb27052e5.png)
+
+
+【詳細画面】
+
+![スクリーンショット 2022-09-16 8 01 38](https://user-images.githubusercontent.com/78774242/190837400-3c977fa3-60e6-418c-902e-f29b6def5ccb.png)
+
+
+【作成画面】
+
+![スクリーンショット 2022-09-16 8 03 07](https://user-images.githubusercontent.com/78774242/190837408-c67b9334-c8a8-42f7-b08f-66258f50cef1.png)
 
 
 ## 使用技術
