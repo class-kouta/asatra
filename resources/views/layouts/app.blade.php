@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -29,12 +29,16 @@
     </header>
 
     <main class="l-container">
-        @yield('content')
+        <div id="app">
+            @yield('content')
+        </div>
     </main>
 
     <footer class="l-footer">
         @component('components.footer')
         @endcomponent
     </footer>
+
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

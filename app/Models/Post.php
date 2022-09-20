@@ -36,4 +36,9 @@ class Post extends Model
     {
         return $this->morphMany('App\Models\Notification', 'notificationable');
     }
+
+    public function getCountNicesAttribute(): int
+    {
+        return $this->nices->count();
+    }
 }

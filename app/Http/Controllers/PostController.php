@@ -49,13 +49,15 @@ class PostController extends Controller
                 ->update(['read' => true]);
         }
         $nice = Nice::where('post_id', $post->id)->where('user_id', Auth::id())->first();
+        $nice = (bool)$nice;
 
         return view('posts.show',compact('post','nice'));
     }
 
     public function showGuest(Post $post)
     {
-        return view('posts.show', compact('post'));
+        $nice = false;
+        return view('posts.show', compact('post','nice'));
     }
 
     public function showMyPosts($page)
