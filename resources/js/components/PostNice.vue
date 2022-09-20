@@ -54,22 +54,28 @@
       },
       async nice() {
         try {
-            const response = await axios.put(this.endpoint)
-
             this.isNicedBy = true
-            this.countNices = response.data.countNices
+            this.countNices++
+
+            await axios.put(this.endpoint)
         } catch (e) {
-            alert('エラーが発生しました')
+            this.isNicedBy = false
+            this.countNices--
+
+            alert('エラーが発生しました。少し時間をおいてから再度お試しください。')
         }
       },
       async unnice() {
-          try {
-            const response = await axios.delete(this.endpoint)
-
+        try {
             this.isNicedBy = false
-            this.countNices = response.data.countNices
+            this.countNices--
+
+            await axios.delete(this.endpoint)
         } catch (e) {
-            alert('エラーが発生しました')
+            this.isNicedBy = true
+            this.countNices++
+
+            alert('エラーが発生しました。少し時間をおいてから再度お試しください。')
         }
       },
     },
